@@ -2,7 +2,7 @@
 name: Refactor
 about: '코드 리팩토링시 사용합니다. '
 title: "[Refactor/화면명] 화면 요약 or 기능요약"
-labels: wontfix
+labels: refactor
 assignees: ''
 
 ---

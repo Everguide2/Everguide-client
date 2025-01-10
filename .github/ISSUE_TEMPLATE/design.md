@@ -2,7 +2,7 @@
 name: Design
 about: '새로운 화면 및 UI 제작시 사용합니다. '
 title: "[Design/화면명] 화면요약"
-labels: good first issue
+labels: "\bdesign"
 assignees: ''
 
 ---

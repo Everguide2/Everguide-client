@@ -2,7 +2,7 @@
 name: Feature
 about: '새로운 기능 추가시 사용하는 템플릿 입니다. '
 title: "[Feat/화면명] 기능요약"
-labels: enhancement
+labels: feature
 assignees: ''
 
 ---
