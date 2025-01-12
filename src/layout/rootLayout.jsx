@@ -24,5 +24,6 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   max-width: ${(props) => props.theme.size.max_witdh};
+  background-color: ${(props) => props.theme.colors.white};
   margin: 0 auto;
 `
