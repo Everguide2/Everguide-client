@@ -3,15 +3,21 @@ import { styled } from "styled-components"
 
 const Footer = () => {
   return (
-    <Test>푸터 영역입니다.</Test>
+    <Container>
+      <FooterContainer>푸터영역</FooterContainer>
+    </Container>
   );
 };
 
 export default Footer;
 
-const Test = styled.div`
+const Container = styled.div`
   width: 100%;
-  height: 335px;
-  background-color: green;
-  color: white;
+  background-color: ${(props) => props.theme.colors.gray[50]};
+`
+
+const FooterContainer = styled.div`
+  width: ${(props) => props.theme.size.max_witdh};  
+  height: 184px;
+  margin: 0 auto;
 `

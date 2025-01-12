@@ -3,21 +3,31 @@ import { styled } from 'styled-components';
 
 const Header = () => {
   return (
-    <Test>
-      <TestTitle>헤더 영역</TestTitle>
-    </Test>
+    <Container>
+      <HeaderContainer>
+        <MainHeader></MainHeader>
+        <SubHeader></SubHeader>
+      </HeaderContainer>
+    </Container>
   );
 };
 
 export default Header;
 
-// 삭제 예정
-const Test = styled.div`
+const Container = styled.div`
+  position: sticky;
   width: 100%;
-  height: 184px;
   background-color: ${(props) => props.theme.colors.primary[900]};
 `
 
-const TestTitle = styled.h1`
-  ${(props) => props.theme.fonts.header0 }
+const HeaderContainer = styled.div`
+  width: ${(props) => props.theme.size.max_witdh};  
+  height: 184px;
+  margin: 0 auto;
+`
+const MainHeader = styled.div`
+
+`
+const SubHeader = styled.div`
+  
 `
