@@ -1,10 +1,9 @@
-import React from 'react';
 import { styled } from "styled-components"
 
 const Footer = () => {
   return (
     <Container>
-      <FooterContainer>푸터영역</FooterContainer>
+      <FooterContainer></FooterContainer>
     </Container>
   );
 };
