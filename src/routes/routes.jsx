@@ -4,7 +4,9 @@ const routes =  [
   {
     path: '/',
     element: <RootLayout />,
-    children: [],
+    children: [{
+
+    }],
   },
 ]
 
