@@ -13,12 +13,12 @@ export const fonts = {
   header5: createFontStyle(28, 'bold', 160, 0),
   header6: createFontStyle(24, 'bold', 160, 0),
 
-  sub_header1: createFontStyle(24, 'bold', 160, 0),
-  sub_header2: createFontStyle(24, 600, 160, 0),
-  sub_header3: createFontStyle(20, 'bold', 160, 0),
-  sub_header4: createFontStyle(20, 600, 160, 0),
-  sub_header5: createFontStyle(18, 'bold', 160, 0),
-  sub_header6: createFontStyle(18, 600, 160, 0),
+  subHeader1: createFontStyle(24, 'bold', 160, 0),
+  subHeader2: createFontStyle(24, 600, 160, 0),
+  subHeader3: createFontStyle(20, 'bold', 160, 0),
+  subHeader4: createFontStyle(20, 600, 160, 0),
+  subHeader5: createFontStyle(18, 'bold', 160, 0),
+  subHeader6: createFontStyle(18, 600, 160, 0),
 
   body1: createFontStyle(20, 'bold', 160, 0),
   body2: createFontStyle(20, 600, 160, 0),
