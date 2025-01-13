@@ -17,7 +17,7 @@ const Container = styled.div`
 `
 
 const FooterContainer = styled.div`
-  width: ${(props) => props.theme.size.max_witdh};  
+  width: ${(props) => props.theme.size.safeArea};  
   height: 184px;
   margin: 0 auto;
 `
