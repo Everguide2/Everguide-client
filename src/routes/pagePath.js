@@ -1,4 +1,4 @@
-export const path = {
+export const pagePath = {
   FIND : 'find',
   SUPPORT : 'support',
   EVENT : 'event',
