@@ -14,6 +14,7 @@ export default Button;
 const Container = styled.button`
   ${({theme}) => theme.fonts.subHeader5};
   color: ${({ theme }) => theme.colors.white};
+  cursor: pointer;
   padding: 11.5px 24px;
   border: none;
   border-radius: 100px;
