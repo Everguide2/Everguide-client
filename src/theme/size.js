@@ -1,3 +1,3 @@
 export const size = {
-  max_witdh: '1440px',
+  safeArea: '1440px',
 }
