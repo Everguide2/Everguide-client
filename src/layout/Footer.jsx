@@ -1,6 +1,6 @@
 import { styled } from "styled-components"
 import { icFooterLogo, icInstagram, icKakao, icNaver } from "../assets";
-import { strings } from "../constants/strings";
+import { string } from "../constants";
 
 const Footer = () => {
   return (
@@ -17,29 +17,29 @@ const Footer = () => {
           </Section1>
           <Section2>
             <ul>
-              <li>{strings.footerIntroduction}</li>
+              <li>{string.footerIntroduction}</li>
               <li>
-                <p>{strings.csTitle}</p>
-                <p>{strings.phoneNumber}</p>
+                <p>{string.csTitle}</p>
+                <p>{string.phoneNumber}</p>
               </li>
               <li>
-                <p>{strings.emailTitle}</p>
-                <p>{strings.email}</p>
+                <p>{string.emailTitle}</p>
+                <p>{string.email}</p>
               </li>
               <li>
-                <p>{strings.businessTitle}</p>
-                <p>{strings.number}</p>
+                <p>{string.businessTitle}</p>
+                <p>{string.number}</p>
               </li>
             </ul>
           </Section2>
           <Section3>
             <ul>
-              <li>{strings.usePolicy}</li>
-              <li>{strings.usePersonalInfo}</li>
-              <li>{strings.ask}</li>
+              <li>{string.usePolicy}</li>
+              <li>{string.usePersonalInfo}</li>
+              <li>{string.ask}</li>
             </ul>
           </Section3>
-          <CopyRight>{strings.copyRight}</CopyRight>
+          <CopyRight>{string.copyRight}</CopyRight>
         </SectionContainer>
 
       </FooterContainer>

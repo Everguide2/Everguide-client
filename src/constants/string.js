@@ -1,4 +1,4 @@
-export const strings = {
+const string = {
   findPolicy: "정책찾기",
   supportPolicy: "지원정책",
   eventEducation: "행사/교육",
@@ -21,3 +21,5 @@ export const strings = {
 
   copyRight: "@ 2025 Everguide. All rights reserved.",
 }
+
+export default string;
