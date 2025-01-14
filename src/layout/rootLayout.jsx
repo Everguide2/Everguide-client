@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  max-width: ${(props) => props.theme.size.safeArea};
-  background-color: ${(props) => props.theme.colors.white};
+  max-width: ${({theme}) => theme.size.safeArea};
+  background-color: ${({theme}) => theme.colors.white};
   margin: 0 auto;
 `
