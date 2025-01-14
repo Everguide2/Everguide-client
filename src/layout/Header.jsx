@@ -11,7 +11,6 @@ const Header = () => {
 
   const handleMenuClick = (menu) => {
     setActive(menu);
-    setIsLogin(!isLogin);
   }
 
   return (
@@ -82,10 +81,9 @@ const MainLogo = styled.img`
   width: 168px;
   height: 72px;
   cursor: pointer;
-  flex-basis: 180px;
 `
 const LoginCheck = styled.div`
-  flex-basis: 270px;
+  flex-basis: 260px;
   display: flex;
   justify-content: flex-end;
 `
@@ -108,7 +106,7 @@ const SubHeader = styled.div`
     ${({theme}) => theme.fonts.header6}
     color: ${({theme}) => theme.colors.gray[900]};
     display: flex;
-    padding-left: 120px;
+    padding-left: 110px;
     
     li::before {
       content: "";
