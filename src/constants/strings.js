@@ -6,4 +6,18 @@ export const strings = {
   LoginRegister: "로그인/회원가입",
 
   searchBarPlaceHolder : "찾고 싶은 정책을 입력해보세요!",
+
+  footerIntroduction: "Team Everguide 소개",
+  csTitle: "고객센터",
+  phoneNumber: "01099132342",
+  emailTitle: "메일",
+  email: "Hsu235@Gmail.Com",
+  businessTitle: "사업자번호",
+  number: "011-001-122",
+
+  usePolicy: "이용약관",
+  usePersonalInfo: "개인정보처리방침",
+  ask: "문의하기",
+
+  copyRight: "@ 2025 Everguide. All rights reserved.",
 }

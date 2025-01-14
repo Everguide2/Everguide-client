@@ -25,4 +25,8 @@ const Wrapper = styled.div`
   max-width: ${({theme}) => theme.size.safeArea};
   background-color: ${({theme}) => theme.colors.white};
   margin: 0 auto;
+  
+  div{
+    height: 2000px;
+  }
 `
