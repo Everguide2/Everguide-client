@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 import { strings } from '../constants/strings';
 import { useState } from "react";
-import { icMainLogo } from "../assets";
+import { icMainLogo, icNotify } from "../assets";
 import { Button, SearchBar } from "../components";
 import {pagePath} from '../routes/pagePath.js';
 
@@ -11,6 +11,7 @@ const Header = () => {
 
   const handleMenuClick = (menu) => {
     setActive(menu);
+    setIsLogin(!isLogin);
   }
 
   return (
@@ -20,7 +21,16 @@ const Header = () => {
           <div>
             <MainLogo src={icMainLogo} onClick={() => handleMenuClick()} />
             <SearchBar placeHolder={strings.searchBarPlaceHolder}/>
-            {isLogin ? <LoginCheck></LoginCheck> : <Button text={strings.LoginRegister} />}
+            <LoginCheck>
+              {isLogin ?
+                  <>
+                    <Notify src={icNotify} />
+                    <Profile></Profile>
+                  </>
+              :
+                <Button text={strings.LoginRegister} onClick={() => handleMenuClick()} />
+              }
+            </LoginCheck>
           </div>
         </HeaderContainer>
       </MainHeader>
@@ -52,7 +62,7 @@ const HeaderContainer = styled.div`
   width: ${(props) => props.theme.size.safeArea};  
   margin: 0 auto;
   
-  div{
+  div:first-child {
     height: 110px;
     display: flex;
     align-items: center;
@@ -60,7 +70,7 @@ const HeaderContainer = styled.div`
     margin: 0 60px;
     
     input{
-      margin-left: -76px;
+
     }
     
   }
@@ -72,8 +82,23 @@ const MainLogo = styled.img`
   width: 168px;
   height: 72px;
   cursor: pointer;
+  flex-basis: 180px;
 `
 const LoginCheck = styled.div`
+  flex-basis: 270px;
+  display: flex;
+  justify-content: flex-end;
+`
+const Notify = styled.img`
+  width: 48px;
+  height: 48px;
+`
+const Profile = styled.img`
+  width: 54px;
+  height: 54px;
+  border-radius: 54px;
+  background-color: ${({theme}) => theme.colors.gray[400]};
+  margin-left: 39px;
 `
 const SubHeader = styled.div`
   height: 74px;

@@ -1,6 +1,7 @@
 // icons
 export {default as icMainLogo} from './icons/ic-main-logo.svg';
 export {default as icSearch} from './icons/ic-search.svg';
+export {default as icNotify} from './icons/ic-notify.svg';
 
 // images
 
