@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { strings } from '../constants/strings';
+import { string } from '../constants';
 import { useState } from "react";
 import { icMainLogo, icNotify } from "../assets";
 import { Button, SearchBar } from "../components";
@@ -19,7 +19,7 @@ const Header = () => {
         <HeaderContainer>
           <div>
             <MainLogo src={icMainLogo} onClick={() => handleMenuClick()} />
-            <SearchBar placeHolder={strings.searchBarPlaceHolder}/>
+            <SearchBar placeHolder={string.searchBarPlaceHolder}/>
             <LoginCheck>
               {isLogin ?
                   <>
@@ -27,7 +27,7 @@ const Header = () => {
                     <Profile></Profile>
                   </>
               :
-                <Button text={strings.LoginRegister} onClick={() => handleMenuClick()} />
+                <Button text={string.LoginRegister} onClick={() => handleMenuClick()} />
               }
             </LoginCheck>
           </div>
@@ -37,10 +37,10 @@ const Header = () => {
       <SubHeader>
         <HeaderContainer>
           <ul>
-            <MenuItem active={active === pagePath.FIND} onClick={() => {handleMenuClick(pagePath.FIND)}}><p>{strings.findPolicy}</p></MenuItem>
-            <MenuItem active={active === pagePath.SUPPORT} onClick={() => {handleMenuClick(pagePath.SUPPORT)}}><p>{strings.supportPolicy}</p></MenuItem>
-            <MenuItem active={active === pagePath.EVENT} onClick={() => {handleMenuClick(pagePath.EVENT)}}><p>{strings.eventEducation}</p></MenuItem>
-            <MenuItem active={active === pagePath.WORK} onClick={() => {handleMenuClick(pagePath.WORK)}}><p>{strings.workInformation}</p></MenuItem>
+            <MenuItem active={active === pagePath.FIND} onClick={() => {handleMenuClick(pagePath.FIND)}}><p>{string.findPolicy}</p></MenuItem>
+            <MenuItem active={active === pagePath.SUPPORT} onClick={() => {handleMenuClick(pagePath.SUPPORT)}}><p>{string.supportPolicy}</p></MenuItem>
+            <MenuItem active={active === pagePath.EVENT} onClick={() => {handleMenuClick(pagePath.EVENT)}}><p>{string.eventEducation}</p></MenuItem>
+            <MenuItem active={active === pagePath.WORK} onClick={() => {handleMenuClick(pagePath.WORK)}}><p>{string.workInformation}</p></MenuItem>
           </ul>
         </HeaderContainer>
       </SubHeader>

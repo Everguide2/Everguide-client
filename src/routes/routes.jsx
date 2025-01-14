@@ -1,4 +1,5 @@
 import RootLayout from "../layout/rootLayout";
+import {pagePath} from "./pagePath.js";
 
 const routes =  [
   {
