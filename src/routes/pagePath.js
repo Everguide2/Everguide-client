@@ -1,7 +1,11 @@
+import { Policy } from "../pages";
+
 export const pagePath = {
   HOME: "home",
-  FIND: "find",
-  SUPPORT: "support",
-  EVENT: "event",
-  WORK: "work",
-};
+  FIND : 'find',
+  SUPPORT : 'support',
+  EVENT : 'event',
+  WORK : 'work',
+  POLICY : 'policy'
+}
+
