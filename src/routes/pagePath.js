@@ -1,11 +1,9 @@
-import { Policy } from "../pages";
-
 export const pagePath = {
   HOME: "home",
+  POLICY : 'policy',
   FIND : 'find',
   SUPPORT : 'support',
   EVENT : 'event',
   WORK : 'work',
-  POLICY : 'policy'
 }
 
