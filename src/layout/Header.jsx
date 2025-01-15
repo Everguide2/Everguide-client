@@ -44,7 +44,7 @@ const Header = () => {
             <MenuItem active={active === pagePath.POLICY} onClick={() => {handleMenuClick(pagePath.POLICY)}}><p>{string.findPolicy}</p></MenuItem>
             <MenuItem active={active === pagePath.SUPPORT} onClick={() => {handleMenuClick(pagePath.SUPPORT)}}><p>{string.supportPolicy}</p></MenuItem>
             <MenuItem active={active === pagePath.EVENT} onClick={() => {handleMenuClick(pagePath.EVENT)}}><p>{string.eventEducation}</p></MenuItem>
-            <MenuItem active={active === pagePath.WORK} onClick={() => {handleMenuClick(pagePath.WORK)}}><p>{string.workInformation}</p></MenuItem>
+            <MenuItem active={active === pagePath.JOB} onClick={() => {handleMenuClick(pagePath.JOB)}}><p>{string.workInformation}</p></MenuItem>
           </ul>
         </HeaderContainer>
       </SubHeader>

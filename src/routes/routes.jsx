@@ -1,5 +1,5 @@
 import RootLayout from "../layout/rootLayout";
-import {Home, Policy} from "../pages";
+import {Home, Policy, Event, Job} from "../pages";
 import {pagePath} from "./pagePath.js";
 
 const routes = [
@@ -14,6 +14,14 @@ const routes = [
       {
         path: pagePath.POLICY,
         element: <Policy/>
+      },
+      {
+        path: pagePath.EVENT,
+        element: <Event/>
+      },
+      {
+        path: pagePath.JOB,
+        element: <Job/>
       },
     ],
   },
