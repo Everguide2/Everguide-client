@@ -1,14 +1,18 @@
 import RootLayout from "../layout/rootLayout";
-import {pagePath} from "./pagePath.js";
+import Home from "../pages/home/ui/Home.jsx";
+import { pagePath } from "./pagePath.js";
 
-const routes =  [
+const routes = [
   {
-    path: '/',
+    path: "/",
     element: <RootLayout />,
-    children: [{
-    }],
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+    ],
   },
-]
-
+];
 
 export default routes;
