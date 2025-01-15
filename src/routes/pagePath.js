@@ -3,8 +3,6 @@ export const pagePath = {
   POLICY : 'policy',
   EVENT : 'event',
   JOB: 'job',
-  FIND : 'find',
   SUPPORT : 'support',
-  WORK : 'work',
 }
 
