@@ -1,7 +1,9 @@
 export const pagePath = {
-  HOME: "home",
-  FIND: "find",
-  SUPPORT: "support",
-  EVENT: "event",
-  WORK: "work",
-};
+  FIND : 'find',
+  SUPPORT : 'support',
+  EVENT : 'event',
+  WORK : 'work',
+  LOGIN : 'login',
+  SIGNUP : 'signup',
+  MYPAGE : 'mypage',
+}

@@ -1,18 +1,25 @@
 import RootLayout from "../layout/rootLayout";
-import Home from "../pages/home/ui/Home.jsx";
-import { pagePath } from "./pagePath.js";
+import {pagePath} from "./pagePath.js";
+import { Login, Signup, MyPage } from "../pages";
 
-const routes = [
+const routes =  [
   {
-    path: "/",
+    path: '/',
     element: <RootLayout />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-    ],
+    children: [{
+      path: pagePath.MYPAGE,
+      element: <MyPage/>
+    }],
   },
-];
+  { 
+    path : pagePath.LOGIN,
+    element : <Login/>,
+  },
+  {
+    path : pagePath.SIGNUP,
+    element : <Signup/>,
+  },
+]
+
 
 export default routes;
