@@ -20,6 +20,9 @@ const string = {
   ask: "문의하기",
 
   copyRight: "@ 2025 Everguide. All rights reserved.",
+
+  filter: "필터",
+  area: "분야",
 }
 
 export default string;

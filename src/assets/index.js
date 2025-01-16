@@ -6,6 +6,8 @@ export {default as icFooterLogo} from './icons/ic-footer-logo.svg';
 export {default as icInstagram} from './icons/ic-instagram.svg';
 export {default as icKakao} from './icons/ic-kakao.svg';
 export {default as icNaver} from './icons/ic-naver.svg';
+export {default as icEyes} from './icons/ic-eyes.svg';
+
 // images
 
 // fonts
