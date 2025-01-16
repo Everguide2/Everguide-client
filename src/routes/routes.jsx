@@ -1,4 +1,4 @@
-import RootLayout from "../layout/rootLayout";
+import RootLayout from "../layout/RootLayout.jsx";
 import {Home, Policy, Event, Job} from "../pages";
 import {pagePath} from "./pagePath.js";
 
