@@ -1,6 +1,6 @@
 import { styled } from "styled-components"
-import { icFooterLogo, icInstagram, icKakao, icNaver } from "../assets";
-import { string } from "../constants";
+import { icFooterLogo, icInstagram, icKakao, icNaver } from "../../assets/index.js";
+import { string } from "../../constants/index.js";
 
 const Footer = () => {
   return (
