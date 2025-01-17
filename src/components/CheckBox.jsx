@@ -26,7 +26,9 @@ const Input = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.gray[600]};
   accent-color: ${({ theme }) => theme.colors.gray[600]};
   box-sizing: border-box;
-  
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.gray[200]};
+  }
   &:checked{
     background-repeat: no-repeat;
     background-position: center center;
