@@ -7,6 +7,10 @@ export {default as icInstagram} from './icons/ic-instagram.svg';
 export {default as icKakao} from './icons/ic-kakao.svg';
 export {default as icNaver} from './icons/ic-naver.svg';
 export {default as icEyes} from './icons/ic-eyes.svg';
+export {default as icDown} from './icons/ic-down.svg';
+export {default as icDropDownDown} from './icons/ic-dropdown-down.svg';
+export {default as icTabCard} from './icons/ic-tab-card.svg';
+export {default as icTabList} from './icons/ic-tab-list.svg';
 
 // images
 
