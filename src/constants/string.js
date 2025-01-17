@@ -23,6 +23,8 @@ const string = {
 
   filter: "필터",
   area: "분야",
+
+  manual: "Everguide 사용법",
 }
 
 export default string;

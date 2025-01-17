@@ -30,4 +30,5 @@ export default TabMenu;
 
 const Container = styled.div`
   display: flex;
+  gap: 16px;
 `
