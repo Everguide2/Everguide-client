@@ -53,8 +53,9 @@ export default DropDown;
 const Container = styled.div`
   display: inline-block;
   color: ${({theme}) => theme.colors.gray[800]};
-
-  ${({theme}) => theme.fonts.caption2}
+  ${({theme}) => theme.fonts.caption2};
+  position: relative;
+  
   button {
     width: 154px;
     height: 40px;
@@ -85,6 +86,8 @@ const Container = styled.div`
     background-color: ${({theme}) => theme.colors.white};
     border-radius: 12px;
     box-shadow: 0 8px 14px rgba(0, 0, 0, 0.16);
+    position: absolute;
+    top: 40px;
 
     li {
       box-sizing: border-box;
