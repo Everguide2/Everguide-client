@@ -88,6 +88,7 @@ const Container = styled.div`
     box-shadow: 0 8px 14px rgba(0, 0, 0, 0.16);
     position: absolute;
     top: 40px;
+    z-index: 999;
 
     li {
       box-sizing: border-box;
