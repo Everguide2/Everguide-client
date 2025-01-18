@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 
+export const BoxContainer = styled.div`
+  background-color: ${({ theme }) => theme.colors.realWhite};
+  border-radius: 42px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width : 907px;
+  height : 873px;
+  margin: 0 auto;
+`;
+
 
 export const Container = styled.div`
   text-align: center;
