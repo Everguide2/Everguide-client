@@ -7,7 +7,7 @@ export {default as icInstagram} from './icons/ic-instagram.svg';
 export {default as icKakao} from './icons/ic-kakao.svg';
 export {default as icNaver} from './icons/ic-naver.svg';
 // images
-
+export {default as imgDangguMag} from './images/img-dangguMag.svg';
 // fonts
 export {default as NanumGothicRegular } from './fonts/NanumGothic-Regular.ttf';
 export {default as NanumGothicBold } from './fonts/NanumGothic-Bold.ttf';
