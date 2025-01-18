@@ -12,6 +12,7 @@ export {default as icDown} from './icons/ic-down.svg';
 export {default as icDropDownDown} from './icons/ic-dropdown-down.svg';
 export {default as icTabCard} from './icons/ic-tab-card.svg';
 export {default as icTabList} from './icons/ic-tab-list.svg';
+export {default as icBookmark} from './icons/ic-bookmark.svg';
 
 // images
 
