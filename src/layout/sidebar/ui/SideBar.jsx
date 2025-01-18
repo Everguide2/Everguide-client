@@ -2,20 +2,19 @@ import {icEyes} from "../../../assets";
 import {string} from "../../../constants";
 import * as S from "./style.js"
 import {FilterTitle, FilterSection, EverguideManual} from "../components";
-import {sidebarData} from "../feature/sideBarData.js";
+import {sidebarData} from "../feature/sidebarData.js";
 
 const SideBar = () => {
   return (
-      <>
-        <S.Container>
+      <S.Container>
+        <S.FilterContainer>
           <FilterTitle icon={icEyes} title={string.filter}/>
           {sidebarData.map((section) => (
               <FilterSection key={section.title} subtitle={section.title} items={section.items}/>
           ))}
-
-        </S.Container>
+        </S.FilterContainer>
         <EverguideManual/>
-      </>
+      </S.Container>
   );
 };
 

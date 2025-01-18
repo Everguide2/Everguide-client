@@ -2,6 +2,10 @@ import {styled} from "styled-components";
 
 export const Container = styled.aside`
   width: 268px;
+`;
+
+export const FilterContainer = styled.aside`
+  width: 100%;
   border-radius: 20px;
   box-sizing: border-box;
   padding: 22px;
