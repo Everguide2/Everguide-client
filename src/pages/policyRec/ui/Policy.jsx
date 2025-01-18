@@ -1,7 +1,7 @@
 const Policy = () => {
   return (
       <div>
-        
+        policyRec
       </div>
   );
 };
