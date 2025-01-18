@@ -25,6 +25,9 @@ const string = {
   area: "분야",
 
   manual: "Everguide 사용법",
+  lastDay: "D-Day",
+  dTitle: "D-",
+  end: "마감",
 }
 
 export default string;
