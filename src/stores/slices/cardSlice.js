@@ -2,8 +2,8 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = [];
 
-export const eventSlice = createSlice({
-  name: 'event',
+export const cardSlice = createSlice({
+  name: 'card',
   initialState,
   reducers: {
     add : (state, action) => {
@@ -25,5 +25,5 @@ export const eventSlice = createSlice({
   }
 });
 
-export const {add} = eventSlice.actions;
-export default eventSlice.reducer;
+export const {add} = cardSlice.actions;
+export default cardSlice.reducer;
