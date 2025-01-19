@@ -1,6 +1,6 @@
 import {styled} from "styled-components";
-import {TabButton} from "../../../components";
-import {icTabList, icTabCard} from "../../../assets";
+import {TabButton} from "@components/index.js";
+import {icTabList, icTabCard} from "@assets/index.js";
 
 // eslint-disable-next-line react/prop-types
 const TabMenu = ({activeTab, onClickTab}) => {

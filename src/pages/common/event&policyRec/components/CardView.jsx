@@ -1,13 +1,15 @@
 import {styled} from "styled-components";
-import Card from "./Card/Card.jsx";
+import Card from "@pages/common/event&policyRec/components/Card/Card.jsx";
 import {useSelector} from "react-redux";
+import {useState} from "react";
 
 const CardView = () => {
-  const event = useSelector(state => state.event);
-  console.log(event);
+  const card = useSelector(state => state.card);
+  const [isLogin, setIsLogin] = useState(false);
+
   return (
       <CardContainer>
-        {event.map((item) => (
+        {card.map((item) => (
             <Card
                 key={item.id}
                 title={item.title}
@@ -17,8 +19,9 @@ const CardView = () => {
                 assign={item.assign}
                 bookmark={item.bookMark}
                 dDay={item.dDay}
+                isLogin={isLogin}
             />
-        ))};
+        ))}
       </CardContainer>
   );
 };
@@ -30,4 +33,5 @@ const CardContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   row-gap: 40px;
   column-gap: 20px;
+  margin-bottom: 11px;
 `

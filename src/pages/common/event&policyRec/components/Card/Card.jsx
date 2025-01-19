@@ -1,10 +1,10 @@
 import {styled} from "styled-components";
-import BookMark from "./BookMark";
-import LastDay from "./LastDay";
-import {string} from "../../../../constants";
+import BookMark from "./BookMark.jsx";
+import LastDay from "./LastDay.jsx";
+import {string} from "@constants/index.js";
 
 // eslint-disable-next-line react/prop-types
-const Card = ({title,subTitle,category,bookmark,assign,dDay,img}) => {
+const Card = ({title,subTitle,category,bookmark,assign,dDay,isLogin,img}) => {
 
   return (
       <Container rest={dDay}>
@@ -13,7 +13,7 @@ const Card = ({title,subTitle,category,bookmark,assign,dDay,img}) => {
           <Title img={''}>{title}</Title>
           <SubTitle>{subTitle}</SubTitle>
           <Category>{category}</Category>
-          <BookMark isBookmarked={bookmark} />
+          {isLogin && <BookMark isBookmarked={bookmark}/>}
         </Top>
         <Bottom img={img}>
           {img && <Title img={img}>{title}</Title>}

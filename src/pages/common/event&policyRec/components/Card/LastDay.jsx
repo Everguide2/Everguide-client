@@ -1,5 +1,5 @@
 import {styled} from "styled-components";
-import {string} from "../../../../constants/index.js";
+import {string} from "@constants/index.js";
 
 const LastDay = () => {
   return (
