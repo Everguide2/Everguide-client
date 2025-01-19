@@ -1,5 +1,5 @@
 import {styled} from "styled-components";
-import {icDropDownDown} from "../assets";
+import {icDropDownDown} from "@assets/index.js";
 import {useState, useEffect, useRef} from "react";
 
 // eslint-disable-next-line react/prop-types
