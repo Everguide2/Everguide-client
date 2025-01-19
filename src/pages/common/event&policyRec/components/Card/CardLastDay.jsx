@@ -1,7 +1,7 @@
 import {styled} from "styled-components";
 import {string} from "@constants/index.js";
 
-const LastDay = () => {
+const CardLastDay = () => {
   return (
       <Container>
         <p>{string.lastDay}</p>
@@ -9,7 +9,7 @@ const LastDay = () => {
   );
 };
 
-export default LastDay;
+export default CardLastDay;
 
 const Container = styled.div`
   position: absolute;

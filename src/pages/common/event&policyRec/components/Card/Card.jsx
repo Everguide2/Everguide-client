@@ -1,6 +1,6 @@
 import {styled} from "styled-components";
-import BookMark from "./BookMark.jsx";
-import LastDay from "./LastDay.jsx";
+import CardBookMark from "./CardBookMark.jsx";
+import CardLastDay from "./CardLastDay.jsx";
 import {string} from "@constants/index.js";
 
 // eslint-disable-next-line react/prop-types
@@ -13,13 +13,13 @@ const Card = ({title,subTitle,category,bookmark,assign,dDay,isLogin,img}) => {
           <Title img={''}>{title}</Title>
           <SubTitle>{subTitle}</SubTitle>
           <Category>{category}</Category>
-          {isLogin && <BookMark isBookmarked={bookmark}/>}
+          {isLogin && <CardBookMark isBookmarked={bookmark}/>}
         </Top>
         <Bottom img={img}>
           {img && <Title img={img}>{title}</Title>}
           <Assign>{assign}</Assign>
           <Dday rest={dDay}>{dDay === 0 ? string.end : string.dTitle + dDay}</Dday>
-          {dDay === 1 && <LastDay/>}
+          {dDay === 1 && <CardLastDay/>}
         </Bottom>
       </Container>
   );

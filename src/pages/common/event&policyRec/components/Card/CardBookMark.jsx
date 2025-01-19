@@ -3,7 +3,7 @@ import {ReactSVG} from "react-svg";
 import {icBookmark} from "@assets/index.js";
 
 // eslint-disable-next-line react/prop-types
-const BookMark = ({isBookmarked}) => {
+const CardBookMark = ({isBookmarked}) => {
   return (
       <Container>
         <ReactSVG
@@ -20,7 +20,7 @@ const BookMark = ({isBookmarked}) => {
   );
 };
 
-export default BookMark;
+export default CardBookMark;
 
 const Container = styled.div`
   position: absolute;
