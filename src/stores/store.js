@@ -1,7 +1,8 @@
 import {configureStore} from "@reduxjs/toolkit";
-import {eventSlice} from "./slices"
+import {cardSlice, pagingSlice} from "./slices"
 export default configureStore({
   reducer:{
-    event : eventSlice,
+    card : cardSlice,
+    paging: pagingSlice,
   }
 });
