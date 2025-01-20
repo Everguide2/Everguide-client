@@ -10,6 +10,8 @@ export const dummyData = [
     image: imgTest,
     dDay: 9,
     category: "복지",
+    duration: "01.01 ~ 01.15",
+    city: "서울특별시",
   },
   {
     id: 2,
@@ -20,6 +22,8 @@ export const dummyData = [
     image: imgTest,
     dDay: 5,
     category: "보건",
+    duration: "01.05 ~ 01.20",
+    city: "부산광역시",
   },
   {
     id: 3,
@@ -30,6 +34,8 @@ export const dummyData = [
     image: imgTest,
     dDay: 12,
     category: "의료",
+    duration: "01.10 ~ 01.25",
+    city: "대구광역시",
   },
   {
     id: 4,
@@ -40,6 +46,8 @@ export const dummyData = [
     image: imgTest,
     dDay: 7,
     category: "복지",
+    duration: "01.08 ~ 01.22",
+    city: "인천광역시",
   },
   {
     id: 5,
@@ -50,6 +58,8 @@ export const dummyData = [
     image: imgTest,
     dDay: 3,
     category: "근로",
+    duration: "01.03 ~ 01.17",
+    city: "광주광역시",
   },
   {
     id: 6,
@@ -60,6 +70,8 @@ export const dummyData = [
     image: imgTest,
     dDay: 1,
     category: "복지",
+    duration: "01.02 ~ 01.16",
+    city: "대전광역시",
   },
   {
     id: 7,
@@ -70,6 +82,8 @@ export const dummyData = [
     image: imgTest,
     dDay: 0,
     category: "근로",
+    duration: "01.07 ~ 01.21",
+    city: "울산광역시",
   },
   {
     id: 8,
@@ -80,6 +94,8 @@ export const dummyData = [
     image: imgTest,
     dDay: 2,
     category: "보건",
+    duration: "01.04 ~ 01.18",
+    city: "세종특별자치시",
   },
   {
     id: 9,
@@ -90,6 +106,8 @@ export const dummyData = [
     image: imgTest,
     dDay: 1,
     category: "의료",
+    duration: "01.06 ~ 01.20",
+    city: "경기도",
   },
   {
     id: 10,
@@ -100,6 +118,8 @@ export const dummyData = [
     image: imgTest,
     dDay: 1,
     category: "보건",
+    duration: "01.09 ~ 01.23",
+    city: "강원도",
   },
   {
     id: 11,
@@ -110,6 +130,8 @@ export const dummyData = [
     image: imgTest,
     dDay: 6,
     category: "복지",
+    duration: "01.11 ~ 01.25",
+    city: "충청북도",
   },
   {
     id: 12,
@@ -120,6 +142,8 @@ export const dummyData = [
     image: imgTest,
     dDay: 8,
     category: "근로",
+    duration: "01.12 ~ 01.26",
+    city: "충청남도",
   },
   {
     id: 13,
@@ -130,6 +154,8 @@ export const dummyData = [
     image: imgTest,
     dDay: 10,
     category: "근로",
+    duration: "01.14 ~ 01.28",
+    city: "전라북도",
   },
   {
     id: 14,
@@ -140,6 +166,8 @@ export const dummyData = [
     image: imgTest,
     dDay: 3,
     category: "복지",
+    duration: "01.15 ~ 01.29",
+    city: "전라남도",
   },
   {
     id: 15,
@@ -150,6 +178,8 @@ export const dummyData = [
     image: imgTest,
     dDay: 4,
     category: "의료",
+    duration: "01.13 ~ 01.27",
+    city: "경상북도",
   },
   {
     id: 16,
@@ -160,6 +190,8 @@ export const dummyData = [
     image: imgTest,
     dDay: 2,
     category: "근로",
+    duration: "01.08 ~ 01.22",
+    city: "경상남도",
   },
   {
     id: 17,
@@ -170,6 +202,8 @@ export const dummyData = [
     image: imgTest,
     dDay: 11,
     category: "보건",
+    duration: "01.16 ~ 01.30",
+    city: "제주특별자치도",
   },
   {
     id: 18,
@@ -179,7 +213,9 @@ export const dummyData = [
     bookMark: false,
     image: imgTest,
     dDay: 5,
-    category: "복지",
+    category: "교육문화",
+    duration: "01.18 ~ 02.01",
+    city: "서울특별시",
   },
   {
     id: 19,
@@ -190,25 +226,7 @@ export const dummyData = [
     image: imgTest,
     dDay: 0,
     category: "의료",
-  },
-  {
-    id: 20,
-    title: "어르신 건강보험 혜택",
-    subTitle: "노인 의료비 지원 정책",
-    assign: "국민건강보험공단",
-    bookMark: true,
-    image: imgTest,
-    dDay: 9,
-    category: "의료",
-  },
-  {
-    id: 21,
-    title: "어르신 건강보험 혜택",
-    subTitle: "노인 의료비 지원 정책",
-    assign: "국민건강보험공단",
-    bookMark: true,
-    image: imgTest,
-    dDay: 9,
-    category: "의료",
+    duration: "01.20 ~ 02.03",
+    city: "부산광역시",
   },
 ]
