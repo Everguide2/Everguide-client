@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import * as S from "./style";
 import SideBar from "@layout/sidebar/ui/SideBar.jsx";
 import {DropDown, Paginations} from "@components/";
-import {TabMenu, CardView} from "@pages/common/event&policyRec/components";
+import {TabMenu, CardView, ListView} from "@pages/common/event&policyRec/components";
 import {useSelector} from "react-redux";
 
 const Common = () => {
@@ -34,7 +34,7 @@ const Common = () => {
                 <TabMenu activeTab={activeTab} onClickTab={onClickTab}/>
               </S.Setting>
             </S.Header>
-            {activeTab === "left" ? <CardView/> : null}
+            {activeTab === "left" ? <CardView /> : <ListView />}
             <Paginations />
           </S.RightContent>
         </S.Container>

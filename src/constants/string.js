@@ -28,6 +28,7 @@ const string = {
   lastDay: "D-Day",
   dTitle: "D-",
   end: "마감",
+  dDay: "D-day",
 }
 
 export default string;
