@@ -16,6 +16,8 @@ export {default as icBookmark} from '@assets/icons/ic-bookmark.svg';
 export {default as icRight} from "@assets/icons/ic-right.svg";
 export {default as icLeft} from "@assets/icons/ic-left.svg";
 export {default as icStar} from "@assets/icons/ic-star.svg";
+export {default as icShare} from "@assets/icons/ic-share.svg";
+export {default as icPrint} from "@assets/icons/ic-print.svg";
 
 // images
 
