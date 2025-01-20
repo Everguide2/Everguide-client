@@ -2,6 +2,7 @@ import {styled} from "styled-components";
 import CardBookMark from "./CardBookMark.jsx";
 import CardLastDay from "./CardLastDay.jsx";
 import {string} from "@constants/index.js";
+import Category from "@pages/common/event&policyRec/components/Category.jsx";
 
 // eslint-disable-next-line react/prop-types
 const Card = ({title,subTitle,category,bookmark,assign,dDay,isLogin,img}) => {
@@ -12,7 +13,7 @@ const Card = ({title,subTitle,category,bookmark,assign,dDay,isLogin,img}) => {
           {img && <Image src={img}/>}
           <Title img={''}>{title}</Title>
           <SubTitle>{subTitle}</SubTitle>
-          <Category>{category}</Category>
+          <Category text={category} type={"card"} />
           {isLogin && <CardBookMark isBookmarked={bookmark}/>}
         </Top>
         <Bottom img={img}>
@@ -44,17 +45,6 @@ const Top = styled.div`
 const Image = styled.img`
   width: 100%;
   height: 100%;
-`
-
-const Category = styled.p`
-  ${({theme}) => theme.fonts.caption4};
-  box-sizing: border-box;
-  padding: 1px 12px;
-  border-radius: 33px;
-  background-color: ${({theme}) => theme.colors.gray[100]};
-  position: absolute;
-  top: 13px;
-  left: 17px;
 `
 
 const SubTitle= styled.p`
