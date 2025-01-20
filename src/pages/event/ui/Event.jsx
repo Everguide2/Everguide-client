@@ -9,7 +9,6 @@ import {setPage} from "@stores/slices/pagingSlice.js";
 
 const Event = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     dummyData.forEach((item) => {
@@ -18,13 +17,8 @@ const Event = () => {
 
     dispatch(setPage({itemsCount: 22, totalItems: 160, pageRange:5}))
   }, []);
-
-  const onClick= (id) => {
-
-  }
-
   return (
-      <Common onClick={onClick}/>
+      <Common />
   );
 };
 

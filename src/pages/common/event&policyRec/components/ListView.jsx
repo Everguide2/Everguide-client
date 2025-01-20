@@ -1,18 +1,27 @@
+import {useState} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
 import {styled} from "styled-components";
+import {pagePath} from "@/routes/pagePath.js";
 import ListHeader from "@pages/common/event&policyRec/components/List/ListHeader.jsx";
 import List from "@pages/common/event&policyRec/components/List/List.jsx";
-import {useSelector} from "react-redux";
-import {useState} from "react";
+
 
 const ListView = () => {
-  const datas = useSelector(state => state.card);
+  const navigate = useNavigate();
+  const listData = useSelector(state => state.information);
   const [isLogin, setIsLogin] = useState(false);
+
+  const onClickList = (id) => {
+    navigate(`/${pagePath.EVENT}/${id}`);
+  }
 
   return (
       <Container>
         <ListHeader isLogin={isLogin}/>
-        {datas.map((data) => (
+        {listData.map((data) => (
             <List
+                onClick={() => onClickList(data.id)}
                 key={data.id}
                 city={data.city}
                 category={data.category}
