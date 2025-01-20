@@ -17,6 +17,8 @@ export const cardSlice = createSlice({
           bookMark: action.payload.bookMark,
           category: action.payload.category,
           image: action.payload.image,
+          duration: action.payload.duration,
+          city: action.payload.city,
           dDay: action.payload.dDay,
         });
       }
