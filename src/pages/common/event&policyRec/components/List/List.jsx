@@ -4,9 +4,9 @@ import Category from "@pages/common/event&policyRec/components/Category.jsx";
 import {string} from "@constants/index.js";
 
 // eslint-disable-next-line react/prop-types
-const List = ({city, category, title, assign, duration, dDay, bookmark, isLogin}) => {
+const List = ({city, category, title, assign, duration, dDay, bookmark, isLogin, onClick}) => {
   return (
-      <Container>
+      <Container onClick={onClick}>
         <tr>
           <td><Category text={category}/></td>
           <td>{city}</td>
