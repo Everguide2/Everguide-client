@@ -18,8 +18,14 @@ export {default as icLeft} from "@assets/icons/ic-left.svg";
 export {default as icStar} from "@assets/icons/ic-star.svg";
 export {default as icShare} from "@assets/icons/ic-share.svg";
 export {default as icPrint} from "@assets/icons/ic-print.svg";
+export {default as icLoginKakao} from '@assets/icons/ic-login-kakao.svg';
+export {default as icLoginNaver} from '@assets/icons/ic-login-naver.svg';
+export {default as icLoginLogo} from '@assets/icons/ic-login-logo.svg';
+export {default as icSignupCalendar} from '@assets/icons/ic-signup-calendar.svg';
+export {default as icLoginEmail} from '@assets/icons/ic-login-email.svg';
 
 // images
+export {default as imgDangguMag} from '@assets/images/img-dangguMag.svg';
 
 // fonts
 export {default as NanumGothicRegular } from '@assets/fonts/NanumGothic-Regular.ttf';

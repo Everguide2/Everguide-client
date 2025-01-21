@@ -1,5 +1,5 @@
 import RootLayout from "../layout/RootLayout.jsx";
-import {Home, Policy, Event, EventDetail, Job} from "../pages";
+import {Home, Policy, Event, EventDetail, Job, Login, Signup, MyPage, FindEmail, FindPassword} from "../pages";
 import {pagePath} from "./pagePath.js";
 
 const routes = [
@@ -29,6 +29,23 @@ const routes = [
       },
     ],
   },
+  { 
+    path : pagePath.LOGIN,
+    element : <Login/>,
+  },
+  {
+    path : pagePath.SIGNUP,
+    element : <Signup/>,
+  },
+  {
+    path : pagePath.FINDEMAIL,
+    element : <FindEmail/>,
+  },
+  {
+    path : pagePath.FINDPASSWORD,
+    element : <FindPassword/>,
+  }
 ];
 
 export default routes;
+
