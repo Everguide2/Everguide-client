@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import theme from "../../../theme/theme";
-import EventImg from "../../../assets/images/eventImage.png";
+import theme from "../../../../theme/theme";
+import EventImg from "../../../../assets/images/eventImage.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
