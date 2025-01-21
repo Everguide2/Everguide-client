@@ -4,6 +4,7 @@ import {useDispatch} from "react-redux";
 import CommonDetail from "@pages/common/event&policyRecDetail/ui/CommonDetail.jsx";
 import {addArticle} from "@stores/slices/detailSlice.js";
 import {dummyData} from "@test/eventDetailDummy.js";
+import ScrollToTop from "@/utils/scrollToTop.js";
 
 const EventDetail = () => {
   const ids = useParams().eventId;
@@ -13,10 +14,13 @@ const EventDetail = () => {
 
   useEffect(() => {
     dispatch(addArticle({...article}));
-  },[])
+  }, [])
 
   return (
-      <CommonDetail />
+      <>
+        <ScrollToTop/>
+        <CommonDetail/>
+      </>
   );
 };
 
