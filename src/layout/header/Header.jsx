@@ -1,9 +1,9 @@
 import { styled } from 'styled-components';
-import { string } from '../constants';
+import { string } from '../../constants/index.js';
 import { useState } from "react";
-import { icMainLogo, icNotify } from "../assets";
-import { Button, SearchBar } from "../components";
-import {pagePath} from '../routes/pagePath.js';
+import { icMainLogo, icNotify } from "../../assets/index.js";
+import { Button, SearchBar } from "../../components/index.js";
+import {pagePath} from '../../routes/pagePath.js';
 import {useNavigate} from "react-router-dom";
 
 const Header = () => {

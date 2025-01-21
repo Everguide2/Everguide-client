@@ -20,7 +20,7 @@ const string = {
   ask: "문의하기",
 
   copyRight: "@ 2025 Everguide. All rights reserved.",
-
+  
   login: {
     title: "로그인",
     description: "계정에 로그인하고 나에게 딱맞는 복지혜택과 정책을 챙겨가요",
@@ -102,8 +102,19 @@ const string = {
         ]
       },
     ]
-  }
+  },
 
+  filter: "필터",
+  area: "분야",
+
+  manual: "Everguide 사용법",
+  lastDay: "D-Day",
+  dTitle: "D-",
+  end: "마감",
+  dDay: "D-day",
+
+  toListBtn: "목록으로",
+  checkArticleBtn: "공고확인",
 }
 
 export default string;

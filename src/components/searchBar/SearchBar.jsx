@@ -1,5 +1,5 @@
 import {styled} from "styled-components";
-import {icSearch} from "../assets";
+import {icSearch} from "@assets/index.js";
 
 // eslint-disable-next-line react/prop-types
 const SearchBar = ({placeHolder, onClick}) => {

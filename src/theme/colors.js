@@ -43,5 +43,6 @@ export const colors = {
   },
   realWhite: '#FFFFFF',
   white: '#FDFDFD',
+  realBlack: '#000000',
   black: '#111010',
 }
