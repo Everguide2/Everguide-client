@@ -1,6 +1,6 @@
 import Pagination from "react-js-pagination";
 import {styled} from "styled-components";
-import PagingButton from "@components/button/PagingButton.jsx";
+import PagingButton from "@components/Button/PagingButton.jsx";
 import {useSelector, useDispatch} from "react-redux";
 import {setPage} from "@stores/paging/pagingSlice.js";
 

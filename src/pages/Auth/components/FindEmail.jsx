@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import InputField from "../../../components/InputField";
+import InputField from "@components/InputField/InputField.jsx";
 import Button from "../ui/Button";
-import Ad from "../../../components/Ad";
+import Ad from "@components/Ad/Ad.jsx";
 import Logo from "../ui/Logo";
 import Links from "../ui/Links";
 import Message from "../ui/Message";

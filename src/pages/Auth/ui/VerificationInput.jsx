@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import InputField from "../../../components/InputField";
+import InputField from "@components/InputField/InputField.jsx";
 import Button from "../ui/Button";
 import Message from "../ui/Message";
 

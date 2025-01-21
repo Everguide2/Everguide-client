@@ -31,7 +31,7 @@ const Header = () => {
                     <Profile></Profile>
                   </>
               :
-                <Button text={string.LoginRegister} onClick={() => handleMenuClick()} />
+                <Button text={string.LoginRegister} onClick={() => handleMenuClick(pagePath.LOGIN)} />
               }
             </LoginCheck>
           </div>
