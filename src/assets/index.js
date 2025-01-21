@@ -6,6 +6,11 @@ export {default as icFooterLogo} from './icons/ic-footer-logo.svg';
 export {default as icInstagram} from './icons/ic-instagram.svg';
 export {default as icKakao} from './icons/ic-kakao.svg';
 export {default as icNaver} from './icons/ic-naver.svg';
+export {default as icLoginKakao} from './icons/ic-login-kakao.svg';
+export {default as icLoginNaver} from './icons/ic-login-naver.svg';
+export {default as icLoginLogo} from './icons/ic-login-logo.svg';
+export {default as icSignupCalendar} from './icons/ic-signup-calendar.svg';
+export {default as icLoginEmail} from './icons/ic-login-email.svg';
 // images
 
 // fonts
