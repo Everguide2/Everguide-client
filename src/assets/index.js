@@ -11,8 +11,9 @@ export {default as icLoginNaver} from './icons/ic-login-naver.svg';
 export {default as icLoginLogo} from './icons/ic-login-logo.svg';
 export {default as icSignupCalendar} from './icons/ic-signup-calendar.svg';
 export {default as icLoginEmail} from './icons/ic-login-email.svg';
-// images
 
+// images
+export {default as imgDangguMag} from './images/img-dangguMag.svg';
 // fonts
 export {default as NanumGothicRegular } from './fonts/NanumGothic-Regular.ttf';
 export {default as NanumGothicBold } from './fonts/NanumGothic-Bold.ttf';

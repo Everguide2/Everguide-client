@@ -1,17 +1,29 @@
-import RootLayout from "../layout/rootLayout";
+import RootLayout from "../layout/RootLayout.jsx";
+import {Home, Policy, Event, Job, Login, Signup, MyPage, FindEmail, FindPassword} from "../pages";
 import {pagePath} from "./pagePath.js";
-import { Login, Signup, MyPage } from "../pages";
-import FindEmail from "../pages/Auth/components/FindEmail.jsx";
-import FindPassword from "../pages/Auth/components/FindPassword.jsx";
 
-const routes =  [
+const routes = [
   {
-    path: '/',
-    element: <RootLayout />,
-    children: [{
-      path: pagePath.MYPAGE,
-      element: <MyPage/>
-    }],
+    path: "/",
+    element: <RootLayout/>,
+    children: [
+      {
+        index: true,
+        element: <Home/>
+      },
+      {
+        path: pagePath.POLICY,
+        element: <Policy/>
+      },
+      {
+        path: pagePath.EVENT,
+        element: <Event/>
+      },
+      {
+        path: pagePath.JOB,
+        element: <Job/>
+      },
+    ],
   },
   { 
     path : pagePath.LOGIN,
@@ -29,7 +41,6 @@ const routes =  [
     path : pagePath.FINDPASSWORD,
     element : <FindPassword/>,
   }
-]
-
+];
 
 export default routes;

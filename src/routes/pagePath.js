@@ -1,11 +1,13 @@
 export const pagePath = {
-  FIND : 'find',
-  SUPPORT : 'support',
+  HOME: "home",
+  POLICY : 'policy',
   EVENT : 'event',
-  WORK : 'work',
+  JOB: 'job',
+  SUPPORT : 'support',
   LOGIN : 'login',
   SIGNUP : 'signup',
   MYPAGE : 'mypage',
   FINDEMAIL : 'find-email',
   FINDPASSWORD : 'find-password',
 }
+

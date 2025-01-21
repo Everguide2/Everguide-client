@@ -4,13 +4,17 @@ import { useState } from "react";
 import { icMainLogo, icNotify } from "../assets";
 import { Button, SearchBar } from "../components";
 import {pagePath} from '../routes/pagePath.js';
+import {useNavigate} from "react-router-dom";
 
 const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [active, setActive] = useState("");
 
+  const navigate = useNavigate();
+
   const handleMenuClick = (menu) => {
     setActive(menu);
+    navigate(menu);
   }
 
   return (
@@ -18,7 +22,7 @@ const Header = () => {
       <MainHeader>
         <HeaderContainer>
           <div>
-            <MainLogo src={icMainLogo} onClick={() => handleMenuClick()} />
+            <MainLogo src={icMainLogo} onClick={() => handleMenuClick('/')} />
             <SearchBar placeHolder={string.searchBarPlaceHolder}/>
             <LoginCheck>
               {isLogin ?
@@ -37,10 +41,10 @@ const Header = () => {
       <SubHeader>
         <HeaderContainer>
           <ul>
-            <MenuItem active={active === pagePath.FIND} onClick={() => {handleMenuClick(pagePath.FIND)}}><p>{string.findPolicy}</p></MenuItem>
+            <MenuItem active={active === pagePath.POLICY} onClick={() => {handleMenuClick(pagePath.POLICY)}}><p>{string.findPolicy}</p></MenuItem>
             <MenuItem active={active === pagePath.SUPPORT} onClick={() => {handleMenuClick(pagePath.SUPPORT)}}><p>{string.supportPolicy}</p></MenuItem>
             <MenuItem active={active === pagePath.EVENT} onClick={() => {handleMenuClick(pagePath.EVENT)}}><p>{string.eventEducation}</p></MenuItem>
-            <MenuItem active={active === pagePath.WORK} onClick={() => {handleMenuClick(pagePath.WORK)}}><p>{string.workInformation}</p></MenuItem>
+            <MenuItem active={active === pagePath.JOB} onClick={() => {handleMenuClick(pagePath.JOB)}}><p>{string.workInformation}</p></MenuItem>
           </ul>
         </HeaderContainer>
       </SubHeader>
