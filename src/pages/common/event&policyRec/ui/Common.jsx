@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as S from "./style";
 import SideBar from "@layout/sidebar/ui/SideBar.jsx";
 import {DropDown, Paginations} from "@components/";
@@ -10,16 +10,8 @@ const Common = () => {
   const [activeTab, setActiveTab] = useState("left");
   const total = useSelector(state => state.paging.totalItems);
 
-  useEffect(() => {
-    const savedTabs = sessionStorage.getItem("activeTab");
-    if(savedTabs){
-      setActiveTab(savedTabs);
-    }
-  }, []);
-
   const onClickTab = (tab) => {
     setActiveTab(tab);
-    sessionStorage.setItem("activeTab", tab);
   }
 
   return (

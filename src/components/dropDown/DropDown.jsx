@@ -13,15 +13,9 @@ const DropDown = ({initial, items}) => {
     const selectedValue = e.target.getAttribute("value");
     setIsOpen(false);
     setCurrentValue(selectedValue);
-    sessionStorage.setItem("dropdownValue",selectedValue);
   }
 
   useEffect(() => {
-    const savedValue = sessionStorage.getItem("dropdownValue");
-    if(savedValue) {
-      setCurrentValue(savedValue);
-    }
-
     const handleClickOutside = (event) => {
       if(selectRef.current && !selectRef.current.contains(event.target)) {
         setIsOpen(false);
