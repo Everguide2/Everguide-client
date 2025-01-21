@@ -3,11 +3,11 @@ import styled from "styled-components";
 import "./style.js";
 import theme from "../../../theme/theme.js";
 import DummyData from "../../../test/dummy.js";
-import PoliciesThisWeek from "../components/PoliciesThisWeek.jsx";
-import NewPolicies from "../components/NewPolicies.jsx";
-import Advertising from "../components/Advertising.jsx";
-import ParticipatingEv from "../components/ParticipatingEv.jsx";
-import WeeklyJobInfo from "../components/WeeklyJobInfo.jsx";
+import PoliciesThisWeek from "../components/block1/PoliciesThisWeek.jsx";
+import NewPolicies from "../components/block2/NewPolicies.jsx";
+import Advertising from "../components/block3/Advertising.jsx";
+import ParticipatingEv from "../components/block4/ParticipatingEv.jsx";
+import WeeklyJobInfo from "../components/block5/WeeklyJobInfo.jsx";
 const Home = () => {
   const [dummy, setDummy] = useState(DummyData);
   return (
