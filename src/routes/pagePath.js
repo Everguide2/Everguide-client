@@ -1,8 +1,8 @@
 export const pagePath = {
   HOME: "home",
-  POLICY : 'policy',
-  EVENT : 'event',
-  JOB: 'job',
-  SUPPORT : 'support',
-}
-
+  POLICY: "policy",
+  EVENT: "event",
+  JOB: "job",
+  SUPPORT: "support",
+  SEARCH: "search",
+};
