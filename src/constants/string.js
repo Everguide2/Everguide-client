@@ -29,6 +29,9 @@ const string = {
   dTitle: "D-",
   end: "마감",
   dDay: "D-day",
+
+  toListBtn: "목록으로",
+  checkArticleBtn: "공고확인",
 }
 
 export default string;

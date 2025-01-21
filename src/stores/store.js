@@ -1,8 +1,9 @@
 import {configureStore} from "@reduxjs/toolkit";
-import {cardSlice, pagingSlice} from "./slices"
+import {informationSlice, pagingSlice, detailSlice} from "./slices"
 export default configureStore({
   reducer:{
-    card : cardSlice,
+    information : informationSlice,
     paging: pagingSlice,
+    detail: detailSlice,
   }
 });

@@ -2,8 +2,8 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = [];
 
-export const cardSlice = createSlice({
-  name: 'card',
+export const informationSlice = createSlice({
+  name: 'information',
   initialState,
   reducers: {
     add : (state, action) => {
@@ -22,10 +22,9 @@ export const cardSlice = createSlice({
           dDay: action.payload.dDay,
         });
       }
-
-    }
+    },
   }
 });
 
-export const {add} = cardSlice.actions;
-export default cardSlice.reducer;
+export const {add} = informationSlice.actions;
+export default informationSlice.reducer;
