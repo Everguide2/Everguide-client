@@ -6,4 +6,6 @@ export const pagePath = {
   LOGIN : 'login',
   SIGNUP : 'signup',
   MYPAGE : 'mypage',
+  FINDEMAIL : 'find-email',
+  FINDPASSWORD : 'find-password',
 }

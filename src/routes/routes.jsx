@@ -1,6 +1,8 @@
 import RootLayout from "../layout/rootLayout";
 import {pagePath} from "./pagePath.js";
 import { Login, Signup, MyPage } from "../pages";
+import FindEmail from "../pages/Auth/components/FindEmail.jsx";
+import FindPassword from "../pages/Auth/components/FindPassword.jsx";
 
 const routes =  [
   {
@@ -19,6 +21,14 @@ const routes =  [
     path : pagePath.SIGNUP,
     element : <Signup/>,
   },
+  {
+    path : pagePath.FINDEMAIL,
+    element : <FindEmail/>,
+  },
+  {
+    path : pagePath.FINDPASSWORD,
+    element : <FindPassword/>,
+  }
 ]
 
 
