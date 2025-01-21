@@ -2,8 +2,8 @@ import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import Common from "@pages/common/event&policyRec/ui/Common.jsx";
 import {dummyData} from "@test/eventDummy.js";
-import {add} from "@stores/slices/informationSlice.js";
-import {setPage} from "@stores/slices/pagingSlice.js";
+import {add} from "@stores/common/informationSlice.js";
+import {setPage} from "@stores/paging/pagingSlice.js";
 
 
 const Event = () => {
