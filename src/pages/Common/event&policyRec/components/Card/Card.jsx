@@ -2,7 +2,7 @@ import {styled} from "styled-components";
 import CardBookMark from "./CardBookMark.jsx";
 import CardLastDay from "./CardLastDay.jsx";
 import {string} from "@constants/index.js";
-import Category from "@pages/common/event&policyRec/components/Category.jsx";
+import Category from "@pages/Common/event&policyRec/components/Category.jsx";
 
 // eslint-disable-next-line react/prop-types
 const Card = ({title,subTitle,category,bookmark,assign,dDay,isLogin,img, onClick}) => {

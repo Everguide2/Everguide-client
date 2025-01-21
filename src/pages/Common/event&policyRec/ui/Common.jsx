@@ -1,8 +1,8 @@
 import { useState } from "react";
 import * as S from "./style";
-import SideBar from "@layout/sidebar/ui/SideBar.jsx";
+import SideBar from "@layout/Sidebar/ui/SideBar.jsx";
 import {DropDown, Paginations} from "@components/";
-import {TabMenu, CardView, ListView} from "@pages/common/event&policyRec/components";
+import {TabMenu, CardView, ListView} from "@pages/Common/event&policyRec/components";
 import {useSelector} from "react-redux";
 
 const Common = () => {

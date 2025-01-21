@@ -2,7 +2,7 @@ import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import * as S from "./style.js";
-import {SmallButton, LargeButton, BookMark} from "@pages/common/event&policyRecDetail/components/";
+import {SmallButton, LargeButton, BookMark} from "@pages/Common/event&policyRecDetail/components/";
 import {icShare, icPrint} from "@assets/";
 import {string} from "@constants/";
 

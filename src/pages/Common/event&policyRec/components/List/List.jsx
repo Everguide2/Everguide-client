@@ -1,6 +1,6 @@
 import {styled} from "styled-components";
-import ListBookMark from "@pages/common/event&policyRec/components/List/ListBookMark.jsx";
-import Category from "@pages/common/event&policyRec/components/Category.jsx";
+import ListBookMark from "@pages/Common/event&policyRec/components/List/ListBookMark.jsx";
+import Category from "@pages/Common/event&policyRec/components/Category.jsx";
 import {string} from "@constants/index.js";
 
 // eslint-disable-next-line react/prop-types

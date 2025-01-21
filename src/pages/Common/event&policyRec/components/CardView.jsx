@@ -1,5 +1,5 @@
 import {styled} from "styled-components";
-import Card from "@pages/common/event&policyRec/components/Card/Card.jsx";
+import Card from "@pages/Common/event&policyRec/components/Card/Card.jsx";
 import {useSelector} from "react-redux";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
