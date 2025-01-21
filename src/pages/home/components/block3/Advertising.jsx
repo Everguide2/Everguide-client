@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import theme from "../../../theme/theme";
-import Ad1 from "../../../assets/images/ad1.png";
+import theme from "../../../../theme/theme";
+import Ad1 from "../../../../assets/images/ad1.png";
 
 // 해당 광고 방식이 슬라이스 방식인지, 슬라이스라면 어떤 식으로 배너가 넘어가야 하는지 회의 때 질문
 
