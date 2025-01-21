@@ -1,6 +1,5 @@
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
-import {useNavigate} from "react-router-dom";
 import Common from "@pages/common/event&policyRec/ui/Common.jsx";
 import {dummyData} from "@test/eventDummy.js";
 import {add} from "@stores/slices/informationSlice.js";
@@ -15,10 +14,10 @@ const Event = () => {
       dispatch(add({...item}));
     });
 
-    dispatch(setPage({itemsCount: 22, totalItems: 160, pageRange:5}))
+    dispatch(setPage({itemsCount: 22, totalItems: 160, pageRange: 5}))
   }, []);
   return (
-      <Common />
+      <Common/>
   );
 };
 
