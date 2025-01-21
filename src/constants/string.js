@@ -20,6 +20,90 @@ const string = {
   ask: "문의하기",
 
   copyRight: "@ 2025 Everguide. All rights reserved.",
+
+  login: {
+    title: "로그인",
+    description: "계정에 로그인하고 나에게 딱맞는 복지혜택과 정책을 챙겨가요",
+    links: [
+      {
+        description: "계정이 기억나지 않으신가요?",
+        items: [
+          { text: "이메일 찾기", href: "/find-email" },
+          { text: "비밀번호 찾기", href: "/find-password" },
+        ],
+      },
+      {
+        description: "아직 계정이 없으신가요?",
+        items: [
+          { text: "회원가입", href: "/signup" },
+        ],
+      },
+    ],
+  },
+
+  signup: {
+    title: "회원가입",
+    description: "새로운 계정을 생성하고 나에게 딱맞는 복지혜택과 정책을 챙겨가요",
+    links: [
+      {
+        description: "이미 계정이 있으신가요?",
+        items: [
+          { text: "로그인", href: "/login" },
+        ],
+      },
+    ],
+  },
+  
+  findEmail: {
+    title: "이메일 찾기",
+    description: "이메일이 기억나지 않으시나요?",
+    links: [
+      {
+        description: "계정이 기억나시나요?",
+        items: [
+          { 
+            text: "로그인",
+            href: "/login",
+          },
+        ],
+      },
+      {
+        description: "아직 계정이 없으신가요?",
+        items: [
+          { 
+            text: "회원가입",
+            href: "/signup" 
+          },
+        ]
+      },
+    ],
+  },
+
+  findPassword: {
+    title: "비밀번호 찾기",
+    description: "비밀번호가 기억나지 않으시나요?",
+    links: [
+      {
+        description: "계정이 기억나시나요?",
+        items: [
+          { 
+            text: "로그인",
+            href: "/login",
+          },
+        ],
+      },
+      {
+        description: "아직 계정이 없으신가요?",
+        items: [
+          { 
+            text: "회원가입",
+            href: "/signup" 
+          },
+        ]
+      },
+    ]
+  }
+
 }
 
 export default string;
