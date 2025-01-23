@@ -1,21 +1,26 @@
 import { styled } from 'styled-components';
 import { useCustomNavigation } from "@/hooks/useCustomNavigation.js";
 import { string } from '../../constants/index.js';
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { icMainLogo, icNotify } from "../../assets/index.js";
 import { Button, SearchBar } from "../../components/index.js";
 import {pagePath} from '../../routes/pagePath.js';
-import {useNavigate} from "react-router-dom";
 
 const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [active, setActive] = useState("");
   const {navigateTo} = useCustomNavigation();
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    const savedMenu = sessionStorage.getItem("activeMenu");
+    if (savedMenu) {
+      setActive(savedMenu);
+    }
+  }, []);
 
   const handleMenuClick = (menu) => {
     setActive(menu);
+    sessionStorage.setItem("activeMenu", menu);
     navigateTo(menu);
   }
 
