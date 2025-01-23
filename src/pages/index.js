@@ -1,4 +1,4 @@
-export { default as Search } from "./search/ui/Search";
+export { default as Search } from "@pages/Search/ui/Search";
 export { default as Login } from "./Auth/components/Login";
 export { default as Signup } from "./Auth/components/Signup";
 export { default as MyPage } from "./MyPage/components/MyPage";
