@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { styled } from "styled-components";
 import { useNavigate } from "react-router-dom";
-import {styled} from "styled-components";
 import {icSearch} from "@assets/index.js";
 
 // eslint-disable-next-line react/prop-types
