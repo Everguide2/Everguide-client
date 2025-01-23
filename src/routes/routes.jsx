@@ -5,19 +5,19 @@ import {pagePath} from "./pagePath.js";
 const routes = [
   {
     path: "/",
-    element: <RootLayout/>,
+    element: <RootLayout />,
     children: [
       {
         index: true,
-        element: <Home/>
+        element: <Home />,
       },
       {
         path: pagePath.POLICY,
-        element: <Policy/>
+        element: <Policy />,
       },
       {
         path: pagePath.EVENT,
-        element: <Event/>
+        element: <Event />,
       },
       {
         path: pagePath.EVENTDETAIL,
@@ -25,7 +25,11 @@ const routes = [
       },
       {
         path: pagePath.JOB,
-        element: <Job/>
+        element: <Job />,
+      },
+      {
+        path: `${pagePath.SEARCH}/:query`,
+        element: <Search />,
       },
     ],
   },
