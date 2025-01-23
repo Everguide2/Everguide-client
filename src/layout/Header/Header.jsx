@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { useCustomNavigation } from "@/hooks/useCustomNavigation.js";
 import { string } from '../../constants/index.js';
 import { useState } from "react";
 import { icMainLogo, icNotify } from "../../assets/index.js";
@@ -9,12 +10,13 @@ import {useNavigate} from "react-router-dom";
 const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [active, setActive] = useState("");
+  const {navigateTo} = useCustomNavigation();
 
   const navigate = useNavigate();
 
   const handleMenuClick = (menu) => {
     setActive(menu);
-    navigate(menu);
+    navigateTo(menu);
   }
 
   return (
