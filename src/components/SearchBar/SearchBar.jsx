@@ -1,20 +1,19 @@
-
 import { useState } from "react";
 import { styled } from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useCustomNavigation} from "@hooks/useCustomNavigation.js";
 import {icSearch} from "@assets/index.js";
 
 // eslint-disable-next-line react/prop-types
 const SearchBar = ({ placeHolder, onClick }) => {
   const [searchValue, setSearchValue] = useState("");
-  const navigate = useNavigate();
+  const {navigateTo} = useCustomNavigation();
 
   const onChange = (e) => {
     setSearchValue(e.target.value);
   };
 
   const handleSearch = () => {
-    navigate(`search/${searchValue}`);
+    navigateTo(`search/${searchValue}`);
   };
   // 엔터 키 눌렀을 시에도 이동동
   const handleKeyPress = (e) => {
@@ -49,7 +48,7 @@ const Container = styled.div`
 const SearchInput = styled.input`
   width: 556px;
   height: 52px;
-  background: ${(props) => props.theme.colors.gray[100]};
+  background: ${({theme}) => theme.colors.gray[100]};
   border: 1px solid ${({ theme }) => theme.colors.gray[300]};
   border-radius: 33px;
   padding-left: 17px;
