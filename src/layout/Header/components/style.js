@@ -10,39 +10,42 @@ export const MainLogo = styled.img`
 `
 export const LoginCheck = styled.div`
   flex-basis: 260px;
+  height: 100%;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  position: relative;
 `
 export const Notify = styled.img`
   width: 48px;
   height: 48px;
 `
+
+export const ProfileContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
+`
 export const Profile = styled.img`
   width: 54px;
   height: 54px;
   border-radius: 54px;
-  background-color: ${({theme}) => theme.colors.gray[400]};
+  background-color: ${({theme}) => theme.colors.gray[300]};
   margin-left: 39px;
 `
 
 export const HeaderContainer = styled.div`
   width: ${(props) => props.theme.size.safeArea};  
   margin: 0 auto;
-  
-  div:first-child {
-    height: 110px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 60px;
-    
-    input{
 
-    }
-    
-  }
 `
-
+export const Inner = styled.div`
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 60px;
+`
 export const SubHeader = styled.div`
   height: 74px;
   border: 1px solid ${({theme}) => theme.colors.gray[200]};
