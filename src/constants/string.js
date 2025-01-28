@@ -115,6 +115,8 @@ const string = {
 
   toListBtn: "목록으로",
   checkArticleBtn: "공고확인",
+  myPage: "내 정보",
+  logout: "로그아웃",
 }
 
 export default string;
