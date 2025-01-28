@@ -24,7 +24,7 @@ const Header = () => {
 
   return (
     <S.Container>
-      <MainHeader isLogin={auth.isAuthenticated} onClick={handleMenuClick} />
+      <MainHeader isLogin={true} onClick={handleMenuClick} />
       <SubHeader active={active} onClick={handleMenuClick} />
     </S.Container>
   );
