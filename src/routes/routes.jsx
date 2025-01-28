@@ -1,27 +1,31 @@
 import RootLayout from "../layout/RootLayout.jsx";
-import {Home, Policy, Event, Job} from "../pages";
-import {pagePath} from "./pagePath.js";
+import { Home, Policy, Event, Job, Search } from "../pages";
+import { pagePath } from "./pagePath.js";
 
 const routes = [
   {
     path: "/",
-    element: <RootLayout/>,
+    element: <RootLayout />,
     children: [
       {
         index: true,
-        element: <Home/>
+        element: <Home />,
       },
       {
         path: pagePath.POLICY,
-        element: <Policy/>
+        element: <Policy />,
       },
       {
         path: pagePath.EVENT,
-        element: <Event/>
+        element: <Event />,
       },
       {
         path: pagePath.JOB,
-        element: <Job/>
+        element: <Job />,
+      },
+      {
+        path: `${pagePath.SEARCH}/:query`,
+        element: <Search />,
       },
     ],
   },
