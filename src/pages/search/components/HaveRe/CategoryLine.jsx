@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../../../theme/theme";
+import { useSelector } from "react-redux";
+const CategoryLine = () => {
+  const { category, categoryCount } = useSelector((state) => state.Search);
 
-const CategoryLine = ({ category, categoryCount }) => {
   return (
     <Categories>
       {category.map((name, index) => {

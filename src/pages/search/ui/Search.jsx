@@ -1,51 +1,41 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import dummy from "../dummy";
+import searchDummy from "../dummy";
 import theme from "../../../theme/theme";
+import { useSelector, useDispatch } from "react-redux";
+import { setDummy, setQuery, countCategory } from "../../../stores/SearchSlice";
 import HaveResults from "../components/HaveRe/HaveResults";
 import NoHaveResults from "../components/NoHaveRe/NoHaveResults";
 import Count from "../components/Count";
 import FindPolicy from "../components/FindPolicy";
 const Search = () => {
   const { query } = useParams();
-  const [categoryCount, setCategoryCount] = useState([0, 0, 0]);
-  const [category, setCategory] = useState(["정책", "행사/교육", "일자리"]);
+  const { dummy, queryName, category, categoryCount } = useSelector(
+    (state) => state.Search
+  );
+  const dispatch = useDispatch();
 
-  const countCategory = (array) => {
-    let updatedCategory = [0, 0, 0];
-    array.forEach((item) => {
-      if (item.category === "정책") {
-        updatedCategory[0] += 1;
-      } else if (item.category === "행사/교육") {
-        updatedCategory[1] += 1;
-      } else {
-        updatedCategory[2] += 1;
-      }
-    });
-    setCategoryCount(updatedCategory);
-  };
   useEffect(() => {
-    if (dummy[query]) {
-      countCategory(dummy[query]);
-    }
+    dispatch(setDummy(searchDummy));
+  }, []);
+
+  useEffect(() => {
+    dispatch(setQuery(query));
   }, [query]);
+
+  useEffect(() => {
+    if (dummy[queryName]) {
+      dispatch(countCategory(dummy[queryName]));
+    }
+  }, [queryName]);
 
   return (
     // API 통신 시, Redux-toolkit 적용 예정
     <Wrapper>
-      <Count dummy={dummy} query={query} />
+      <Count />
       <SearchDetails>
-        {dummy[query] ? (
-          <HaveResults
-            dummy={dummy}
-            query={query}
-            category={category}
-            categoryCount={categoryCount}
-          />
-        ) : (
-          <NoHaveResults query={query} category={category} />
-        )}
+        {dummy[queryName] ? <HaveResults /> : <NoHaveResults />}
         <FindPolicy />
       </SearchDetails>
     </Wrapper>

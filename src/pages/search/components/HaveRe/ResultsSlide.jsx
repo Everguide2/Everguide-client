@@ -3,11 +3,15 @@ import styled from "styled-components";
 import theme from "../../../../theme/theme";
 import SwiperCard from "./SwiperCard";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useSelector } from "react-redux";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-const ResultsSlide = ({ dummy, query, category, categoryCount }) => {
+const ResultsSlide = () => {
+  const { dummy, queryName, category, categoryCount } = useSelector(
+    (state) => state.Search
+  );
   return (
     <>
       {category.map((name, index) => {
@@ -20,10 +24,10 @@ const ResultsSlide = ({ dummy, query, category, categoryCount }) => {
               modules={[Navigation]}
               navigation={true}
             >
-              {dummy[query].map((arr, idx) => {
+              {dummy[queryName].map((arr, idx) => {
                 return arr.category === name ? (
                   <SwiperSlide key={idx}>
-                    <SwiperCard arr={arr} query={query} />
+                    <SwiperCard arr={arr} query={queryName} />
                   </SwiperSlide>
                 ) : null;
               })}

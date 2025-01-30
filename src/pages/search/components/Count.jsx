@@ -1,14 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../../theme/theme";
-
-const Count = ({ dummy, query }) => {
+import { useSelector } from "react-redux";
+const Count = () => {
+  const { dummy, queryName } = useSelector((state) => state.Search);
   return (
     <SearchCount>
       <CountResult>
-        <QueryText>{query}</QueryText>에
-        <CountText>{dummy[query] ? dummy[query].length : 0}</CountText>개의
-        검색결과가 있습니다.
+        <QueryText>{queryName}</QueryText>에
+        <CountText>{dummy[queryName] ? dummy[queryName].length : 0}</CountText>
+        개의 검색결과가 있습니다.
       </CountResult>
     </SearchCount>
   );

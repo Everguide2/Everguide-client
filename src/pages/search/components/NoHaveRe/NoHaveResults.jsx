@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../../../theme/theme";
-const NoHaveResults = ({ query, category }) => {
+import { useSelector } from "react-redux";
+const NoHaveResults = () => {
+  const { queryName, category } = useSelector((state) => state.Search);
   return (
     <>
       <DetailContents>
@@ -21,7 +23,7 @@ const NoHaveResults = ({ query, category }) => {
         </Categories>
       </DetailContents>
       <NoResults>
-        <NoQuery>{query}</NoQuery>
+        <NoQuery>{queryName}</NoQuery>
         <NoEx>에 대한 검색결과가 없어요</NoEx>
       </NoResults>
     </>

@@ -3,16 +3,11 @@ import styled from "styled-components";
 import CategoryLine from "./CategoryLine";
 import ResultsSlide from "./ResultsSlide";
 
-const HaveResults = ({ dummy, query, category, categoryCount }) => {
+const HaveResults = () => {
   return (
     <DetailContents>
-      <CategoryLine category={category} categoryCount={categoryCount} />
-      <ResultsSlide
-        dummy={dummy}
-        query={query}
-        category={category}
-        categoryCount={categoryCount}
-      />
+      <CategoryLine />
+      <ResultsSlide />
     </DetailContents>
   );
 };
