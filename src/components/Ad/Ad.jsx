@@ -9,13 +9,11 @@ import { string } from "../../constants";
 const Ad = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // 카드별 컴포넌트 배열
   const cardComponents = [<Card1 />, <Card2 />, <Card3 />, <Card4 />];
 
-  // slides 배열을 string.cards와 cardComponents를 이용해 동적으로 생성
   const slides = string.cards.map((card, index) => (
     <Card key={index}>
-      {cardComponents[index]} {/* 카드 컴포넌트 삽입 */}
+      {cardComponents[index]}
       <TextWrapper>
         <CardTitle>{card.title}</CardTitle>
         <CardDescription>{card.description}</CardDescription>
@@ -53,7 +51,6 @@ const Ad = () => {
 
 export default Ad;
 
-// Styled-components
 const SliderContainer = styled.div`
   width: 598px;
   height: 840px;

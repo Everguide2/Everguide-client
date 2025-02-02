@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { imgMap } from "@/assets"; // 이미지 가져오기
+import { imgMap } from "@/assets";
 
 const Card2 = () => {
   return (
@@ -12,7 +12,6 @@ const Card2 = () => {
 
 export default Card2;
 
-// Styled-components
 const CardContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -23,6 +22,6 @@ const CardContainer = styled.div`
 `;
 
 const MapImage = styled.img`
-  width: 473px; /* 이미지 너비를 컨테이너에 맞게 설정 */
-  height: 404px; /* 비율 유지 */
+  width: 473px; 
+  height: 404px; 
 `;

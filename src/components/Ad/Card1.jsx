@@ -15,7 +15,6 @@ const Card1 = () => {
 
 export default Card1;
 
-// Styled-components
 const CardContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -24,8 +23,8 @@ const CardContainer = styled.div`
   height: 100%;
 `;
 const ImageWrapper = styled.div`
-  position: relative; /* 자식 이미지를 상대적으로 배치 */
-  width: 300px; /* 프레임 크기 조정 */
+  position: relative; 
+  width: 300px; 
   height: 364px;
 `;
 
@@ -34,7 +33,7 @@ const FrameImage = styled.img`
   top: 0;
   left: 0;
   width: 100%;
-  height: auto; /* 프레임 비율 유지 */
+  height: auto; 
 `;
 
 const MouseImage = styled.img`

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { imgFrame4, imgGlasses } from "@/assets"; // 이미지 가져오기
+import { imgFrame4, imgGlasses } from "@/assets";
 
 const Card4 = () => {
   return (
@@ -17,9 +17,8 @@ const Card4 = () => {
 
 export default Card4;
 
-// Styled-components
 const CardContainer = styled.div`
-  position: relative; /* 자식 요소를 상대적으로 배치 */
+  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
@@ -29,7 +28,7 @@ const CardContainer = styled.div`
 
 const FrameWrapper = styled.div`
   display: flex;
-  justify-content: flex-end; /* 이미지를 오른쪽으로 정렬 */
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
   left: 184.57px;
@@ -37,19 +36,19 @@ const FrameWrapper = styled.div`
 `;
 
 const StyledImage = styled.img`
-  width: 70%; /* 이미지 크기 조정 */
-  height: auto; /* 비율 유지 */
+  width: 70%; 
+  height: auto;
 `;
 
 const IconWrapper = styled.div`
   position: absolute;
-  top: 265px; /* 하단 여백 */
-  left: 70px; /* 오른쪽 여백 */
-  width: 247.1px; /* 아이콘 크기 */
+  top: 265px;
+  left: 70px; 
+  width: 247.1px;
   height: 289.83px;
 `;
 
 const StyledIcon = styled.img`
-  width: 100%; /* 아이콘 크기 조정 */
-  height: auto; /* 비율 유지 */
+  width: 100%; 
+  height: auto; 
 `;
