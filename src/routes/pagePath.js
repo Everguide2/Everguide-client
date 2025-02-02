@@ -3,7 +3,6 @@ export const pagePath = {
   POLICY : 'policy',
   EVENT : 'event',
   EVENTDETAIL : 'event/:eventId',
-  SEARCH: 'search',
   JOB: 'job',
   SUPPORT : 'support',
   LOGIN : 'login',
