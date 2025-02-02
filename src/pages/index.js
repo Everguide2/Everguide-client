@@ -9,3 +9,4 @@ export { default as Policy } from '@pages/PolicyRec/ui/Policy';
 export { default as Event } from '@pages/Event/ui/Event';
 export { default as EventDetail } from '@pages/EventDetail/ui/EventDetail';
 export { default as Job } from '@pages/Job/ui/Job';
+
