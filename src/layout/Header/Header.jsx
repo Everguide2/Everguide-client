@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { useCustomNavigation } from "@/hooks/useCustomNavigation.js";
+import { useCustomNavigation } from "@hooks/useCustomNavigation.js";
 import { string } from '../../constants/index.js';
 import {useEffect, useState} from "react";
 import { icMainLogo, icNotify } from "../../assets/index.js";

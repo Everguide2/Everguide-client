@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import searchDummy from "../dummy";
 import theme from "../../../theme/theme";
 import { useSelector, useDispatch } from "react-redux";
-import { setDummy, setQuery, countCategory } from "../../../stores/SearchSlice";
+import { setDummy, setQuery, countCategory } from "@stores/search/SearchSlice.js";
 import HaveResults from "../components/HaveRe/HaveResults";
 import NoHaveResults from "../components/NoHaveRe/NoHaveResults";
 import Count from "../components/Count";
