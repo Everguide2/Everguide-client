@@ -21,7 +21,7 @@ export const Notify = styled.img`
   height: 48px;
 `
 
-export const ProfileContainer = styled.div`
+export const PNContainer = styled.div`
   display: flex;
   align-items: center;
   height: 100%;

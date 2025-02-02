@@ -1,13 +1,19 @@
 import * as S from "./style.js";
 import {icMainLogo, icNotify} from "@assets/index.js";
-import {Button, SearchBar, Alarm} from "@components/index.js";
+import {Button, SearchBar, Alarm, Profile} from "@components/index.js";
 import {string} from "@constants/index.js";
 import {pagePath} from "@/routes/pagePath.js";
 import {useState} from "react";
 
+
 // eslint-disable-next-line react/prop-types
 const MainHeader = ({onClick ,isLogin}) => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isNotifyHovered, setIsNotifyHovered] = useState(false);
+  const [isProfileHovered, setIsProfileHovered] = useState(false);
+
+  const handleHover = (type, state) => {
+    type === 1 ? setIsNotifyHovered(state) : setIsProfileHovered(state);
+  }
 
   return (
       <S.MainHeader>
@@ -18,11 +24,14 @@ const MainHeader = ({onClick ,isLogin}) => {
             <S.LoginCheck>
               {isLogin ?
                   <>
-                    <S.Notify src={icNotify} />
-                    <S.ProfileContainer onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+                    <S.PNContainer onMouseEnter={() => handleHover(1, true)} onMouseLeave={() => handleHover(1, false)}>
+                      <S.Notify src={icNotify} />
+                    </S.PNContainer>
+                    {isNotifyHovered && <Alarm/>}
+                    <S.PNContainer onMouseEnter={() => handleHover(2, true)} onMouseLeave={() => handleHover(2, false)}>
                       <S.Profile></S.Profile>
-                    </S.ProfileContainer>
-                    {isHovered && <Alarm onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}/>}
+                    </S.PNContainer>
+                    {isProfileHovered && <Profile onMouseEnter={() => setIsProfileHovered(true)} onMouseLeave={() => setIsProfileHovered(false)}/>}
                   </>
                   :
                   <Button text={string.LoginRegister} onClick={() => onClick(pagePath.LOGIN)} />
