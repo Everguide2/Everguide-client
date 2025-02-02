@@ -1,26 +1,24 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // 페이지 이동을 위한 useNavigate 추가
-import { useDispatch } from "react-redux"; // Redux 상태 관리
+import { useNavigate } from "react-router-dom"; 
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { icModalNonexisting, icModalClose } from "@/assets"; // 아이콘 import
-import { setEmail, setPassword } from "../../stores/auth/authSlice"; // 이메일 & 비밀번호 초기화
+import { icModalNonexisting, icModalClose } from "@/assets"; 
+import { setEmail, setPassword } from "../../stores/auth/authSlice"; 
 
 const NonExistingMemberModal = ({ onClose }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // 회원가입 페이지로 이동
   const handleSignupRedirect = () => {
     navigate("/signup");
   };
 
-  // 로그인 페이지로 이동하면서 입력 필드 초기화
   const handleRetry = () => {
-    dispatch(setEmail("")); // 이메일 초기화
-    dispatch(setPassword("")); // 비밀번호 초기화
-    localStorage.removeItem("email"); // 입력 필드 리셋을 위해 저장된 값 제거
+    dispatch(setEmail("")); 
+    dispatch(setPassword("")); 
+    localStorage.removeItem("email");
     localStorage.removeItem("password");
-    window.location.reload(); // 입력 필드도 리셋하기 위해 페이지 새로고침
+    window.location.reload(); 
   };
 
   return (
@@ -48,7 +46,6 @@ const NonExistingMemberModal = ({ onClose }) => {
 
 export default NonExistingMemberModal;
 
-// ✅ 스타일 컴포넌트
 const Overlay = styled.div`
   position: fixed;
   top: 0;
