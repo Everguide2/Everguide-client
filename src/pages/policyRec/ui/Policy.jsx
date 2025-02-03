@@ -1,34 +1,45 @@
 import React, { useState } from 'react';
-import { Container, BoxContainer, Button, Title, Description, TimeInfo, ImageWrapper, StyledImage } from './style';
-import { questionData } from '../components/questionData.js'; // 질문 데이터 가져오기
-import Question from '../components/question.jsx'; // Question 컴포넌트 가져오기
-import { imgDangguMag } from '../../../assets'; // 이미지 가져오기
+import { Container, BoxContainer, Button,QuestionContainer, Title, Description,OptionsContainer,OptionButton,NextButton, TimeInfo, ImageWrapper, StyledImage } from './style';
+import { questionData } from '../components/questionData.js';
+import Question from '../components/question.jsx';
+import { imgDangguMag } from '../../../assets';
 
 const Policy = () => {
-  const [step, setStep] = useState(0); // 초기값을 0으로 설정
-  const [answers, setAnswers] = useState({}); // 선택한 답변 저장
+  const [currentQuestionId, setCurrentQuestionId] = useState("start");
+  const [answers, setAnswers] = useState({});
+  const [isStarted, setIsStarted] = useState(false);
+
+  const currentQuestion = questionData.find((q) => q.id === currentQuestionId);
 
   const handleSelect = (option) => {
     setAnswers((prev) => ({
       ...prev,
-      [step]: option, // 현재 질문에 대한 답변 저장
+      [currentQuestionId]: option.text,
     }));
   };
 
   const handleNext = () => {
-    if (step < questionData.length) {
-      setStep(step + 1);
+    if (!currentQuestion) return;
+    
+    const selectedAnswer = answers[currentQuestionId];
+    if (!selectedAnswer) return;
+
+    const nextQuestion = currentQuestion.options.find(opt => opt.text === selectedAnswer);
+
+    if (nextQuestion?.nextId) {
+      setCurrentQuestionId(nextQuestion.nextId);
     } else {
-      alert('모든 질문이 완료되었습니다!');
-      console.log('사용자 답변:', answers); // 최종 답변 출력
+      alert("모든 질문이 완료되었습니다!");
+      console.log("최종 답변:", answers);
     }
   };
 
   return (
     <Container>
-      <BoxContainer>
-        {step === 0 ? (
+      
+        {!isStarted ? (
           <>
+          <BoxContainer>
             <Title>나의 숨겨진 복지 혜택 찾기</Title>
             <Description>
               나에게 딱 맞는 복지정책이 있는지 찾아줍니다! <br />
@@ -40,23 +51,38 @@ const Policy = () => {
             <ImageWrapper>
               <StyledImage src={imgDangguMag} alt="강아지 이미지" />
             </ImageWrapper>
-            <Button onClick={() => setStep(1)}>찾아보기</Button>
-          </>
-        ) : step <= questionData.length ? (
-          <>
-            <Question
-              questionData={questionData[step - 1]} // 현재 질문 데이터 전달
-              onSelect={handleSelect}
-              selectedOption={answers[step]} // step이 1부터 시작하므로 step - 1로 접근
-            />
-            <Button onClick={handleNext} disabled={!answers[step]}>
-              {step === questionData.length ? '완료' : '다음'}
-            </Button>
+            <Button onClick={() => setIsStarted(true)}>찾아보기</Button>
+          </BoxContainer>
           </>
         ) : (
-          <h2>모든 질문이 완료되었습니다!</h2>
+          <>
+          <QuestionContainer>
+            <Title>{questionData.findIndex(q => q.id === currentQuestionId) + 1}/10</Title>
+            <Description>{currentQuestion?.question}</Description>
+            
+            <OptionsContainer className={["location", "familyLocation"].includes(currentQuestionId) ? "grid-layout" : ""}>
+              {currentQuestion?.options.map((option) => (
+                <OptionButton 
+                key={option.text} 
+                onClick={() => handleSelect(option)}
+                className={answers[currentQuestionId] === option.text ? "selected" : ""}
+              >
+                {option.text}
+              </OptionButton>
+              ))}
+            </OptionsContainer>
+
+            <NextButton 
+              onClick={handleNext} 
+              disabled={!answers[currentQuestionId]} 
+            >
+              {currentQuestion?.options.some(opt => opt.nextId) ? "다음" : "완료"}
+            </NextButton>
+          </QuestionContainer>
+
+          </>
+
         )}
-      </BoxContainer>
     </Container>
   );
 };
