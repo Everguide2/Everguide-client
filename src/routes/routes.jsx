@@ -1,30 +1,63 @@
 import RootLayout from "../layout/RootLayout.jsx";
-import {Home, Policy, Event, Job} from "../pages";
+import {Home, Policy, Event, EventDetail, Job, Login, Signup,Search, MyPage, FindEmail, FindPassword, EmailResult, PasswordSent} from "../pages";
 import {pagePath} from "./pagePath.js";
 
 const routes = [
   {
     path: "/",
-    element: <RootLayout/>,
+    element: <RootLayout />,
     children: [
       {
         index: true,
-        element: <Home/>
+        element: <Home />,
       },
       {
         path: pagePath.POLICY,
-        element: <Policy/>
+        element: <Policy />,
       },
       {
         path: pagePath.EVENT,
-        element: <Event/>
+        element: <Event />,
+      },
+      {
+        path: pagePath.EVENTDETAIL,
+        element: <EventDetail />
       },
       {
         path: pagePath.JOB,
-        element: <Job/>
+        element: <Job />,
+      },
+      {
+        path: `${pagePath.SEARCH}/:query`,
+        element: <Search />,
       },
     ],
+  },
+  { 
+    path : pagePath.LOGIN,
+    element : <Login/>,
+  },
+  {
+    path : pagePath.SIGNUP,
+    element : <Signup/>,
+  },
+  {
+    path : pagePath.FINDEMAIL,
+    element : <FindEmail/>,
+  },
+  {
+    path : pagePath.FINDPASSWORD,
+    element : <FindPassword/>,
+  },
+  {
+    path : pagePath.EMAILRESULT,
+    element : <EmailResult />
+  },
+  {
+    path : pagePath.PASSWORDSENT,
+    element : <PasswordSent />
   },
 ];
 
 export default routes;
+
