@@ -5,7 +5,7 @@ import { icLoginKakao } from "../../../assets";
 const KakaoButton = () => {
   const handleKakaoLogin = () => {
     window.location.href =
-      "https://kauth.kakao.com/oauth/authorize?client_id=YOUR_KAKAO_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=code";
+        `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_KAKAO_REST_API}&redirect_uri=${import.meta.env.VITE_KAKAO_REDIRECT_URL}&response_type=code`;
   };
 
   return (
