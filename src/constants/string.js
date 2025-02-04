@@ -117,6 +117,8 @@ const string = {
   checkArticleBtn: "공고확인",
   myPage: "내 정보",
   logout: "로그아웃",
+
+  noRead: "읽지 않은 알림",
 }
 
 export default string;

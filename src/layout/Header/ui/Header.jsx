@@ -1,10 +1,13 @@
 import {useEffect, useState} from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import * as S from "./style.js";
 import { useCustomNavigation } from "@hooks/useCustomNavigation.js";
 import {MainHeader, SubHeader} from "@layout/Header/components"
+import {addAlarm} from "@stores/alarm/alarmSlice.js";
+import {alarmDummy} from "@test/alarmDummy.js";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
   const [active, setActive] = useState("");
   const {navigateTo} = useCustomNavigation();
@@ -14,6 +17,10 @@ const Header = () => {
     if (savedMenu) {
       setActive(savedMenu);
     }
+    alarmDummy.forEach((item) => {
+      dispatch(addAlarm({...item}));
+    })
+
   }, []);
 
   const handleMenuClick = (menu) => {
