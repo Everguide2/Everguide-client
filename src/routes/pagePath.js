@@ -13,4 +13,6 @@ export const pagePath = {
   FINDPASSWORD : 'find-password',
   EMAILRESULT : 'email-result',
   PASSWORDSENT : 'password-sent',
+  SIGNUPLOADING : 'signup-loading',
+  SIGNUPSUCCESS : 'signup-success',
 }
