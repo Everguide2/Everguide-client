@@ -7,7 +7,7 @@ import {pagePath} from "@/routes/pagePath.js";
 const Profile = ({onMouseEnter, onMouseLeave}) => {
   const {navigateTo} = useCustomNavigation();
   const onClickMenu = (path) => {
-    // navigateTo(path);
+    navigateTo(path);
   }
 
   return (
@@ -19,8 +19,8 @@ const Profile = ({onMouseEnter, onMouseLeave}) => {
             <Email>gildoeng@naver.com</Email>
           </Information>
         </ProfileContainer>
-        <MypageContainer onClick={()=> onClickMenu('login')}>{string.myPage}</MypageContainer>
-        <LogoutContainer onClick={()=> onClickMenu('logout')}>{string.logout}</LogoutContainer>
+        <MypageContainer onClick={()=> onClickMenu(pagePath.MYPAGE)}>{string.myPage}</MypageContainer>
+        <LogoutContainer onClick={()=> onClickMenu(pagePath.HOME)}>{string.logout}</LogoutContainer>
       </Container>
   );
 };
