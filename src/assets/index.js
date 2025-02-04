@@ -34,6 +34,8 @@ export {default as icModalNonmember} from'@assets/icons/ic-modal-nonmember.svg';
 export {default as icModalNonexisting} from '@assets/icons/ic-modal-nonexisting.svg';
 export {default as icCalendarLeft} from '@assets/icons/ic-calendar-left.svg';
 export {default as icCalendarRight} from '@assets/icons/ic-calendar-right.svg';
+export {default as icSignupLoading} from '@assets/icons/ic-signup-loading.svg';
+export {default as icSignupSuccess} from '@assets/icons/ic-signup-success.svg';
 
 // images
 export {default as imgDangguMag} from '@assets/images/img-dangguMag.svg';
