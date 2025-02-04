@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import InputField from "@components/InputField/InputField.jsx";
 import Button from "../components/Button";
 import Ad from "@/components/Ad/Ad.jsx";
 import Logo from "../components/Logo";
-import Links from "../components/Links";
 import { string } from "../../../constants";
 import DateOfBirthInput from "../components/DateOfBirthInput";
 import VerificationInput from "../components/VerificationInput";
-import Message from "../components/Message";
+import PasswordInput from "../components/PasswordInput";
+import EmailInput from "../components/EmailInput";
+import SignupLoading from "./SignupLoading"; 
+import FixedFooter from "../components/FixedFooter";
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     birthYear: "",
@@ -25,82 +30,85 @@ const Signup = () => {
   });
 
   const [verificationSent, setVerificationSent] = useState(false);
-  const [verificationCompleted, setVerificationCompleted] = useState(false); 
-  const [verificationStatus, setVerificationStatus] = useState({
-    message: "",
-    messageType: null,
-  });
-  const [verificationButtonText, setVerificationButtonText] =
-    useState("인증번호 받기");
-  const [passwordValid, setPasswordValid] = useState(true); 
-  const [passwordMatch, setPasswordMatch] = useState(true); 
+  const [verificationCompleted, setVerificationCompleted] = useState(false);
+  const [correctVerificationCode] = useState("1234");
+  const [isLoading, setIsLoading] = useState(false); 
+  const [isFormValid, setIsFormValid] = useState(false);
 
+  useEffect(() => {
+    const { name, birthYear, birthMonth, birthDay, phone, email, password, confirmPassword } = formData;
+
+    const isValid =
+      name.trim() &&
+      birthYear.trim() &&
+      birthMonth.trim() &&
+      birthDay.trim() &&
+      phone.trim() &&
+      email.trim() &&
+      password.trim() &&
+      confirmPassword.trim() &&
+      password === confirmPassword; 
+
+    setIsFormValid(isValid);
+  }, [formData, verificationCompleted]);
+
+  // 입력값 변경 핸들러
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
 
-    if (name === "password") {
-      const isValid = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/.test(value);
-      setPasswordValid(isValid);
-    }
-
-    if (name === "confirmPassword") {
-      setPasswordMatch(value === formData.password);
+  // 인증번호 요청
+  const handleVerification = () => {
+    if (formData.phone) {
+      setVerificationSent(true);
     }
   };
 
+  // 인증번호 확인
+  const handleVerifyCode = () => {
+    if (formData.verificationCode === correctVerificationCode) {
+      setVerificationCompleted(true);
+    } else {
+      setVerificationCompleted(false);
+    }
+  };
 
+  // 이메일 중복 확인
   const handleEmailCheck = () => {
     alert("이메일 중복 확인 완료!");
   };
 
-  const handleVerification = () => {
-    setVerificationSent(true);
-    setVerificationStatus({
-      message: "인증번호가 발송되었어요 (유효시간 5:00)",
-      messageType: "sent",
-    });
-    setVerificationButtonText("인증번호 재전송");
-  };
-
-  const handleVerifyCode = () => {
-    if (formData.verificationCode === "1234") {
-      alert("인증번호가 확인되었습니다!");
-      setVerificationStatus({
-        message: "인증이 완료되었어요!",
-        messageType: "success",
-      });
-      setVerificationCompleted(true);
-    } else {
-      alert("인증번호가 올바르지 않습니다.");
-      setVerificationStatus({
-        message: "인증번호가 잘못되었어요.",
-        messageType: "error",
-      });
-    }
-  };
-
-  const handleSubmit = (e) => {
+  // 회원가입 제출
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!verificationCompleted) {
+      alert("인증을 완료해주세요!");
+      return;
+    }
     if (formData.password !== formData.confirmPassword) {
       alert("비밀번호가 일치하지 않습니다.");
       return;
     }
-    console.log("회원가입 데이터:", formData);
-    alert("회원가입이 완료되었습니다!");
+
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate("/signup-success");
+    }, 3000);
   };
+
+  if (isLoading) {
+    return <SignupLoading />;
+  }
 
   return (
     <Container>
       <Ad />
       <Content>
         <ScrollArea>
-          <Logo
-            title={string.signup.title}
-            description={string.signup.description}
-            width="124px"
-            height="24px;"
-          />
+          <Logo title={string.signup.title} description={string.signup.description} width="142px" height="24px"/>
           <Form onSubmit={handleSubmit}>
             <Label>이름</Label>
             <InputField
@@ -130,82 +138,35 @@ const Signup = () => {
               />
               <Button
                 onClick={handleVerification}
+                disabled={!formData.phone || verificationSent}
                 width="160px"
-                disabled={!formData.phone || verificationCompleted}
+                height="56px"
               >
-                {verificationButtonText}
+                {verificationSent ? "인증번호 재전송" : "인증번호 받기"}
               </Button>
             </InputWrapper>
+
             {verificationSent && (
               <VerificationInput
                 verificationSent={verificationSent}
                 verificationCode={formData.verificationCode}
                 verificationCompleted={verificationCompleted}
-                verificationButtonText="인증번호 확인"
-                verificationStatus={verificationStatus}
-                onVerificationSend={handleVerification}
+                correctVerificationCode={correctVerificationCode} 
                 onVerificationCheck={handleVerifyCode}
                 onInputChange={handleInputChange}
               />
             )}
-            <Label>이메일 주소</Label>
-            <InputWrapper>
-              <InputField
-                type="email"
-                name="email"
-                placeholder="abcd@email.com"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-              />
-              <Button
-                onClick={handleEmailCheck}
-                width="160px"
-                disabled={!formData.email}
-              >
-                중복 확인하기
-              </Button>
-            </InputWrapper>
-            <Label>비밀번호</Label>
-            <PasswordInputWrapper>
-              <InputField
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleInputChange}
-                required
-              />
-              <Message
-                text="*8자 이상 입력 *영어 사용 *숫자 사용 *특수문자 사용"
-                messageType={passwordValid ? "default" : "error"}
-              />
-            </PasswordInputWrapper>
-            <Label>비밀번호 재입력</Label>
-            <PasswordInputWrapper>
-              <InputField
-                type="password"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleInputChange}
-                required
-              />
-              <Message
-                text={
-                  passwordMatch
-                    ? "비밀번호 확인을 위해 다시 한 번 입력해주세요"
-                    : "비밀번호가 일치하지 않아요 다시 입력해주세요"
-                }
-                messageType={passwordMatch ? "default" : "error"}
-              />
-            </PasswordInputWrapper>
+
+            <EmailInput email={formData.email} onInputChange={handleInputChange} onEmailCheck={handleEmailCheck} />
+
+            <PasswordInput
+              password={formData.password}
+              confirmPassword={formData.confirmPassword}
+              onInputChange={handleInputChange}
+            />
           </Form>
         </ScrollArea>
-        <FixedFooter>
-          <Button type="submit" width="494px" height="56px">
-            가입하기
-          </Button>
-          <Links links={string.signup.links} />
-        </FixedFooter>
+        <FixedFooter links={string.signup.links} onSubmit={handleSubmit} isEnabled={isFormValid && verificationCompleted} />
       </Content>
     </Container>
   );
@@ -213,12 +174,10 @@ const Signup = () => {
 
 export default Signup;
 
-// Styled-components
 const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   height: 100vh;
   gap: 150px;
 `;
@@ -241,36 +200,23 @@ const ScrollArea = styled.div`
   margin-top: 20px;
   padding: 0 45px;
 
-  /* 스크롤바 너비 설정 */
+  /* ✅ 스크롤바 스타일 적용 */
   &::-webkit-scrollbar {
-    width: 8px;
+    width: 8px; /* ✅ 스크롤바 너비 */
   }
 
-  /* 스크롤바 핸들 크기 및 디자인 설정 */
   &::-webkit-scrollbar-thumb {
-    background-color: #F3F3F3;
-    border-radius: 4px;
-    height: 200px; /* 스크롤바 핸들의 최소 높이 설정 */
+    background-color: #F3F3F3; /* ✅ 스크롤바 색상 */
+    border-radius: 100px;
+    height: 200px; /* ✅ 스크롤바 길이 */
   }
 
-  /* 스크롤바 트랙(배경) 설정 */
   &::-webkit-scrollbar-track {
-    background-color: white;
+    background-color: white; /* ✅ 스크롤바 배경 색상 */
   }
 `;
 
 
-const FixedFooter = styled.div`
-  margin-top: auto;
-  padding-top: 30px;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
-  padding-bottom: 40px;
-`;
 
 const Form = styled.form`
   display: flex;
@@ -284,10 +230,6 @@ const InputWrapper = styled.div`
   gap: 10px;
   align-items: center;
   width: 100%;
-`;
-
-const PasswordInputWrapper = styled.div`
-  position: relative;
 `;
 
 const Label = styled.div`
