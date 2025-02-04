@@ -1,9 +1,10 @@
+import {useState} from "react";
 import * as S from "./style.js";
 import {icMainLogo, icNotify} from "@assets/index.js";
 import {Button, SearchBar, Alarm, Profile} from "@components/index.js";
 import {string} from "@constants/index.js";
 import {pagePath} from "@/routes/pagePath.js";
-import {useState} from "react";
+
 
 
 // eslint-disable-next-line react/prop-types
@@ -27,7 +28,7 @@ const MainHeader = ({onClick ,isLogin}) => {
                     <S.PNContainer onMouseEnter={() => handleHover(1, true)} onMouseLeave={() => handleHover(1, false)}>
                       <S.Notify src={icNotify} />
                     </S.PNContainer>
-                    {isNotifyHovered && <Alarm/>}
+                    {isNotifyHovered && <Alarm onMouseEnter={() => setIsNotifyHovered(true)} onMouseLeave={() => setIsNotifyHovered(false)}/>}
                     <S.PNContainer onMouseEnter={() => handleHover(2, true)} onMouseLeave={() => handleHover(2, false)}>
                       <S.Profile></S.Profile>
                     </S.PNContainer>
