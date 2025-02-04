@@ -11,4 +11,8 @@ export const pagePath = {
   MYPAGE : 'mypage',
   FINDEMAIL : 'find-email',
   FINDPASSWORD : 'find-password',
+  EMAILRESULT : 'email-result',
+  PASSWORDSENT : 'password-sent',
+  SIGNUPLOADING : 'signup-loading',
+  SIGNUPSUCCESS : 'signup-success',
 }

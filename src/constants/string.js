@@ -119,6 +119,26 @@ const string = {
   logout: "로그아웃",
 
   noRead: "읽지 않은 알림",
+
+
+  cards: [
+    {
+      title: "시니어 맞춤형 정책 추천",
+      description: "나에게 딱 맞는 혜택,\n클릭 한 번으로 확인해요!",
+    },
+    {
+      title: "시니어 일자리 정보 제공",
+      description: "새로운 기회, 더 많은 일자리,\n지역별로 확인하고 바로 신청하세요!",
+    },
+    {
+      title: "알찬 시니어 프로그램과 행사 정보",
+      description: "지역에서 열리는 다양한 활동을\n지금 확인하세요!",
+    },
+    {
+      title: "편리한 정보 탐색",
+      description: "간단한 카테고리 분류,\n관심있는 정보를 쉽게 찾아보세요!",
+    },
+  ],
 }
 
 export default string;

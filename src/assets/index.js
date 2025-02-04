@@ -23,9 +23,30 @@ export {default as icLoginNaver} from '@assets/icons/ic-login-naver.svg';
 export {default as icLoginLogo} from '@assets/icons/ic-login-logo.svg';
 export {default as icSignupCalendar} from '@assets/icons/ic-signup-calendar.svg';
 export {default as icLoginEmail} from '@assets/icons/ic-login-email.svg';
+export {default as icEmailResult } from '@assets/icons/ic-emailresult.svg';
+export {default as icMyPagePencilclick} from '@assets/icons/ic-mypage-pencilclick.svg';
+export {default as icMyPageBookmarkclick} from '@assets/icons/ic-mypage-bookmarkclick.svg';
+export {default as icMyPageBookmark} from '@assets/icons/ic-mypage-bookmark.svg';
+export {default as icMyPagePencil} from '@assets/icons/ic-mypage-pencil.svg';
+export {default as icModalError } from '@assets/icons/ic-modal-error.svg';
+export {default as icModalClose} from '@assets/icons/ic-modal-close.svg';
+export {default as icModalNonmember} from'@assets/icons/ic-modal-nonmember.svg';
+export {default as icModalNonexisting} from '@assets/icons/ic-modal-nonexisting.svg';
+export {default as icCalendarLeft} from '@assets/icons/ic-calendar-left.svg';
+export {default as icCalendarRight} from '@assets/icons/ic-calendar-right.svg';
+export {default as icSignupLoading} from '@assets/icons/ic-signup-loading.svg';
+export {default as icSignupSuccess} from '@assets/icons/ic-signup-success.svg';
 
 // images
 export {default as imgDangguMag} from '@assets/images/img-dangguMag.svg';
+export {default as imgFrame1} from '@assets/images/img-Frame 290614.svg';
+export {default as imgMouse} from '@assets/images/img-mouse.svg';
+export {default as imgMap } from '@assets/images/img-map.svg';
+export {default as imgFrame4 } from '@assets/images/img-Frame 290686.svg';
+export {default as imgGlasses } from '@assets/images/img-glasses.svg';
+export {default as imgFrame3 } from '@assets/images/img-Frame 290615.svg';
+export {default as imgFrame5} from '@assets/images/img-Frame 290617.svg';
+export {default as AdCalendar } from '@assets/images/img-AdCalendar.svg';
 
 // fonts
 export {default as NanumGothicRegular } from '@assets/fonts/NanumGothic-Regular.ttf';
