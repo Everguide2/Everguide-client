@@ -11,7 +11,7 @@ import Links from "../components/Links.jsx";
 import Button from "../components/Button.jsx"; 
 import Divider from "../components/Divider.jsx"; 
 import { setEmail, setPassword, incrementLoginAttempts, loginSuccess, resetLoginAttempts } from "../../../stores/auth/authSlice.js";
-import LoginErrorModal from "../../../components/Modal/LoginErrorModal"; // 로그인 오류 모달 추가
+import LoginErrorModal from "../../../components/Modal/LoginErrorModal";
 import NonMemberModal from "../../../components/Modal/NonMemberModal"; 
 
 
@@ -20,12 +20,12 @@ const Login = () => {
   const { email, password, loginAttempts } = useSelector((state) => state.auth);
   const emailDomains = ["naver.com", "gmail.com", "tukorea.ac.kr"];
   const [emailSuggestions, setEmailSuggestions] = useState([]);
-  const [showErrorModal, setShowErrorModal] = useState(false); // 모달 상태 추가
-  const [showNonMemberModal, setShowNonMemberModal] = useState(false); // 비회원 안내 모달 상태
+  const [showErrorModal, setShowErrorModal] = useState(false); 
+  const [showNonMemberModal, setShowNonMemberModal] = useState(false); 
 
   const registeredUsers = [
     { email: "seojin@gmail.com", password: "tjwls5318" },
-    { email: "testuser@gmail.com", password: "password123" } // 추가 가능
+    { email: "testuser@gmail.com", password: "password123" }
   ];
 
   const handleEmailChange = (e) => {
@@ -47,22 +47,17 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // 입력된 이메일이 회원 목록에 있는지 확인
     const user = registeredUsers.find((user) => user.email === email);
 
     if (!user) {
-      // 이메일이 회원 목록에 없으면 비회원 모달 표시
       setShowNonMemberModal(true);
       return;
     }
 
     if (user.password !== password) {
-      // 비밀번호가 틀리면 로그인 오류 모달 표시
       setShowErrorModal(true);
       return;
     }
-
-    // 로그인 성공
     alert("로그인 성공");
     dispatch(loginSuccess());
     dispatch(resetLoginAttempts());
@@ -114,6 +109,7 @@ const Login = () => {
                 value={password}
                 onChange={(e) => dispatch(setPassword(e.target.value))}
                 required
+                context="login"
               />
             </InputWrapper>
             <Button type="submit" width="494px" disabled={password.length < 5 || !email}>
@@ -125,12 +121,10 @@ const Login = () => {
         <Ad />
       </Container>
 
-      {/* 로그인 오류 모달 표시 */}
       {showErrorModal && (
         <LoginErrorModal onClose={() => setShowErrorModal(false)} />
       )}
-
-        {/* 비회원 안내 모달 */}
+      
         {showNonMemberModal && (
         <NonMemberModal onClose={() => setShowNonMemberModal(false)} />
         )}

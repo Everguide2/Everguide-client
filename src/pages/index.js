@@ -11,4 +11,6 @@ export { default as EventDetail } from '@pages/EventDetail/ui/EventDetail';
 export { default as Job } from '@pages/Job/ui/Job';
 export { default as EmailResult } from '@pages/Auth/ui/EmailResult';
 export { default as PasswordSent } from '@pages/Auth/ui/PasswordSent';
+export { default as SignupLoading } from '@pages/Auth/ui/SignupLoading';
+export { default as SignupSuccess } from '@pages/Auth/ui/SignupSuccess';
 
