@@ -1,8 +1,9 @@
 import {configureStore} from "@reduxjs/toolkit";
 import informationReducer from "@stores/common/informationSlice";
 import pagingReducer from "@stores/paging/pagingSlice";
-import detailReducer from "@stores/common/detailSlice.js";
+import detailReducer from "@stores/common/detailSlice";
 import authReducer from '@stores/auth/authSlice';
+import alarmReducer from "@stores/alarm/alarmSlice";
 import SearchReducer from "@stores/search/SearchSlice.js";
 
 export default configureStore({
@@ -11,6 +12,7 @@ export default configureStore({
     paging: pagingReducer,
     detail: detailReducer,
     auth: authReducer,
+    alarm: alarmReducer,
     Search: SearchReducer,
   }
 });

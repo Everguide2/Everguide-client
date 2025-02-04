@@ -6,3 +6,6 @@ export { default as CheckBox } from '@components/CheckBox/CheckBox.jsx';
 export { default as DropDown } from '@components/DropDown/DropDown.jsx';
 
 export { default as Paginations } from '@components/Pagination/Paginations.jsx';
+
+export { default as Alarm } from '@components/Modal/Alarm/Alarm.jsx';
+export { default as Profile } from '@components/Modal/Profile/Profile.jsx';
