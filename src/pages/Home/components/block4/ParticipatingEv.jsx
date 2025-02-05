@@ -38,9 +38,9 @@ const ParticipatingEv = (dummy) => {
           onSwiper={handleSwiper} // Swiper 초기화 시 호출
           onSlideChange={(swiper) => handleSwiper(swiper)} // 슬라이드 이동 시 호출
         >
-          {dummy.data.map((program) => {
+          {dummy.data.map((program, idx) => {
             return (
-              <SwiperSlide key={program.id}>
+              <SwiperSlide key={idx}>
                 <ProgramBox>
                   <Poster src={EventImg} />
                   <Explaination>
