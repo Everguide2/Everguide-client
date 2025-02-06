@@ -5,12 +5,12 @@ const ListHeader = ({isLogin}) => {
   return (
       <Container>
         <tr>
-          <Thead width={"7%"}>분류</Thead>
-          <Thead width={"10%"}>지역</Thead>
-          <Thead width={"36%"}>정책 이름</Thead>
-          <Thead width={"23%"}>일시</Thead>
-          <Thead width={"11%"}>마감기한</Thead>
-          {isLogin && <Thead width={"13%"}></Thead>}
+          <Thead $width={"7%"}>분류</Thead>
+          <Thead $width={"10%"}>지역</Thead>
+          <Thead $width={"36%"}>정책 이름</Thead>
+          <Thead $width={"23%"}>일시</Thead>
+          <Thead $width={"11%"}>마감기한</Thead>
+          {isLogin && <Thead $width={"13%"}></Thead>}
         </tr>
       </Container>
   );
@@ -24,7 +24,7 @@ const Container = styled.thead`
 `
 
 const Thead = styled.th`
-  width: ${(props) => props.width};
+  width: ${({$width}) => $width};
   box-sizing: border-box;
   padding: 20px 0;
 `

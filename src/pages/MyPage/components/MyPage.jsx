@@ -1,9 +1,10 @@
 import React from 'react';
+import SavedList from "@pages/MyPage/merge/SavedList.jsx";
 
 const MyPage = () => {
     return (
         <div>
-            마이페이지 입니다.
+            <SavedList/>
         </div>
     );
 };

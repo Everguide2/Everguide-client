@@ -4,6 +4,8 @@ const string = {
   eventEducation: "행사/교육",
   workInformation: "일자리 정보",
   LoginRegister: "로그인/회원가입",
+  policy: "정책",
+  work: "일자리",
 
   searchBarPlaceHolder : "찾고 싶은 정책을 입력해보세요!",
 
@@ -139,6 +141,9 @@ const string = {
       description: "간단한 카테고리 분류,\n관심있는 정보를 쉽게 찾아보세요!",
     },
   ],
+
+  savedlistTitle: "저장한 목록",
+  savedlistDescription: "마감 기한이 지난 공고는 표시되지 않을 수 있습니다.",
 }
 
 export default string;
