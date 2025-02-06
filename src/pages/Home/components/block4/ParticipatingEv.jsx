@@ -38,9 +38,9 @@ const ParticipatingEv = (dummy) => {
           onSwiper={handleSwiper} // Swiper 초기화 시 호출
           onSlideChange={(swiper) => handleSwiper(swiper)} // 슬라이드 이동 시 호출
         >
-          {dummy.data.map((program) => {
+          {dummy.data.map((program, idx) => {
             return (
-              <SwiperSlide key={program.id}>
+              <SwiperSlide key={idx}>
                 <ProgramBox>
                   <Poster src={EventImg} />
                   <Explaination>
@@ -54,10 +54,10 @@ const ParticipatingEv = (dummy) => {
           })}
         </Swiper>
       </ParticipateArea>
-      <SlideButton ref={prevRef} left="0" disabled={isBeginning}>
+      <SlideButton ref={prevRef} $left="0" disabled={isBeginning}>
         &lt;
       </SlideButton>
-      <SlideButton ref={nextRef} right="0" disabled={isEnd}>
+      <SlideButton ref={nextRef} $right="0" disabled={isEnd}>
         &gt;
       </SlideButton>
     </Block4>
@@ -147,14 +147,14 @@ const SlideButton = styled.div`
   pointer-events: ${({ disabled }) =>
     disabled ? "none" : "auto"}; // 클릭 비활성화
 
-  ${({ left }) =>
-    left &&
+  ${({ $left }) =>
+    $left &&
     `
     left: 80px; /* 왼쪽 버튼 위치 */
   `}
 
-  ${({ right }) =>
-    right &&
+  ${({ $right }) =>
+    $right &&
     `
     right: 80px; /* 오른쪽 버튼 위치 */
   `}

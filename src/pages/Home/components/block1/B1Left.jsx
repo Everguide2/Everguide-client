@@ -25,7 +25,7 @@ const B1Left = (dummy) => {
             <EachButton
               key={index}
               onClick={() => handleButtonIndex(index)}
-              isActive={buttonIndex === index}
+              $isActive={buttonIndex === index}
             >
               {element}
             </EachButton>

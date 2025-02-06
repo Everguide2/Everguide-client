@@ -6,7 +6,7 @@ const B2Right = (dummy) => {
     <EachBoard>
       {[4, 5, 6, 7].map((number, index) => {
         return (
-          <NewPolicyBox>
+          <NewPolicyBox key={index}>
             <DateAndCategoryNew>
               <NewPoDate>
                 {dummy.data.data.새로나온정책[number]?.state ||
