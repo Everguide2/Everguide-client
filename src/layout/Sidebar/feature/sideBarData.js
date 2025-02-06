@@ -1,4 +1,4 @@
-export const sidebarData = [
+export const sideBarData = [
   {
     title: "분야",
     items: [
