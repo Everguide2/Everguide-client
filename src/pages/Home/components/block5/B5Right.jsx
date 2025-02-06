@@ -53,7 +53,7 @@ const Method = styled.p`
   margin-left: 22px;
 `;
 
-const LocationAndDday = styled.p`
+const LocationAndDday = styled.div`
   display: flex;
   justify-content: space-between;
   margin-left: 22px;

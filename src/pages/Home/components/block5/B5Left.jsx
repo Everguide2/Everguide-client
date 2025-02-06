@@ -10,8 +10,8 @@ const B5Left = (dummy) => {
         <MoreButton>더보기 &gt;</MoreButton>
       </TitleLine>
       {/*추후 API작업 시에 바꿀 예정 */}
-      {[0, 1, 2, 3, 4, 5].map((number) => {
-        return <JobLine>{dummy.data.data[0].content}</JobLine>;
+      {[0, 1, 2, 3, 4, 5].map((number, idx) => {
+        return <JobLine key={idx}>{dummy.data.data[0].content}</JobLine>;
       })}
     </TitleAndList>
   );
