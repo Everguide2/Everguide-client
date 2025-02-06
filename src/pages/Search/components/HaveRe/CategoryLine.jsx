@@ -10,20 +10,18 @@ const CategoryLine = () => {
       {category.map((name, index) => {
         const isLast = index === category.length - 1;
         return categoryCount[index] > 0 ? (
-          <>
-            <EachCategory isOn={true} key={index}>
-              {name}
-            </EachCategory>
+          <CategoryBox key={index}>
+            <CategoryName $isOn={true}>{name}</CategoryName>
             <CountCategory>({categoryCount[index]})</CountCategory>
             {!isLast && <Contour>|</Contour>}
-          </>
+          </CategoryBox>
         ) : (
-          <>
-            <EachCategory isOn={false} key={index}>
+          <CategoryBox key={index}>
+            <CategoryName $isOn={false} key={index}>
               {name}
-            </EachCategory>
+            </CategoryName>
             <CountCategory>({categoryCount[index]})</CountCategory>
-          </>
+          </CategoryBox>
         );
       })}
     </Categories>
@@ -32,7 +30,7 @@ const CategoryLine = () => {
 
 export default CategoryLine;
 
-const Categories = styled.p`
+const Categories = styled.div`
   color: black;
   height: 100px;
   margin-left: 110px;
@@ -40,9 +38,14 @@ const Categories = styled.p`
   display: flex;
   ${({ theme }) => theme.fonts.subHeader5};
 `;
-const EachCategory = styled.div`
-  color: ${({ isOn, theme }) =>
-    isOn ? theme.colors.primary[500] : theme.colors.gray[500]};
+
+const CategoryBox = styled.div`
+  display: flex;
+`;
+
+const CategoryName = styled.div`
+  color: ${({ $isOn, theme }) =>
+    $isOn ? theme.colors.primary[500] : theme.colors.gray[500]};
 `;
 const CountCategory = styled.p`
   color: ${({ theme }) => theme.colors.gray[500]};
