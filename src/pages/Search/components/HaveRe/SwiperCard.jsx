@@ -82,7 +82,7 @@ const CardMethod = styled.div`
   color: ${({ theme }) => theme.colors.gray[500]};
   margin-left: 17px;
 `;
-const LocationAndDday = styled.p`
+const LocationAndDday = styled.div`
   display: flex;
   justify-content: space-between;
   margin-left: 22px;
