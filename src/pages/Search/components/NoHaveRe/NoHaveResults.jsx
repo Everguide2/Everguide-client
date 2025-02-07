@@ -11,13 +11,11 @@ const NoHaveResults = () => {
           {category.map((name, index) => {
             const isLast = index === category.length - 1;
             return (
-              <>
-                <EachCategory isOn={false} key={index}>
-                  {name}
-                </EachCategory>
+              <CategoryBox key={index}>
+                <CategoryName $isOn={false}>{name}</CategoryName>
                 <CountCategory>(0)</CountCategory>
                 {!isLast && <Contour>|</Contour>}
-              </>
+              </CategoryBox>
             );
           })}
         </Categories>
@@ -39,7 +37,7 @@ const DetailContents = styled.div`
   margin-bottom: 192px;
 `;
 
-const Categories = styled.p`
+const Categories = styled.div`
   color: black;
   height: 100px;
   margin-left: 110px;
@@ -47,9 +45,14 @@ const Categories = styled.p`
   display: flex;
   ${({ theme }) => theme.fonts.subHeader5};
 `;
-const EachCategory = styled.div`
-  color: ${({ isOn, theme }) =>
-    isOn ? theme.colors.primary[500] : theme.colors.gray[500]};
+
+const CategoryBox = styled.div`
+  display: flex;
+`;
+
+const CategoryName = styled.div`
+  color: ${({ $isOn, theme }) =>
+    $isOn ? theme.colors.primary[500] : theme.colors.gray[500]};
 `;
 
 const CountCategory = styled.p`
