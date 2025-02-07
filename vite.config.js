@@ -45,5 +45,8 @@ export default defineConfig({
         replacement: path.resolve(__dirname, 'src/test'),
       },
     ]
+  },
+  server: {
+    historyApiFallback: true,
   }
 })
