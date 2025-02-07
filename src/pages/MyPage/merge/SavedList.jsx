@@ -15,9 +15,12 @@ const SavedList = () => {
           <SubTitle>{string.savedlistDescription}</SubTitle>
         </Header>
         <Content>
-          <Tab $active={active === string.policy} onClick={() => onClickTabs(string.policy)}>{string.policy}</Tab>
-          <Tab $active={active === string.eventEducation} onClick={() => onClickTabs(string.eventEducation)}>{string.eventEducation}</Tab>
-          <Tab $active={active === string.work} onClick={() => onClickTabs(string.work)} >{string.work}</Tab>
+          <TabContainer>
+            <Tab $active={active === string.policy} onClick={() => onClickTabs(string.policy)}>{string.policy}</Tab>
+            <Tab $active={active === string.eventEducation} onClick={() => onClickTabs(string.eventEducation)}>{string.eventEducation}</Tab>
+            <Tab $active={active === string.work} onClick={() => onClickTabs(string.work)} >{string.work}</Tab>
+          </TabContainer>
+
           <ListContainer>
 
           </ListContainer>
@@ -48,7 +51,10 @@ const Content = styled.div`
   margin-top: 18px;
   position: relative;
 `
-
+const TabContainer = styled.div`
+  display: flex;
+  position: relative;
+`
 const Tab = styled.button`
   ${({ theme }) => theme.fonts.header6}
   width: 190px;
@@ -61,29 +67,29 @@ const Tab = styled.button`
   padding: 14px 0 6px 0;
   cursor: pointer;
   position: relative;
+  margin-left: -10px;
 
   &:first-child:hover,
   &:nth-child(2):hover,
-  &:nth-child(3):hover
+  &:last-child:hover
   {
     color: ${({ theme }) => theme.colors.primary[900]};
     background-color: ${({ theme }) => theme.colors.white};
-    position: relative;
-    z-index: 99;
+    //position: relative;
+    //z-index: 99;
   }
   
   &:first-child {
     z-index: 4;
+    margin-left: 0;
   }
   
   &:nth-child(2) {
     z-index: ${({ $active }) => $active ? 99 : 3};
-    margin-left: -10px;
   }
   
-  &:nth-child(3) {
+  &:last-child {
     z-index: ${({ $active }) => $active ? 99 : 2};
-    margin-left: -10px;
   }
 `
 const ListContainer = styled.div`
@@ -93,5 +99,5 @@ const ListContainer = styled.div`
   border-radius: 0 42px 42px 42px;
   border: 1px solid ${({ theme }) => theme.colors.gray[300]};
   position: relative;
-  top: -1.5px;
+  top: -2px;
 `
