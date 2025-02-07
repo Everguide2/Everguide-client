@@ -2,7 +2,7 @@ import {icEyes} from "../../../assets";
 import {string} from "../../../constants";
 import * as S from "./style.js"
 import {FilterTitle, FilterSection, EverguideManual} from "../components";
-import {sideBarData} from "../feature/sidebarData";
+import {sideBarData} from "@layout/Sidebar/feature/sideBarData.js";
 
 const SideBar = () => {
   return (
