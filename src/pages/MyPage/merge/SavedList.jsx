@@ -15,12 +15,12 @@ const SavedList = () => {
           <SubTitle>{string.savedlistDescription}</SubTitle>
         </Header>
         <Content>
-          <TabContainer>
-            <Tab $active={active === string.policy} onClick={() => onClickTabs(string.policy)}>{string.policy}</Tab>
-            <Tab $active={active === string.eventEducation} onClick={() => onClickTabs(string.eventEducation)}>{string.eventEducation}</Tab>
-            <Tab $active={active === string.work} onClick={() => onClickTabs(string.work)} >{string.work}</Tab>
-          </TabContainer>
-          <ListContainer></ListContainer>
+          <Tab $active={active === string.policy} onClick={() => onClickTabs(string.policy)}>{string.policy}</Tab>
+          <Tab $active={active === string.eventEducation} onClick={() => onClickTabs(string.eventEducation)}>{string.eventEducation}</Tab>
+          <Tab $active={active === string.work} onClick={() => onClickTabs(string.work)} >{string.work}</Tab>
+          <ListContainer>
+
+          </ListContainer>
         </Content>
       </Container>
   );
@@ -46,15 +46,14 @@ const SubTitle = styled.p`
 `
 const Content = styled.div`
   margin-top: 18px;
+  position: relative;
 `
 
-const TabContainer = styled.div`
-`
 const Tab = styled.button`
   ${({ theme }) => theme.fonts.header6}
   width: 190px;
   border: 1px solid ${({ theme }) => theme.colors.gray[300]};
-  border-bottom: none;
+  border-bottom: ${({ theme, $active }) => $active ? 'none' : `1px solid ${theme.colors.gray[300]}`};
   border-radius: 42px 42px 0 0;
   background-color: ${({ theme, $active }) => $active ? theme.colors.white : theme.colors.gray[200]};
   color: ${({ theme, $active }) => $active ? theme.colors.primary[900] : theme.colors.gray[400]};
@@ -65,7 +64,7 @@ const Tab = styled.button`
 
   &:first-child:hover,
   &:nth-child(2):hover,
-  &:last-child:hover
+  &:nth-child(3):hover
   {
     color: ${({ theme }) => theme.colors.primary[900]};
     background-color: ${({ theme }) => theme.colors.white};
@@ -74,16 +73,16 @@ const Tab = styled.button`
   }
   
   &:first-child {
-    z-index: 3;
+    z-index: 4;
   }
   
   &:nth-child(2) {
-    z-index: ${({ $active }) => $active ? 99 : 2};
+    z-index: ${({ $active }) => $active ? 99 : 3};
     margin-left: -10px;
   }
   
-  &:last-child {
-    z-index: ${({ $active }) => $active ? 99 : 1};
+  &:nth-child(3) {
+    z-index: ${({ $active }) => $active ? 99 : 2};
     margin-left: -10px;
   }
 `
@@ -93,4 +92,6 @@ const ListContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 0 42px 42px 42px;
   border: 1px solid ${({ theme }) => theme.colors.gray[300]};
+  position: relative;
+  top: -1.5px;
 `
