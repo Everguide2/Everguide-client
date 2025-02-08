@@ -78,27 +78,47 @@ const OptionArea = styled.div`
   padding-right: 60px;
 `;
 
-const HomeButton = styled.div`
-  width: 41px;
+const HomeButton = styled.button`
+  width: 45px;
   height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 20px;
+  background-color: white;
+  border: none;
 `;
 
-const ServiceButton = styled.div`
-  width: 57px;
+const ServiceButton = styled.button`
+  width: 60px;
   height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 20px;
+  background-color: white;
+  border: none;
 `;
 
-const EachButton = styled.div`
+const EachButton = styled.button`
   width: 28px;
   height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 20px;
   margin-bottom: 6px;
+  background-color: white;
+  border: none;
 `;
 
-const LoveButton = styled.div`
-  width: 36px;
-  height: 36px;
+const LoveButton = styled.button`
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 7px;
+  background-color: white;
+  border: none;
 `;
