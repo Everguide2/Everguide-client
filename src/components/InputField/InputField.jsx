@@ -13,7 +13,7 @@ const InputField = ({
   isFocused,
   isValid,
   isCompleted,
-  context, // 추가: "login" 또는 "signup"을 전달받음
+  context,
 }) => {
   const isPassword = name === "password" || name === "confirmPassword";
 
@@ -33,7 +33,7 @@ const InputField = ({
         isValid={isValid}
         isCompleted={isCompleted}
         isPassword={isPassword}
-        context={context} // 로그인 or 회원가입 여부 전달
+        context={context}
       />
     </InputWrapper>
   );
@@ -41,7 +41,7 @@ const InputField = ({
 
 export default InputField;
 
-// 스타일 정의
+// 占쏙옙타占쏙옙 占쏙옙占쏙옙
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -63,16 +63,16 @@ const StyledInput = styled.input`
   border: 2px solid
     ${({ isFocused, isPassword, error, isValid, isCompleted, context }) =>
       error
-        ? "#FF4A4A" // 오류 시 빨간색
+        ? "#FF4A4A" 
         : isCompleted
-        ? "#E8E8E8" // 입력 완료 시 회색
+        ? "#E8E8E8" 
         : isValid
-        ? "black" // 모든 조건 충족 시 검정색
+        ? "black" 
         : isFocused
         ? isPassword && context === "signup"
-          ? "black" // 회원가입에서 비밀번호 필드일 경우 검정색
-          : "#FFCC00" // 로그인에서는 노란색
-        : "#E8E8E8"}; // 기본값 (회색)
+          ? "black" 
+          : "#FFCC00" 
+        : "#E8E8E8"}; 
   border-radius: 12px;
   transition: border-color 0.3s ease;
 
@@ -84,8 +84,8 @@ const StyledInput = styled.input`
         : isCompleted
         ? "#E8E8E8"
         : isPassword && context === "signup"
-        ? "black" // 회원가입의 비밀번호 필드는 검정색 유지
-        : "#FFCC00"}; // 나머지는 노란색
+        ? "black" 
+        : "#FFCC00"}; 
   }
 
   &::placeholder {
