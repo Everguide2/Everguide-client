@@ -1,19 +1,30 @@
 import {useState} from "react";
 import {styled} from "styled-components";
 import {string} from "@constants/";
+import {CommonHeader} from "@pages/Common/event&policyRec/components"
+import {ListView} from "@pages/Common/event&policyRec/components";
+import {useSelector} from "react-redux";
 
 const SavedList = () => {
+  const listData = ["등록일 순", "신청 마감순"];
   const [active, setActive] = useState(string.policy);
+  const [activeTab, setActiveTab] = useState("left");
+  const total = useSelector(state => state.paging.totalItems);
+
   const onClickTabs = (tabs) => {
     setActive(tabs);
   }
 
+  const onClickTabMenu = (tab) => {
+    setActiveTab(tab);
+  }
+
   return (
       <Container>
-        <Header>
+        <MyPageHeader>
           <Title>{string.savedlistTitle}</Title>
           <SubTitle>{string.savedlistDescription}</SubTitle>
-        </Header>
+        </MyPageHeader>
         <Content>
           <TabContainer>
             <Tab $active={active === string.policy} onClick={() => onClickTabs(string.policy)}>{string.policy}</Tab>
@@ -22,7 +33,14 @@ const SavedList = () => {
           </TabContainer>
 
           <ListContainer>
-
+            <CommonHeader
+                total={total}
+                listData={listData}
+                activeTab={activeTab}
+                onClickTab={onClickTabMenu}
+                type={"small"}
+            />
+            <ListView type={"MyPage"}/>
           </ListContainer>
         </Content>
       </Container>
@@ -34,7 +52,7 @@ export default SavedList;
 const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.gray[50]};
 `
-const Header = styled.div`
+const MyPageHeader = styled.div`
   display: flex;
   align-items: flex-end;
   gap: 20px;
@@ -94,10 +112,17 @@ const Tab = styled.button`
 `
 const ListContainer = styled.div`
   width: 1010px;
-  height: 500px;
+  height: 100%;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 0 42px 42px 42px;
   border: 1px solid ${({ theme }) => theme.colors.gray[300]};
   position: relative;
   top: -2px;
+  padding: 29px 0;
+  
+  
+  
+  & > div {
+    padding-left: 19px;
+  }
 `
