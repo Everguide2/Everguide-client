@@ -1,7 +1,7 @@
 import {styled} from "styled-components";
 
 // eslint-disable-next-line react/prop-types
-const ListHeader = ({isLogin}) => {
+const ListHeader = ({isLogin, isMyPage}) => {
   return (
       <Container>
         <tr>
@@ -11,6 +11,7 @@ const ListHeader = ({isLogin}) => {
           <Thead $width={"23%"}>일시</Thead>
           <Thead $width={"11%"}>마감기한</Thead>
           {isLogin && <Thead $width={"13%"}></Thead>}
+          {isMyPage && <Thead $width={"13%"}>선택</Thead>}
         </tr>
       </Container>
   );

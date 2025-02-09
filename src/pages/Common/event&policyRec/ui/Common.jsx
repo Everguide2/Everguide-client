@@ -1,8 +1,8 @@
 import { useState } from "react";
 import * as S from "./style";
 import SideBar from "@layout/Sidebar/ui/SideBar.jsx";
-import {DropDown, Paginations} from "@components/";
-import {TabMenu, CardView, ListView} from "@pages/Common/event&policyRec/components";
+import {Paginations} from "@components/";
+import {CardView, ListView, CommonHeader} from "@pages/Common/event&policyRec/components";
 import {useSelector} from "react-redux";
 
 const Common = () => {
@@ -19,13 +19,13 @@ const Common = () => {
         <S.Container>
           <SideBar/>
           <S.RightContent>
-            <S.Header>
-              <S.Total>총 {total}개</S.Total>
-              <S.Setting>
-                <DropDown initial={"정렬"} items={listData}/>
-                <TabMenu activeTab={activeTab} onClickTab={onClickTab}/>
-              </S.Setting>
-            </S.Header>
+            <CommonHeader
+                total={total}
+                listData={listData}
+                activeTab={activeTab}
+                onClickTab={onClickTab}
+                type={"big"}
+            />
             {activeTab === "left" ? <CardView /> : <ListView />}
             <Paginations />
           </S.RightContent>

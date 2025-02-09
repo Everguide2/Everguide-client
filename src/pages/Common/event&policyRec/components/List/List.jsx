@@ -4,7 +4,7 @@ import Category from "@pages/Common/event&policyRec/components/Category.jsx";
 import {string} from "@constants/index.js";
 
 // eslint-disable-next-line react/prop-types
-const List = ({city, category, title, assign, duration, dDay, bookmark, isLogin, onClick}) => {
+const List = ({city, category, title, assign, duration, dDay, bookmark, isLogin, type, onClick}) => {
   return (
       <Container onClick={onClick}>
         <tr>
@@ -19,6 +19,7 @@ const List = ({city, category, title, assign, duration, dDay, bookmark, isLogin,
           <td>{duration}</td>
           <td>{dDay === 0 ? string.dDay : string.dTitle + dDay}</td>
           {isLogin && <td><ListBookMark isBookMarked={bookmark}/></td>}
+          {type === "MyPage" && <td>체크</td>}
         </tr>
       </Container>
   );
@@ -45,9 +46,6 @@ const Container = styled.tbody`
     }
 
     td:nth-child(3) {
-      //display: flex;
-      //flex-direction: column;
-      //align-items: center;
       padding-left: 47px;
 
       p {

@@ -7,7 +7,7 @@ import ListHeader from "@pages/Common/event&policyRec/components/List/ListHeader
 import List from "@pages/Common/event&policyRec/components/List/List.jsx";
 
 
-const ListView = () => {
+const ListView = ({type}) => {
   const navigate = useNavigate();
   const listData = useSelector(state => state.information);
   const [isLogin, setIsLogin] = useState(false);
@@ -18,7 +18,7 @@ const ListView = () => {
 
   return (
       <Container>
-        <ListHeader isLogin={isLogin}/>
+        <ListHeader isLogin={isLogin} isMyPage={type === "MyPage"}/>
         {listData.map((data) => (
             <List
                 onClick={() => onClickList(data.id)}
@@ -31,6 +31,7 @@ const ListView = () => {
                 dDay={data.dDay}
                 bookmark={data.bookMark}
                 isLogin={isLogin}
+                type={type}
             />
         ))}
 
