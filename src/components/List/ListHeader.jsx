@@ -1,7 +1,7 @@
 import {styled} from "styled-components";
 
 // eslint-disable-next-line react/prop-types
-const ListHeader = ({isLogin, isMyPage}) => {
+const ListHeader = ({type, isLogin, isMyPage}) => {
   return (
       <Container>
         <tr>

@@ -1,10 +1,10 @@
 import {styled} from "styled-components";
-import ListBookMark from "@pages/Common/event&policyRec/components/List/ListBookMark.jsx";
+import ListBookMark from "@components/List/ListBookMark.jsx";
 import Category from "@pages/Common/event&policyRec/components/Category.jsx";
 import {string} from "@constants/index.js";
 
 // eslint-disable-next-line react/prop-types
-const List = ({city, category, title, assign, duration, dDay, bookmark, isLogin, type, onClick}) => {
+const List = ({city, category, title, assign, duration, dDay, bookmark, isLogin, isMyPage, onClick}) => {
   return (
       <Container onClick={onClick}>
         <tr>
@@ -19,7 +19,7 @@ const List = ({city, category, title, assign, duration, dDay, bookmark, isLogin,
           <td>{duration}</td>
           <td>{dDay === 0 ? string.dDay : string.dTitle + dDay}</td>
           {isLogin && <td><ListBookMark isBookMarked={bookmark}/></td>}
-          {type === "MyPage" && <td>체크</td>}
+          {isMyPage && <Td><CheckInput type="checkbox"/></Td>}
         </tr>
       </Container>
   );
@@ -64,6 +64,10 @@ const Container = styled.tbody`
     }
   }
 `
+
+const Td = styled.td`
+  vertical-align: middle;
+`
 const Title = styled.p`
   ${({theme}) => theme.fonts.body1};
   color: ${({theme}) => theme.colors.realBlack};
@@ -73,3 +77,19 @@ const Assign = styled.p`
   color: ${({theme}) => theme.colors.gray[700]};
   margin-top: 2px;
 `;
+
+const CheckInput = styled.input`
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  appearance: none;
+  outline: none;
+  border: 1px solid ${({ theme }) => theme.colors.gray[400]};
+  
+  &:checked{
+    border: 1px solid ${({ theme }) => theme.colors.gray[800]};
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='12' viewBox='0 0 15 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5.21053L5.81482 9L13 1' stroke='%23E75058' stroke-width='3'/%3E%3C/svg%3E%0A");
+  }
+`
