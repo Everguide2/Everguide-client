@@ -144,6 +144,7 @@ const string = {
 
   savedlistTitle: "저장한 목록",
   savedlistDescription: "마감 기한이 지난 공고는 표시되지 않을 수 있습니다.",
+  checkDelete: "선택삭제",
 }
 
 export default string;

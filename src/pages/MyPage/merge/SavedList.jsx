@@ -1,15 +1,21 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {styled} from "styled-components";
 import {string} from "@constants/";
-import {CommonHeader} from "@pages/Common/event&policyRec/components"
-import {ListView} from "@pages/Common/event&policyRec/components";
-import {useSelector} from "react-redux";
+import {CommonHeader} from "@pages/Common/event&policyRec/components";
+import {ListHeader, List, Paginations, MyPageButton} from "@components/";
+import {useSelector, useDispatch} from "react-redux";
+import {setPage} from "@stores/paging/pagingSlice.js";
+import {addSavedList, deleteSavedList} from "@stores/mypage/savedListSlice.js";
+import {noImageData} from "@test/eventDummyNoImages.js";
 
 const SavedList = () => {
   const listData = ["등록일 순", "신청 마감순"];
+  const [deleteList, setDeleteList] = useState([]);
   const [active, setActive] = useState(string.policy);
-  const [activeTab, setActiveTab] = useState("left");
+  const [activeTab, setActiveTab] = useState("right");
   const total = useSelector(state => state.paging.totalItems);
+  const bookMarks = useSelector(state => state.savedList);
+  const dispatch = useDispatch();
 
   const onClickTabs = (tabs) => {
     setActive(tabs);
@@ -18,6 +24,23 @@ const SavedList = () => {
   const onClickTabMenu = (tab) => {
     setActiveTab(tab);
   }
+
+  const onClickBookMarkList = (id) => {
+    setDeleteList(prev =>
+        prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+    );
+  }
+
+  const onClickCheckDelete = () => {
+  }
+
+  useEffect(() => {
+    dispatch(setPage({itemsCount: 10, totalItems: 160, pageRange: 5}));
+    noImageData.forEach((item) => {
+      dispatch(addSavedList({...item}));
+    })
+
+  }, []);
 
   return (
       <Container>
@@ -31,7 +54,6 @@ const SavedList = () => {
             <Tab $active={active === string.eventEducation} onClick={() => onClickTabs(string.eventEducation)}>{string.eventEducation}</Tab>
             <Tab $active={active === string.work} onClick={() => onClickTabs(string.work)} >{string.work}</Tab>
           </TabContainer>
-
           <ListContainer>
             <CommonHeader
                 total={total}
@@ -40,7 +62,27 @@ const SavedList = () => {
                 onClickTab={onClickTabMenu}
                 type={"small"}
             />
-            <ListView type={"MyPage"}/>
+            <ListViewContainer>
+              <ListHeader isMyPage={true} type={active}/>
+              {bookMarks.map((item) => (
+                  <List
+                    key={item.id}
+                    isMyPage={true}
+                    city={item.city}
+                    category={item.category}
+                    title={item.title}
+                    assign={item.assign}
+                    duration={item.duration}
+                    dDay={item.dDay}
+                    onClickCheckBox={() => onClickBookMarkList(item.id)}
+                  />
+              ))}
+            </ListViewContainer>
+            <BottomContainer>
+              <Blank/>
+              <Paginations/>
+              <MyPageButton text={string.checkDelete} active={deleteList.length > 0} onClick={onClickCheckDelete}/>
+            </BottomContainer>
           </ListContainer>
         </Content>
       </Container>
@@ -120,9 +162,24 @@ const ListContainer = styled.div`
   top: -2px;
   padding: 29px 0;
   
-  
-  
   & > div {
     padding-left: 19px;
   }
+`
+
+const ListViewContainer = styled.table`
+  width: 100%;
+  background-color: ${({theme}) => theme.colors.white};
+  border-top: 1px solid ${({theme}) => theme.colors.gray[900]};
+  margin-top: 17px;
+`
+
+const Blank = styled.div``
+
+const BottomContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  margin-top: 25px;
 `
