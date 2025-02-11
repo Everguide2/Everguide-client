@@ -5,7 +5,7 @@ import {Paginations} from "@components/";
 import {CardView, ListView, CommonHeader} from "@pages/Common/event&policyRec/components";
 import {useSelector} from "react-redux";
 
-const Common = () => {
+const Common = ({type}) => {
   const listData = ["등록일 순", "신청 마감순"];
   const [activeTab, setActiveTab] = useState("left");
   const total = useSelector(state => state.paging.totalItems);
@@ -26,7 +26,7 @@ const Common = () => {
                 onClickTab={onClickTab}
                 type={"big"}
             />
-            {activeTab === "left" ? <CardView /> : <ListView />}
+            {activeTab === "left" ? <CardView /> : <ListView type={type}/>}
             <Paginations />
           </S.RightContent>
         </S.Container>

@@ -4,7 +4,7 @@ import Category from "@pages/Common/event&policyRec/components/Category.jsx";
 import {string} from "@constants/index.js";
 
 // eslint-disable-next-line react/prop-types
-const List = ({city, category, title, assign, duration, dDay, bookmark, isLogin, isMyPage, onClick}) => {
+const List = ({city, category, title, assign, duration, dDay, bookmark, isLogin, isMyPage, onClick, onClickCheckBox}) => {
   return (
       <Container onClick={onClick}>
         <tr>
@@ -19,7 +19,7 @@ const List = ({city, category, title, assign, duration, dDay, bookmark, isLogin,
           <td>{duration}</td>
           <td>{dDay === 0 ? string.dDay : string.dTitle + dDay}</td>
           {isLogin && <td><ListBookMark isBookMarked={bookmark}/></td>}
-          {isMyPage && <Td><CheckInput type="checkbox"/></Td>}
+          {isMyPage && <Td><CheckInput type="checkbox" onClick={onClickCheckBox} /></Td>}
         </tr>
       </Container>
   );
