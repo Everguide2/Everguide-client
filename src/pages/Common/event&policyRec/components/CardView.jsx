@@ -2,17 +2,11 @@ import {styled} from "styled-components";
 import Card from "@components/Card/Card.jsx";
 import {useSelector} from "react-redux";
 import {useState} from "react";
-import {useCustomNavigation} from "@hooks/useCustomNavigation.js";
-import {pagePath} from "@/routes/pagePath.js";
 
-const CardView = () => {
-  const {navigateTo} = useCustomNavigation()
+// eslint-disable-next-line react/prop-types
+const CardView = ({onClickCard}) => {
   const cardData = useSelector(state => state.information);
   const [isLogin, setIsLogin] = useState(false);
-
-  const onClickCard = (id) => {
-    navigateTo(`/${pagePath.EVENT}/${id}`);
-  }
 
   return (
       <CardContainer>
