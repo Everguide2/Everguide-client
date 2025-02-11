@@ -3,8 +3,8 @@ import {useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {styled} from "styled-components";
 import {pagePath} from "@/routes/pagePath.js";
-import ListHeader from "@pages/Common/event&policyRec/components/List/ListHeader.jsx";
-import List from "@pages/Common/event&policyRec/components/List/List.jsx";
+import ListHeader from "@components/List/ListHeader.jsx";
+import List from "@components/List/List.jsx";
 
 
 const ListView = ({type}) => {
@@ -18,7 +18,7 @@ const ListView = ({type}) => {
 
   return (
       <Container>
-        <ListHeader isLogin={isLogin} isMyPage={type === "MyPage"}/>
+        <ListHeader isLogin={isLogin} type={type}/>
         {listData.map((data) => (
             <List
                 onClick={() => onClickList(data.id)}
@@ -31,7 +31,6 @@ const ListView = ({type}) => {
                 dDay={data.dDay}
                 bookmark={data.bookMark}
                 isLogin={isLogin}
-                type={type}
             />
         ))}
 
