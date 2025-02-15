@@ -1,5 +1,5 @@
 import RootLayout from "../layout/RootLayout.jsx";
-import {Home, Policy, Event, EventDetail, Job, Login, Signup,Search, MyPage, FindEmail, FindPassword, EmailResult, PasswordSent, SignupLoading, SignupSuccess} from "../pages";
+import {Home, Policy, Event, EventDetail, Job, Login, Signup,Search, MyPage, FindEmail, FindPassword, EmailResult, PasswordSent, SignupLoading, SignupSuccess, Error404} from "../pages";
 import {pagePath} from "./pagePath.js";
 
 const routes = [
@@ -69,6 +69,10 @@ const routes = [
     path : pagePath.SIGNUPSUCCESS,
     element : <SignupSuccess />
   },
+  {
+    path: "*",
+    element: <Error404 />
+  }
 ];
 
 export default routes;

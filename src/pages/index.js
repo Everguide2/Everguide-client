@@ -14,3 +14,5 @@ export { default as PasswordSent } from '@pages/Auth/ui/PasswordSent';
 export { default as SignupLoading } from '@pages/Auth/ui/SignupLoading';
 export { default as SignupSuccess } from '@pages/Auth/ui/SignupSuccess';
 
+export { default as Error404 } from "@pages/Error/FullScreen/Case/Error404.jsx";
+
