@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import ErrorHeader from "../ErrorHeader";
-import theme from "../../../../theme/theme";
+import {useCustomNavigation} from "@hooks/useCustomNavigation.js";
 import Error404Img from "../../../../assets/images/img-Group33906.svg";
 const Error404 = () => {
+  const {navigateTo} = useCustomNavigation();
+
   return (
     <Screen>
       <ErrorHeader />
@@ -16,7 +18,7 @@ const Error404 = () => {
             요청하신 페이지의 주소가 변경, 삭제되어 찾을 수 없습니다.
           </DetailError>
           <ErrorImg src={Error404Img} alt="404이미지" />
-          <HomeButton>홈으로</HomeButton>
+          <HomeButton onClick={() => navigateTo("/")}>홈으로</HomeButton>
         </Message>
       </MessageArea>
     </Screen>
@@ -79,4 +81,5 @@ const HomeButton = styled.button`
   text-decoration: underline;
   text-decoration-thickness: 4px;
   text-underline-offset: 11px;
+  cursor: pointer;
 `;
