@@ -18,7 +18,7 @@ const Event = () => {
   }, []);
 
   return (
-      <Common/>
+      <Common type={"행사/교육"}/>
   );
 };
 

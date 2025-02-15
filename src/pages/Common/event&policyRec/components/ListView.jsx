@@ -1,24 +1,18 @@
 import {useState} from "react";
 import {useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
 import {styled} from "styled-components";
-import {pagePath} from "@/routes/pagePath.js";
-import ListHeader from "@pages/Common/event&policyRec/components/List/ListHeader.jsx";
-import List from "@pages/Common/event&policyRec/components/List/List.jsx";
+import ListHeader from "@components/List/ListHeader.jsx";
+import List from "@components/List/List.jsx";
 
 
-const ListView = () => {
-  const navigate = useNavigate();
+// eslint-disable-next-line react/prop-types
+const ListView = ({type, onClickList}) => {
   const listData = useSelector(state => state.information);
   const [isLogin, setIsLogin] = useState(false);
 
-  const onClickList = (id) => {
-    navigate(`/${pagePath.EVENT}/${id}`);
-  }
-
   return (
       <Container>
-        <ListHeader isLogin={isLogin}/>
+        <ListHeader isLogin={isLogin} type={type}/>
         {listData.map((data) => (
             <List
                 onClick={() => onClickList(data.id)}
