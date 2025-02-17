@@ -1,5 +1,5 @@
 import RootLayout from "../layout/RootLayout.jsx";
-import {Home, Policy, Event, EventDetail, Job, JobMore, JobSenior, Login, Signup,Search, MyPage, FindEmail, FindPassword, EmailResult, PasswordSent, SignupLoading, SignupSuccess, Error404} from "../pages";
+import {Home, Policy, Event, EventDetail, Job, JobDetail, JobMore, JobSenior, Login, Signup,Search, MyPage, FindEmail, FindPassword, EmailResult, PasswordSent, SignupLoading, SignupSuccess, Error404} from "../pages";
 import {pagePath} from "./pagePath.js";
 
 const routes = [
@@ -26,6 +26,10 @@ const routes = [
       {
         path: pagePath.JOB,
         element: <Job />,
+      },
+      {
+        path: pagePath.JOBDETAIL,
+        element: <JobDetail />,
       },
       {
         path: pagePath.JOBSENIOR,
