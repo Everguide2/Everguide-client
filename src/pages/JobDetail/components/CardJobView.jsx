@@ -1,8 +1,11 @@
 import {styled} from "styled-components";
 import CardJob from "@pages/JobDetail/components/CardJob.jsx";
 import {jobDummy} from "@test/jobDummy.js";
+import {useCustomNavigation} from "@hooks/useCustomNavigation.js";
 
 const CardJobView = () => {
+  const {navigateTo} = useCustomNavigation();
+
   return (
       <CardContainer>
         {jobDummy.map((item) => (
@@ -14,6 +17,7 @@ const CardJobView = () => {
               state={item.state}
               duration={item.duration}
               bookmark={item.bookmark}
+              onClick={() => navigateTo(`/job-senior/${item.id}`)}
           />
         ))}
 

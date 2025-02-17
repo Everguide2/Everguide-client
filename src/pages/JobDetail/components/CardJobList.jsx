@@ -2,8 +2,11 @@ import {styled} from "styled-components";
 import {ListHeader} from "@components/index.js";
 import {jobDummy} from "@test/jobDummy.js";
 import {List} from "@components/index.js";
+import {useCustomNavigation} from "@hooks/useCustomNavigation.js";
 
 const CardJobList = () => {
+  const {navigateTo} = useCustomNavigation();
+
   return (
       <Container>
         <ListHeader
@@ -22,6 +25,7 @@ const CardJobList = () => {
                 dDay={"Day"}
                 duration={data.duration}
                 isJob={true}
+                onClick={() => navigateTo(`/job-senior/${data.id}`)}
             />
         ))}
       </Container>

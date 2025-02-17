@@ -3,9 +3,9 @@ import CardBookMark from "@components/Card/CardBookMark.jsx";
 
 
 // eslint-disable-next-line react/prop-types
-const CardJob = ({company, location, title, state, duration, isLogin, bookmark}) => {
+const CardJob = ({company, location, title, state, duration, isLogin, bookmark, onClick}) => {
   return (
-      <Container>
+      <Container onClick={onClick}>
         <Company>{company}</Company>
         <Location>{location}</Location>
         {isLogin && <CardBookMark isBookmarked={bookmark}/>}
