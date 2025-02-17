@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import theme from "@/theme/theme.js";
 
 const BlockArea = ({ img, Shortcut, text, href }) => {
   return (
@@ -9,8 +8,8 @@ const BlockArea = ({ img, Shortcut, text, href }) => {
         <img src={img} />
       </SiteBanner>
       <SiteEx>
-        {text.map((str) => {
-          return <EachEx>{str}</EachEx>;
+        {text.map((str, idx) => {
+          return <EachEx key={idx}>{str}</EachEx>;
         })}
       </SiteEx>
       <ShortcutButton href={href} target="_blank">
