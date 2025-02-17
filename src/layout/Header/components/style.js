@@ -35,7 +35,7 @@ export const Profile = styled.img`
 `
 
 export const HeaderContainer = styled.div`
-    position: relative;
+  position: relative;
   width: ${(props) => props.theme.size.safeArea};  
   margin: 0 auto;
 `

@@ -7,12 +7,10 @@ import {string} from "@constants/index.js";
 // eslint-disable-next-line react/prop-types
 const SubHeader = ({active, subactive, onClick}) => {
   const [isHover, setHover] = useState(false);
-  const [isActive, setIsActive] = useState(false);
 
   const handleHover = (state) => {
     setHover(state);
   }
-
 
   return (
       <S.SubHeader>

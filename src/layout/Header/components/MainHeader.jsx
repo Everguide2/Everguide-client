@@ -11,6 +11,7 @@ const MainHeader = ({onClick ,isLogin}) => {
   const [isProfileHovered, setIsProfileHovered] = useState(false);
 
   const handleHover = (type, state) => {
+    console.log(state)
     type === 1 ? setIsNotifyHovered(state) : setIsProfileHovered(state);
   }
 

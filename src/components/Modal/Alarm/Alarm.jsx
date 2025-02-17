@@ -49,6 +49,7 @@ const Container = styled.div`
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
   border-radius: 24px;
   box-sizing: border-box;
+  z-index: 99;
 `
 
 const Notification = styled.div`
