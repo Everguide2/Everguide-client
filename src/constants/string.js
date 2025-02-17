@@ -7,7 +7,7 @@ const string = {
   policy: "정책",
   work: "일자리",
 
-  searchBarPlaceHolder : "찾고 싶은 정책을 입력해보세요!",
+  searchBarPlaceHolder: "찾고 싶은 정책을 입력해보세요!",
 
   footerIntroduction: "Team Everguide 소개",
   csTitle: "고객센터",
@@ -22,7 +22,7 @@ const string = {
   ask: "문의하기",
 
   copyRight: "@ 2025 Everguide. All rights reserved.",
-  
+
   login: {
     title: "로그인",
     description: "계정에 로그인하고 나에게 딱맞는 복지혜택과 정책을 챙겨가요",
@@ -36,26 +36,23 @@ const string = {
       },
       {
         description: "아직 계정이 없으신가요?",
-        items: [
-          { text: "회원가입", href: "/signup" },
-        ],
+        items: [{ text: "회원가입", href: "/signup" }],
       },
     ],
   },
 
   signup: {
     title: "회원가입",
-    description: "새로운 계정을 생성하고 나에게 딱맞는 복지혜택과 정책을 챙겨가요",
+    description:
+      "새로운 계정을 생성하고 나에게 딱맞는 복지혜택과 정책을 챙겨가요",
     links: [
       {
         description: "이미 계정이 있으신가요?",
-        items: [
-          { text: "로그인", href: "/login" },
-        ],
+        items: [{ text: "로그인", href: "/login" }],
       },
     ],
   },
-  
+
   findEmail: {
     title: "이메일 찾기",
     description: "이메일이 기억나지 않으시나요?",
@@ -63,7 +60,7 @@ const string = {
       {
         description: "계정이 기억나시나요?",
         items: [
-          { 
+          {
             text: "로그인",
             href: "/login",
           },
@@ -72,11 +69,11 @@ const string = {
       {
         description: "아직 계정이 없으신가요?",
         items: [
-          { 
+          {
             text: "회원가입",
-            href: "/signup" 
+            href: "/signup",
           },
-        ]
+        ],
       },
     ],
   },
@@ -88,7 +85,7 @@ const string = {
       {
         description: "계정이 기억나시나요?",
         items: [
-          { 
+          {
             text: "로그인",
             href: "/login",
           },
@@ -97,13 +94,13 @@ const string = {
       {
         description: "아직 계정이 없으신가요?",
         items: [
-          { 
+          {
             text: "회원가입",
-            href: "/signup" 
+            href: "/signup",
           },
-        ]
+        ],
       },
-    ]
+    ],
   },
 
   filter: "필터",
@@ -122,7 +119,6 @@ const string = {
 
   noRead: "읽지 않은 알림",
 
-
   cards: [
     {
       title: "시니어 맞춤형 정책 추천",
@@ -130,7 +126,8 @@ const string = {
     },
     {
       title: "시니어 일자리 정보 제공",
-      description: "새로운 기회, 더 많은 일자리,\n지역별로 확인하고 바로 신청하세요!",
+      description:
+        "새로운 기회, 더 많은 일자리,\n지역별로 확인하고 바로 신청하세요!",
     },
     {
       title: "알찬 시니어 프로그램과 행사 정보",
@@ -145,6 +142,28 @@ const string = {
   savedlistTitle: "저장한 목록",
   savedlistDescription: "마감 기한이 지난 공고는 표시되지 않을 수 있습니다.",
   checkDelete: "선택삭제",
-}
+  seemorejob1: [
+    {
+      text: "타사이트에서 제공하는 다양한 노인일자리 구인정보 사이트로 연동되는 서비스입니다.",
+    },
+    {
+      text: "일자리의 문의는 공고의 문의처로 직접하셔서 안내를 받으시기 바랍니다.",
+    },
+    {
+      text: "(해당 관심 구인공고를 더블클릭하면 해당 기관 사이트로 이동합니다.)",
+    },
+  ],
+  jobsiteExplain: [
+    {
+      text: ["사람인에서 노인일자리 관련 구인정보를 확인 할 수 있습니다."],
+    },
+    {
+      text: [
+        "서울특별시 서울시어르신취업지원센터에서 운영하고 있는",
+        "노인일자리 관련 구인 정보를 더 확인 할 수 있습니다.",
+      ],
+    },
+  ],
+};
 
 export default string;
