@@ -8,10 +8,10 @@ const B2Right = (dummy) => {
         return (
           <NewPolicyBox key={index}>
             <DateAndCategoryNew>
-              <NewPoDate>
-                {dummy.data.data.새로나온정책[number]?.state ||
+              <NewPoLocation>
+                {dummy.data.data.새로나온정책[number]?.location ||
                   "데이터가 없습니다."}
-              </NewPoDate>
+              </NewPoLocation>
               <Dot>·</Dot>
               <NewPoCategory>
                 {dummy.data.data.새로나온정책[number]?.category ||
@@ -54,15 +54,14 @@ const DateAndCategoryNew = styled.div`
   ${({ theme }) => theme.fonts.body4}
 `;
 
-const NewPoDate = styled.p`
+const NewPoLocation = styled.p`
   color: #d32f2f;
-  margin-right: 26px;
-  width: 68px;
+  margin-right: 13px;
   // height: 32px;
 `;
 const Dot = styled.p`
   color: #8f8d8a;
-  width: 18px;
+  width: 11px;
   // height32px;
   ${({ theme }) => theme.fonts.subHeader6}
 `;
