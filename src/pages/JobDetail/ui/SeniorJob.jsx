@@ -1,13 +1,15 @@
-import {useState} from "react";
-import {useSelector} from 'react-redux'
+import {useState, useEffect} from "react";
+import {useSelector, useDispatch} from 'react-redux'
 import * as S from "./style";
 import {Paginations} from "@components/";
 import SideBar from "@layout/Sidebar/ui/SideBar.jsx";
 import {CommonHeader} from "@pages/Common/event&policyRec/components/index.js";
 import CardJobView from "@pages/JobDetail/components/CardJobView.jsx";
 import CardJobList from "@pages/JobDetail/components/CardJobList.jsx";
+import {setPage} from "@stores/paging/pagingSlice.js";
 
 const SeniorJob = () => {
+  const dispatch = useDispatch();
   const listData = ["시작일 순" , "마감일 순"];
   const [activeTab, setActiveTab] = useState("left");
   const total = useSelector(state => state.paging.totalItems)
@@ -16,6 +18,9 @@ const SeniorJob = () => {
     setActiveTab(tab);
   }
 
+  useEffect(() => {
+    dispatch(setPage({itemsCount: 10, totalItems: 160, pageRange: 5}));
+  }, [])
   return (
       <S.SeniorJob>
         <S.Container>
@@ -29,6 +34,7 @@ const SeniorJob = () => {
                 type={"big"}
             />
             {activeTab === "left" ? <CardJobView/>: <CardJobList/>}
+            <Paginations/>
           </S.RightContent>
         </S.Container>
       </S.SeniorJob>
