@@ -1,7 +1,7 @@
 export { default as Search } from "@pages/Search/ui/Search";
 export { default as Login } from "./Auth/ui/Login";
 export { default as Signup } from "./Auth/ui/Signup";
-export { default as MyPage } from "./MyPage/components/MyPage";
+export { default as MyPage } from "./MyPage/ui/MyPage";
 export { default as FindEmail } from "./Auth/ui/FindEmail";
 export { default as FindPassword } from "./Auth/ui/FindPassword";
 export { default as Home } from '@pages/Home/ui/Home';
