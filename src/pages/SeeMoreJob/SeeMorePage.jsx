@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import IntroArea from "./Intro/IntroArea";
-import SiteArea from "./Sites/SiteArea";
+import IntroArea from "../JobDetail/components/IntroArea.jsx";
+import SiteArea from "../JobDetail/components/SiteArea.jsx";
 
 const SeeMorePage = () => {
   return (
