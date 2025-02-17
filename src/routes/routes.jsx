@@ -31,6 +31,10 @@ const routes = [
         path: `${pagePath.SEARCH}/:query`,
         element: <Search />,
       },
+      {
+        path : pagePath.MYPAGE,
+        element : <MyPage />,
+      }
     ],
   },
   { 
