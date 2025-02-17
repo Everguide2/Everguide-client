@@ -28,6 +28,7 @@ const Block3 = styled.div`
 const AdArea = styled.div`
   width: 1113px;
   height: 151px;
+  cursor: pointer;
 `;
 
 const AdImg = styled.img`
