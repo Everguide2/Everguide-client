@@ -5,6 +5,8 @@ export const pagePath = {
   EVENTDETAIL : 'event/:eventId',
   SEARCH: 'search',
   JOB: 'job',
+  JOBSENIOR: 'job-senior',
+  JOBMORE: 'job-more',
   SUPPORT : 'support',
   LOGIN : 'login',
   SIGNUP : 'signup',

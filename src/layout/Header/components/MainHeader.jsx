@@ -5,8 +5,6 @@ import {Button, SearchBar, Alarm, Profile} from "@components/index.js";
 import {string} from "@constants/index.js";
 import {pagePath} from "@/routes/pagePath.js";
 
-
-
 // eslint-disable-next-line react/prop-types
 const MainHeader = ({onClick ,isLogin}) => {
   const [isNotifyHovered, setIsNotifyHovered] = useState(false);

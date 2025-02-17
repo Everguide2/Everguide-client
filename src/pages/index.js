@@ -9,6 +9,8 @@ export { default as Policy } from '@pages/PolicyRec/ui/Policy';
 export { default as Event } from '@pages/Event/ui/Event';
 export { default as EventDetail } from '@pages/EventDetail/ui/EventDetail';
 export { default as Job } from '@pages/Job/ui/Job';
+export { default as JobMore } from "@pages/JobDetail/ui/MoreJob.jsx";
+export { default as JobSenior } from "@pages/JobDetail/ui/SeniorJob.jsx";
 export { default as EmailResult } from '@pages/Auth/ui/EmailResult';
 export { default as PasswordSent } from '@pages/Auth/ui/PasswordSent';
 export { default as SignupLoading } from '@pages/Auth/ui/SignupLoading';

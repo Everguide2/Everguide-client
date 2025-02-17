@@ -35,9 +35,9 @@ export const Profile = styled.img`
 `
 
 export const HeaderContainer = styled.div`
+    position: relative;
   width: ${(props) => props.theme.size.safeArea};  
   margin: 0 auto;
-
 `
 export const Inner = styled.div`
   height: 110px;
@@ -49,28 +49,65 @@ export const Inner = styled.div`
 export const SubHeader = styled.div`
   height: 74px;
   border: 1px solid ${({theme}) => theme.colors.gray[200]};
-    
-  ul{
+`
+export const SubHeaderMain = styled.ul`
     ${({theme}) => theme.fonts.header6}
     color: ${({theme}) => theme.colors.gray[900]};
     display: flex;
     padding-left: 110px;
-    
+
+
     li::before {
-      content: "";
-      width: 1px;
-      height: 28px;
-      background-color: ${({ theme }) => theme.colors.gray[200]};
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      margin: auto;
+        content: "";
+        width: 1px;
+        height: 28px;
+        background-color: ${({ theme }) => theme.colors.gray[200]};
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
     }
 
     :first-child::before {
-      display: none;
+        display: none;
     }
-  }
+`
+export const JobSubHeader = styled.div`
+    position: absolute;
+    width: 220px;
+    background-color: ${({theme}) => theme.colors.white};
+    border: 1px solid ${({theme}) => theme.colors.gray[300]};
+    left: 679px;
+    
+    ul{
+       ${({theme}) => theme.fonts.subHeader5};
+        cursor:pointer;
+    }
+`
+
+export const SubMenuItem = styled.li`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    color: ${({ $active, theme }) =>
+            $active ? theme.colors.primary[900] : theme.colors.gray[900]};
+    
+    &:hover{
+        color: ${({theme}) => theme.colors.primary[900]};
+    }
+    &:first-child::after{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 180px;
+        height: 1px;
+        background-color: ${({ theme }) => theme.colors.gray[300]};
+    }
 `
 export const MenuItem = styled.li.withConfig({
   shouldForwardProp: (prop) => prop !== "active",
@@ -80,8 +117,8 @@ export const MenuItem = styled.li.withConfig({
 
   p {
     padding: 18px 48px;
-    color: ${({ active, theme }) =>
-    active ? theme.colors.primary[900] : theme.colors.gray[900]};
+    color: ${({ $active, theme }) =>
+    $active ? theme.colors.primary[900] : theme.colors.gray[900]};
   }
 
   p:hover {
@@ -99,8 +136,8 @@ export const MenuItem = styled.li.withConfig({
     height: 6px;
   }
   p::after {
-    background-color: ${({ active, theme }) =>
-    active ? theme.colors.primary[500] : "transparent"};
+    background-color: ${({ $active, theme }) =>
+            $active ? theme.colors.primary[500] : "transparent"};
   }
   p:hover::after {
     background-color: ${({ theme }) => theme.colors.primary[500]};
