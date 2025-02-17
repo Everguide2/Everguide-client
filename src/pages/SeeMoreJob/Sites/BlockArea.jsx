@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import theme from "@/theme/theme";
 
-const BlockArea = ({ img, Shortcut, text }) => {
+const BlockArea = ({ img, Shortcut, text, href }) => {
   return (
     <SiteBlock>
       <SiteBanner>
@@ -13,7 +13,7 @@ const BlockArea = ({ img, Shortcut, text }) => {
           return <EachEx>{str}</EachEx>;
         })}
       </SiteEx>
-      <ShortcutButton>
+      <ShortcutButton href={href} target="_blank">
         <ButtonImg src={Shortcut} />
       </ShortcutButton>
     </SiteBlock>
@@ -54,7 +54,7 @@ const EachEx = styled.p`
   ${({ theme }) => theme.fonts.header5};
   color: ${({ theme }) => theme.colors.gray[900]};
 `;
-const ShortcutButton = styled.button`
+const ShortcutButton = styled.a`
   width: 200px;
   height: 80px;
   background-color: white;

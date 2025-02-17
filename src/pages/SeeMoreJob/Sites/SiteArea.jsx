@@ -14,11 +14,13 @@ const SiteArea = () => {
         img={Saramin}
         Shortcut={Shortcut}
         text={string.jobsiteExplain[0].text}
+        href="https://www.saramin.co.kr"
       />
       <BlockArea
         img={SeoulNoin}
         Shortcut={Shortcut}
         text={string.jobsiteExplain[1].text}
+        href="https://www.seoulnoin.or.kr"
       />
     </SiteList>
   );
