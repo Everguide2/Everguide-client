@@ -29,7 +29,6 @@ const Header = () => {
   }, []);
 
   const handleMenuClick = (menu, flag) => {
-    console.log(menu, flag);
     if(flag === 1){
       setActive(menu);
       sessionStorage.setItem("activeMenu", menu);
