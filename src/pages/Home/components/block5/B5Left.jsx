@@ -52,6 +52,7 @@ const MoreButton = styled.button`
   ${({ theme }) => theme.fonts.subHeader5}
   color:#FDFDFD;
   word-spacing: 12px;
+  cursor: pointer;
 `;
 
 const JobLine = styled.button`
@@ -65,6 +66,7 @@ const JobLine = styled.button`
   ${({ theme }) => theme.fonts.body2}
   font-weight:700;
   margin-bottom:4px;
+  cursor:pointer;
 `;
 
 const Company = styled.p`
