@@ -1,4 +1,5 @@
 export { default as Button } from '@components/Button/Button.jsx';
+export { default as BasicButton } from '@components/Button/BasicButton.jsx';
 export { default as TabButton } from '@components/Button/TabButton.jsx';
 export { default as MyPageButton } from '@components/Button/MyPageButton.jsx';
 
