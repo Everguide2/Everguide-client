@@ -71,20 +71,25 @@ const B1button = styled.div`
 
 const EachButton = styled.button`
   height: 32px;
-  color: ${({ isActive }) => (isActive ? "#D32F2F" : "#6A6967")};
-  ${({ isActive, theme }) =>
-    isActive ? theme.fonts.body1 : theme.fonts.subHeader4}
+  color: ${({ $isActive }) => ($isActive ? "#D32F2F" : "#6A6967")};
+  ${({ $isActive, theme }) =>
+    $isActive ? theme.fonts.body1 : theme.fonts.subHeader4}
   margin-right:22px;
   border: none;
   //요소를 투명하게
   background: transparent;
+  cursor: pointer;
 `;
 
-const PolicyTitle = styled.p`
+const PolicyTitle = styled.button`
   margin-top: 4px;
   width: 518px;
   height: 38px;
+  border: none;
+  background-color: #ffe28a;
+  display: flex;
   ${({ theme }) => theme.fonts.subHeader1}
+  cursor: pointer;
 `;
 
 const BriefEx = styled.p`

@@ -25,6 +25,7 @@ const JobDetail = styled.div`
   height: 331px;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 `;
 
 const CompanyState = styled.div`

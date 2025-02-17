@@ -97,6 +97,7 @@ const ProgramBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 const Poster = styled.img`
