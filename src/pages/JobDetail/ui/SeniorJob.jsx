@@ -20,7 +20,8 @@ const SeniorJob = () => {
 
   useEffect(() => {
     dispatch(setPage({itemsCount: 10, totalItems: 160, pageRange: 5}));
-  }, [])
+  }, []);
+
   return (
       <S.SeniorJob>
         <S.Container>

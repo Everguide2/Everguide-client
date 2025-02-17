@@ -114,6 +114,7 @@ const string = {
 
   toListBtn: "목록으로",
   checkArticleBtn: "공고확인",
+  receiptBtn: "접수하기",
   myPage: "내 정보",
   logout: "로그아웃",
 

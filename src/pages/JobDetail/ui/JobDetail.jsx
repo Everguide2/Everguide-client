@@ -25,7 +25,7 @@ const JobDetail = () => {
   return (
     <div>
       <ScrollToTop/>
-      <CommonDetail/>
+      <CommonDetail type={2}/>
     </div>
   );
 };
