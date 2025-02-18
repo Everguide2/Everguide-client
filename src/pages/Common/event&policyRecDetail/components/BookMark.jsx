@@ -1,15 +1,16 @@
 import {ReactSVG} from "react-svg";
-import {icStar} from "@assets/index.js";
+import {icBookmark} from "@assets/index.js";
 
 // eslint-disable-next-line react/prop-types
 const BookMark = ({isBookMarked}) => {
   return (
       <ReactSVG
-          src={icStar}
+          src={icBookmark}
           beforeInjection={(svg) =>{
             const path = svg.querySelector('path');
             if(path) {
               path.setAttribute('fill',  isBookMarked ? '#FFBF00':'#CBC9C5');
+              path.setAttribute('stroke', isBookMarked ? '#E8AE00' : '#AAA9A6');
             }
           }}
       />

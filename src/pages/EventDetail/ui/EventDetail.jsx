@@ -19,7 +19,7 @@ const EventDetail = () => {
   return (
       <>
         <ScrollToTop/>
-        <CommonDetail/>
+        <CommonDetail type={"행사/교육"}/>
       </>
   );
 };
