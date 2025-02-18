@@ -46,7 +46,7 @@ export default ResultsSlide;
 
 const Slide = styled.div`
   width: 1150px;
-  height: 409px;
+  height: 419px;
   display: flex;
   flex-direction: column;
   margin-left: 110px;

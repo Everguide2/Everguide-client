@@ -48,7 +48,7 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 26px;
-  box-shadow: 0 0 7px rgba(0, 0, 0, 0.5); /* 반투명 검은색 그림자 */
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.11);
   margin-top: 5px;
   margin-bottom: 5px;
   margin-left: 3px;
