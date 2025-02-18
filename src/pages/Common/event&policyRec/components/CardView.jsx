@@ -1,17 +1,14 @@
 import {styled} from "styled-components";
-import Card from "@pages/Common/event&policyRec/components/Card/Card.jsx";
+import Card from "@components/Card/Card.jsx";
 import {useSelector} from "react-redux";
 import {useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {pagePath} from "@/routes/pagePath.js";
 
-const CardView = () => {
-  const navigate = useNavigate();
+// eslint-disable-next-line react/prop-types
+const CardView = ({onClickCard, isLogin}) => {
   const cardData = useSelector(state => state.information);
-  const [isLogin, setIsLogin] = useState(false);
 
-  const onClickCard = (id) => {
-    navigate(`/${pagePath.EVENT}/${id}`);
+  const onClickBookMark = (isMarked, setIsMarked) => {
+    setIsMarked(!isMarked);
   }
 
   return (
@@ -28,6 +25,7 @@ const CardView = () => {
                 bookmark={data.bookMark}
                 dDay={data.dDay}
                 isLogin={isLogin}
+                onClickBookMark={onClickBookMark}
             />
         ))}
       </CardContainer>

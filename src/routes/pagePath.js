@@ -5,6 +5,9 @@ export const pagePath = {
   EVENTDETAIL : 'event/:eventId',
   SEARCH: 'search',
   JOB: 'job',
+  JOBDETAIL: 'job-senior/:jobId',
+  JOBSENIOR: 'job-senior',
+  JOBMORE: 'job-more',
   SUPPORT : 'support',
   LOGIN : 'login',
   SIGNUP : 'signup',
@@ -13,4 +16,6 @@ export const pagePath = {
   FINDPASSWORD : 'find-password',
   EMAILRESULT : 'email-result',
   PASSWORDSENT : 'password-sent',
+  SIGNUPLOADING : 'signup-loading',
+  SIGNUPSUCCESS : 'signup-success',
 }

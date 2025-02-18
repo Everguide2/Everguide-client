@@ -10,7 +10,7 @@ const B1Right = (dummy) => {
         return (
           <EachBox2 key={index}>
             <DateAndCategory>
-              <Box2Date isEndToday={data.state === "오늘마감"}>
+              <Box2Date $isEndToday={data.state === "오늘마감"}>
                 {data.state}
               </Box2Date>
               <Box2Category>{data.category}</Box2Category>
@@ -42,6 +42,7 @@ const EachBox2 = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  cursor: pointer;
 `;
 
 const DateAndCategory = styled.div`

@@ -1,22 +1,24 @@
-
 import { useState } from "react";
 import { styled } from "styled-components";
-import { useNavigate } from "react-router-dom";
-import {icSearch} from "@assets/index.js";
+import { icSearch } from "@assets/index.js";
+import { useCustomNavigation} from "@hooks/useCustomNavigation.js";
 
 // eslint-disable-next-line react/prop-types
 const SearchBar = ({ placeHolder, onClick }) => {
   const [searchValue, setSearchValue] = useState("");
-  const navigate = useNavigate();
+  const {navigateTo} = useCustomNavigation()
 
   const onChange = (e) => {
     setSearchValue(e.target.value);
   };
 
   const handleSearch = () => {
-    navigate(`search/${searchValue}`);
+    // 검색창에 아무것도 입력하지 않았을 시 검색페이지로 이동하지 않게 설정
+    if (searchValue !== "") {
+      navigateTo(`search/${searchValue}`);
+    }
   };
-  // 엔터 키 눌렀을 시에도 이동동
+  // 엔터 키 눌렀을 시에도 이동
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleSearch();

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Calendar from "./Calendar"; // 캘린더 컴포넌트 가져오기
+import Calendar from "./Calendar"; 
 import { icSignupCalendar } from "../../../assets"; 
 
 const DateOfBirthInput = ({ label, birthYear, birthMonth, birthDay, onChange }) => {
-  const [showCalendar, setShowCalendar] = useState(false); // 캘린더 표시 상태
+  const [showCalendar, setShowCalendar] = useState(false);
 
   const toggleCalendar = () => {
     setShowCalendar(!showCalendar);
@@ -19,7 +19,7 @@ const DateOfBirthInput = ({ label, birthYear, birthMonth, birthDay, onChange }) 
   };
 
   const handleInputChange = (e) => {
-    onChange(e); // 사용자가 직접 입력할 때 변경 사항 반영
+    onChange(e); 
   };
 
   return (
@@ -39,7 +39,7 @@ const DateOfBirthInput = ({ label, birthYear, birthMonth, birthDay, onChange }) 
           name="birthMonth"
           placeholder="MM"
           value={birthMonth}
-          onChange={handleInputChange} // 사용자가 직접 입력 가능
+          onChange={handleInputChange} 
           required
         />
         <StyledInputField
@@ -47,7 +47,7 @@ const DateOfBirthInput = ({ label, birthYear, birthMonth, birthDay, onChange }) 
           name="birthDay"
           placeholder="DD"
           value={birthDay}
-          onChange={handleInputChange} // 사용자가 직접 입력 가능
+          onChange={handleInputChange}
           required
         />
         <CalendarIcon onClick={toggleCalendar}>
@@ -66,8 +66,8 @@ const DateOfBirthInput = ({ label, birthYear, birthMonth, birthDay, onChange }) 
 
 export default DateOfBirthInput;
 
-// Styled-components
 const DateInputContainer = styled.div`
+${({ theme }) => theme.fonts.body3};
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -83,7 +83,7 @@ const StyledLabel = styled.label`
 const DateInputWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
 `;
 
 const StyledInputField = styled.input`
@@ -92,7 +92,7 @@ const StyledInputField = styled.input`
   padding: 0 20px;
   border: 2px solid ${({ theme }) => theme.colors.gray[200]};
   border-radius: 12px;
-  font-size: 16px;
+  ${({ theme }) => theme.fonts.body3};
   box-sizing: border-box;
 
   &:focus {
@@ -110,6 +110,7 @@ const CalendarIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0px 5px;
 
   img {
     width: 36px;

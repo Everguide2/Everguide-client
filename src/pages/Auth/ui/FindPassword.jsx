@@ -8,12 +8,11 @@ import Logo from "../components/Logo";
 import Links from "../components/Links";
 import VerificationInput from "../components/VerificationInput";
 import { string } from "../../../constants";
-import NonExistingMemberModal from "../../../components/Modal/NonExistingMemberModal"; // 비회원 모달 추가
+import NonExistingMemberModal from "../../../components/Modal/NonExistingMemberModal"; 
 
 const FindPassword = () => {
   const navigate = useNavigate();
 
-  // 가상의 회원 정보
   const fakeMember = {
     email: "seojin@gmail.com",
     name: "김서진",
@@ -27,13 +26,10 @@ const FindPassword = () => {
     verificationCode: "",
   });
 
-  const [isCodeSent, setIsCodeSent] = useState(false);
+  const [verificationSent, setVerificationSent] = useState(false);
   const [verificationCompleted, setVerificationCompleted] = useState(false);
-  const [verificationStatus, setVerificationStatus] = useState({
-    message: "",
-    messageType: null,
-  });
-  const [showNonExistingMemberModal, setShowNonExistingMemberModal] = useState(false); // 비회원 모달 상태 추가
+  const [correctVerificationCode] = useState("1234");
+  const [showNonExistingMemberModal, setShowNonExistingMemberModal] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -42,33 +38,21 @@ const FindPassword = () => {
 
   const handleSendCode = () => {
     if (formData.phone) {
-      setIsCodeSent(true);
-      setVerificationStatus({
-        message: "인증번호가 발송되었습니다. (유효시간: 5:00)",
-        messageType: "sent",
-      });
+      setVerificationSent(true);
     }
   };
 
   const handleVerifyCode = () => {
-    if (formData.verificationCode === "1234") {
+    if (formData.verificationCode === correctVerificationCode) {
       setVerificationCompleted(true);
-      setVerificationStatus({
-        message: "인증이 완료되었습니다.",
-        messageType: "success",
-      });
     } else {
-      setVerificationStatus({
-        message: "인증번호가 올바르지 않습니다.",
-        messageType: "error",
-      });
+      setVerificationCompleted(false);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // 가상의 회원 정보와 비교하여 존재하지 않으면 비회원 모달 표시
     if (
       formData.email !== fakeMember.email ||
       formData.name !== fakeMember.name ||
@@ -81,7 +65,6 @@ const FindPassword = () => {
     if (verificationCompleted) {
       navigate("/password-sent", { state: { email: formData.email } });
     } else {
-      alert("인증을 완료해주세요!");
     }
   };
 
@@ -125,26 +108,28 @@ const FindPassword = () => {
               />
               <Button
                 onClick={handleSendCode}
-                disabled={!formData.phone || isCodeSent}
+                disabled={!formData.phone || verificationSent}
                 width="160px"
                 height="56px"
               >
-                {isCodeSent ? "인증번호 재전송" : "인증번호 받기"}
+                {verificationSent ? "인증번호 재전송" : "인증번호 받기"}
               </Button>
             </PhoneInputWrapper>
-            {isCodeSent && (
+
+            {verificationSent && (
               <VerificationInput
-                verificationSent={isCodeSent}
+                verificationSent={verificationSent}
                 verificationCode={formData.verificationCode}
                 verificationCompleted={verificationCompleted}
-                verificationStatus={verificationStatus}
+                correctVerificationCode={correctVerificationCode}
                 onVerificationCheck={handleVerifyCode}
                 onInputChange={handleInputChange}
               />
             )}
+
             <Button
               type="submit"
-              disabled={!isCodeSent || verificationStatus.messageType !== "success"}
+              disabled={!verificationSent || verificationCompleted !== true}
               width="494px"
               height="56px"
             >
@@ -155,7 +140,6 @@ const FindPassword = () => {
         </Content>
       </Container>
 
-      {/* 존재하지 않는 회원 모달 */}
       {showNonExistingMemberModal && (
         <NonExistingMemberModal onClose={() => setShowNonExistingMemberModal(false)} />
       )}
@@ -165,7 +149,6 @@ const FindPassword = () => {
 
 export default FindPassword;
 
-// 스타일 컴포넌트
 const Container = styled.div`
   display: flex;
   justify-content: center;
