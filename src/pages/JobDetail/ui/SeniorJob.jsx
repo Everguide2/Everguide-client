@@ -10,6 +10,7 @@ import {setPage} from "@stores/paging/pagingSlice.js";
 
 const SeniorJob = () => {
   const dispatch = useDispatch();
+  const [isLogin, setIsLogin] = useState(true);
   const listData = ["시작일 순" , "마감일 순"];
   const [activeTab, setActiveTab] = useState("left");
   const total = useSelector(state => state.paging.totalItems)
@@ -34,7 +35,7 @@ const SeniorJob = () => {
                 onClickTab={onClickTab}
                 type={"big"}
             />
-            {activeTab === "left" ? <CardJobView/>: <CardJobList/>}
+            {activeTab === "left" ? <CardJobView isLogin={isLogin}/>: <CardJobList isLogin={isLogin}/>}
             <Paginations/>
           </S.RightContent>
         </S.Container>

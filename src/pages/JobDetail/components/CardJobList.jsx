@@ -4,7 +4,7 @@ import {jobDummy} from "@test/jobDummy.js";
 import {List} from "@components/index.js";
 import {useCustomNavigation} from "@hooks/useCustomNavigation.js";
 
-const CardJobList = () => {
+const CardJobList = ({isLogin}) => {
   const {navigateTo} = useCustomNavigation();
 
   return (
@@ -14,6 +14,7 @@ const CardJobList = () => {
             th3={"근무 지역"}
             th4={"접수일"}
             isJob={true}
+            isLogin={isLogin}
         />
         {jobDummy.map((data) => (
             <List
@@ -25,6 +26,7 @@ const CardJobList = () => {
                 dDay={"Day"}
                 duration={data.duration}
                 isJob={true}
+                isLogin={isLogin}
                 onClick={() => navigateTo(`/job-senior/${data.id}`)}
             />
         ))}

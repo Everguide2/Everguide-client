@@ -3,14 +3,14 @@ import CardBookMark from "@components/Card/CardBookMark.jsx";
 
 
 // eslint-disable-next-line react/prop-types
-const CardJob = ({company, location, title, state, duration, isLogin, bookmark, onClick}) => {
+const CardJob = ({company, location, title, state, duration, isLogin, bookmark, onClick, onClickBookMark}) => {
   return (
-      <Container onClick={onClick}>
-        <Company>{company}</Company>
-        <Location>{location}</Location>
-        {isLogin && <CardBookMark isBookmarked={bookmark}/>}
-        <Title>{title}</Title>
-        <Bottom>
+      <Container >
+        <Company onClick={onClick}>{company}</Company>
+        <Location onClick={onClick}>{location}</Location>
+        {isLogin && <CardBookMark isBookmarked={bookmark} onClickBookMark={onClickBookMark}/>}
+        <Title onClick={onClick}>{title}</Title>
+        <Bottom onClick={onClick}>
           <State>{state}</State>
           <Duration>{duration}</Duration>
         </Bottom>

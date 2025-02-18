@@ -3,8 +3,13 @@ import CardJob from "@pages/JobDetail/components/CardJob.jsx";
 import {jobDummy} from "@test/jobDummy.js";
 import {useCustomNavigation} from "@hooks/useCustomNavigation.js";
 
-const CardJobView = () => {
+// eslint-disable-next-line react/prop-types
+const CardJobView = ({isLogin}) => {
   const {navigateTo} = useCustomNavigation();
+
+  const onClickBookMark = (isMarked, setIsMarked) => {
+    setIsMarked(!isMarked);
+  }
 
   return (
       <CardContainer>
@@ -17,6 +22,8 @@ const CardJobView = () => {
               state={item.state}
               duration={item.duration}
               bookmark={item.bookmark}
+              isLogin={isLogin}
+              onClickBookMark={onClickBookMark}
               onClick={() => navigateTo(`/job-senior/${item.id}`)}
           />
         ))}
