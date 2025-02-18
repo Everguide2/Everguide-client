@@ -8,18 +8,21 @@ import {
 import { questionData } from '../components/questionData.js';
 import { imgDangguMag } from '../../../assets';
 import LoginModal from "../feature/LoginModal.jsx"; 
+import { useNavigate } from "react-router-dom";
+import ScrollToTop from '@/utils/scrollToTop';
 
 const Policy = () => {
+  const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated); 
   const [answers, setAnswers] = useState({});
   const [isStarted, setIsStarted] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false); 
-  const [currentQuestionId, setCurrentQuestionId] = useState("start"); // 추가
+  const [currentQuestionId, setCurrentQuestionId] = useState("start"); 
 
   const currentQuestion = questionData.find((q) => q.id === currentQuestionId) || null;
 
   const handleStart = () => {
-    if (isAuthenticated) {
+    if (!isAuthenticated) {
       setIsStarted(true);
     } else {
       setShowLoginModal(true); 
@@ -53,18 +56,23 @@ const Policy = () => {
 
   const handleNext = () => {
     if (!currentQuestion) return;
+  
     const selectedAnswer = answers[currentQuestionId];
     if (!selectedAnswer || (Array.isArray(selectedAnswer) && selectedAnswer.length === 0)) return;
+  
     const nextQuestion = currentQuestion.options.find(opt => opt.text === (Array.isArray(selectedAnswer) ? selectedAnswer[0] : selectedAnswer));
-    if (nextQuestion?.nextId) {
+  
+    if (nextQuestion?.nextId === "null") {
+      navigate("/result", { state: { answers } });
+    } else if (nextQuestion?.nextId) {
       setCurrentQuestionId(nextQuestion.nextId);
-    } else {
-      alert("모든 질문이 완료되었습니다!");
-      console.log("최종 답변:", answers);
     }
   };
+  
 
   return (
+    <>
+    <ScrollToTop/>
     <Container>
       {!isStarted ? (
         <BoxContainer>
@@ -107,6 +115,7 @@ const Policy = () => {
 
       {showLoginModal && <LoginModal onClose={() => setShowLoginModal(false)} />}
     </Container>
+    </>
   );
 };
 
