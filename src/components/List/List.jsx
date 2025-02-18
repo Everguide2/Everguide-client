@@ -6,20 +6,19 @@ import {string} from "@constants/index.js";
 // eslint-disable-next-line react/prop-types
 const List = ({city, category, title, assign, duration, dDay, bookmark, isLogin, isMyPage, isJob, onClick, onClickCheckBox}) => {
   return (
-      <Container onClick={onClick}>
+      <Container>
         <tr>
-          <td><Category text={category} isJob={isJob}/></td>
-          <td>{city}</td>
-          <td>
+          <td onClick={onClick}><Category text={category} isJob={isJob}/></td>
+          <td onClick={onClick}>{city}</td>
+          <td onClick={onClick}>
             <div>
               <Title>{title}</Title>
               <Assign>{assign}</Assign>
             </div>
           </td>
-          <td>{duration}</td>
-          <td>{dDay === 0 ? string.dDay : string.dTitle + dDay}</td>
-          {isLogin && <td><ListBookMark isBookMarked={bookmark}/></td>}
-          {isMyPage && <Td><CheckInput type="checkbox" onClick={onClickCheckBox} /></Td>}
+          <td onClick={onClick}>{duration}</td>
+          <td onClick={onClick}>{dDay === 0 ? string.dDay : string.dTitle + dDay}</td>
+          {isLogin && <Td><CheckInput type="checkbox" onClick={onClickCheckBox} /></Td>}
         </tr>
       </Container>
   );
@@ -91,5 +90,9 @@ const CheckInput = styled.input`
     background-repeat: no-repeat;
     background-position: center center;
     background-image: url("data:image/svg+xml,%3Csvg width='14' height='12' viewBox='0 0 15 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5.21053L5.81482 9L13 1' stroke='%23E75058' stroke-width='3'/%3E%3C/svg%3E%0A");
+  }
+  
+  &:hover{
+  background-color: ${({ theme }) => theme.colors.gray[200]};
   }
 `

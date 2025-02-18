@@ -6,9 +6,8 @@ import List from "@components/List/List.jsx";
 
 
 // eslint-disable-next-line react/prop-types
-const ListView = ({type, onClickList}) => {
+const ListView = ({type, onClickList, isLogin}) => {
   const listData = useSelector(state => state.information);
-  const [isLogin, setIsLogin] = useState(false);
 
   return (
       <Container>

@@ -15,7 +15,7 @@ const ListHeader =
       return (
           <Container>
             <tr>
-              <Thead $width={"7%"}>{th1}</Thead>
+              <Thead $width={"8%"}>{th1}</Thead>
               <Thead $width={isJob ? "15%" : "10%"}>{th3}</Thead>
               <Thead $width={isJob? "31%" : "36%"}>{type ? type+" 이름" : "채용제목"} </Thead>
               <Thead $width={isJob? "25%" : "23%"}>{th4}</Thead>

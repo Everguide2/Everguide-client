@@ -11,6 +11,7 @@ const Common = ({type}) => {
   const {navigateTo} = useCustomNavigation()
   const listData = ["등록일 순", "신청 마감순"];
   const [activeTab, setActiveTab] = useState("left");
+  const [isLogin, setIsLogin] = useState(true);
   const total = useSelector(state => state.paging.totalItems);
 
   const onClickTab = (tab) => {
@@ -37,7 +38,7 @@ const Common = ({type}) => {
                 onClickTab={onClickTab}
                 type={"big"}
             />
-            {activeTab === "left" ? <CardView onClickCard={onClickItem}/> : <ListView type={type} onClickList={onClickItem}/>}
+            {activeTab === "left" ? <CardView onClickCard={onClickItem} isLogin={isLogin}/> : <ListView type={type} onClickList={onClickItem} isLogin={isLogin}/>}
             <Paginations />
           </S.RightContent>
         </S.Container>

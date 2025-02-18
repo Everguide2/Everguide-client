@@ -4,9 +4,9 @@ import {useSelector} from "react-redux";
 import {useState} from "react";
 
 // eslint-disable-next-line react/prop-types
-const CardView = ({onClickCard}) => {
+const CardView = ({onClickCard, isLogin}) => {
   const cardData = useSelector(state => state.information);
-  const [isLogin, setIsLogin] = useState(false);
+
 
   return (
       <CardContainer>
