@@ -2,9 +2,9 @@ import {icEyes} from "@/assets";
 import {string} from "@/constants";
 import {BasicButton} from "@/components"
 import * as S from "./style.js"
-import {FilterTitle, FilterSection, EverguideManual} from "../components";
 import {sideBarData} from "@layout/Sidebar/feature/sideBarData.js";
 import {sideBarJobData} from "@layout/Sidebar/feature/sideBarJobData.js";
+import {FilterTitle, FilterSection, EverguideManual} from "../components";
 
 
 const SideBar = ({type = "normal"}) => {
