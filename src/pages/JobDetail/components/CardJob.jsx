@@ -5,7 +5,7 @@ import CardBookMark from "@components/Card/CardBookMark.jsx";
 // eslint-disable-next-line react/prop-types
 const CardJob = ({company, location, title, state, duration, isLogin, bookmark, onClick, onClickBookMark}) => {
   return (
-      <Container >
+      <Container $rest={state === "마감"}>
         <Company onClick={onClick}>{company}</Company>
         <Location onClick={onClick}>{location}</Location>
         {isLogin && <CardBookMark isBookmarked={bookmark} onClickBookMark={onClickBookMark}/>}
@@ -28,6 +28,7 @@ export const Container = styled.div`
     cursor: pointer;
     padding: 14px;
     position: relative;
+    opacity: ${({$rest}) => $rest ? '43%': '' };
 `
 
 
@@ -42,14 +43,14 @@ export const Location = styled.p`
 
 export const Title = styled.p`
     ${({theme}) => theme.fonts.header4};
-    margin-top: 38px;
+    padding-top: 38px;
 `
 
 export const Bottom = styled.div`
     display: flex;
     align-items: center;
     gap: 9px;
-    margin-top: 75px;
+    padding-top: 75px;
 `
 
 export const State = styled.p`
