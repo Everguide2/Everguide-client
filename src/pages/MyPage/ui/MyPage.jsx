@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Sidebar from "./Sidebar";
-import UserInfoForm from "./UserInfoForm";
+import Sidebar from "@pages/MyPage/ui/sidebar";
+import UserInfoForm from "@pages/MyPage/ui/UserInfoForm";
 import DeleteAccountModal from "../components/modal/DeleteAccountModal";
 import LogoutModal from "../components/modal/LogoutModal";
 
