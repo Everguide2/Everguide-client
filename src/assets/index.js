@@ -38,6 +38,9 @@ export {default as icSignupLoading} from '@assets/icons/ic-signup-loading.svg';
 export {default as icSignupSuccess} from '@assets/icons/ic-signup-success.svg';
 export {default as icMyPageCamera } from '@assets/icons/ic-mypage-camera.svg';
 export {default as icMyPageModal} from '@assets/icons/ic-mypage-modal.svg';
+export {default as icMyPageKakao} from '@assets/icons/ic-mypage-kakao.svg';
+export {default as icMyPageNaver} from '@assets/icons/ic-mypage-naver.svg';
+export {default as icMyPagePassword} from '@assets/icons/ic-mypage-passwordchange.svg';
 
 // images
 export {default as imgDangguMag} from '@assets/images/img-dangguMag.svg';
