@@ -7,6 +7,9 @@ import {useState} from "react";
 const CardView = ({onClickCard, isLogin}) => {
   const cardData = useSelector(state => state.information);
 
+  const onClickBookMark = (isMarked, setIsMarked) => {
+    setIsMarked(!isMarked);
+  }
 
   return (
       <CardContainer>
@@ -22,6 +25,7 @@ const CardView = ({onClickCard, isLogin}) => {
                 bookmark={data.bookMark}
                 dDay={data.dDay}
                 isLogin={isLogin}
+                onClickBookMark={onClickBookMark}
             />
         ))}
       </CardContainer>

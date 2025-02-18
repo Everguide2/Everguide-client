@@ -5,18 +5,18 @@ import {string} from "@constants/index.js";
 import Category from "@pages/Common/event&policyRec/components/Category.jsx";
 
 // eslint-disable-next-line react/prop-types
-const Card = ({title,subTitle,category,bookmark,assign,dDay,isLogin,img, onClick}) => {
+const Card = ({title,subTitle,category,bookmark,assign,dDay,isLogin,img, onClick, onClickBookMark}) => {
 
   return (
-      <Container rest={dDay} onClick={onClick}>
+      <Container rest={dDay} >
         <Top img={img}>
-          {img && <Image src={img}/>}
-          <Title img={''}>{title}</Title>
-          <SubTitle>{subTitle}</SubTitle>
+          {img && <Image src={img} onClick={onClick}/>}
+          <Title img={''} onClick={onClick}>{title}</Title>
+          <SubTitle onClick={onClick}>{subTitle}</SubTitle>
           <Category text={category} type={"card"} />
-          {isLogin && <CardBookMark isBookmarked={bookmark}/>}
+          {isLogin && <CardBookMark isBookmarked={bookmark} onClickBookMark={onClickBookMark}/>}
         </Top>
-        <Bottom img={img}>
+        <Bottom img={img} onClick={onClick}>
           {img && <Title img={img}>{title}</Title>}
           <Assign>{assign}</Assign>
           <Dday rest={dDay}>{dDay === 0 ? string.end : string.dTitle + dDay}</Dday>
