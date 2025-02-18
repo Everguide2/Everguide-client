@@ -114,6 +114,7 @@ const string = {
 
   toListBtn: "목록으로",
   checkArticleBtn: "공고확인",
+  receiptBtn: "접수하기",
   myPage: "내 정보",
   logout: "로그아웃",
 
@@ -142,6 +143,9 @@ const string = {
   savedlistTitle: "저장한 목록",
   savedlistDescription: "마감 기한이 지난 공고는 표시되지 않을 수 있습니다.",
   checkDelete: "선택삭제",
+
+  alarmContinue: "접수중인 일자리 보기",
+
   seemorejob1: [
     {
       text: "타사이트에서 제공하는 다양한 노인일자리 구인정보 사이트로 연동되는 서비스입니다.",

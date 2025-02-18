@@ -50,7 +50,6 @@ export const ItemContainer = styled.div`
 // EverguideManual
 export const GuideContainer = styled.button`
   background-color: ${({theme}) => theme.colors.gray[100]};
-  margin-top: 23px;
   border: none;
   border-radius: 12px;
   display: flex;

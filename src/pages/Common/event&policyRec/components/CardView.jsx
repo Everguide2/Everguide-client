@@ -4,9 +4,12 @@ import {useSelector} from "react-redux";
 import {useState} from "react";
 
 // eslint-disable-next-line react/prop-types
-const CardView = ({onClickCard}) => {
+const CardView = ({onClickCard, isLogin}) => {
   const cardData = useSelector(state => state.information);
-  const [isLogin, setIsLogin] = useState(false);
+
+  const onClickBookMark = (isMarked, setIsMarked) => {
+    setIsMarked(!isMarked);
+  }
 
   return (
       <CardContainer>
@@ -22,6 +25,7 @@ const CardView = ({onClickCard}) => {
                 bookmark={data.bookMark}
                 dDay={data.dDay}
                 isLogin={isLogin}
+                onClickBookMark={onClickBookMark}
             />
         ))}
       </CardContainer>

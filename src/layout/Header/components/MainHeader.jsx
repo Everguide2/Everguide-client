@@ -5,14 +5,13 @@ import {Button, SearchBar, Alarm, Profile} from "@components/index.js";
 import {string} from "@constants/index.js";
 import {pagePath} from "@/routes/pagePath.js";
 
-
-
 // eslint-disable-next-line react/prop-types
 const MainHeader = ({onClick ,isLogin}) => {
   const [isNotifyHovered, setIsNotifyHovered] = useState(false);
   const [isProfileHovered, setIsProfileHovered] = useState(false);
 
   const handleHover = (type, state) => {
+    console.log(state)
     type === 1 ? setIsNotifyHovered(state) : setIsProfileHovered(state);
   }
 
@@ -20,7 +19,7 @@ const MainHeader = ({onClick ,isLogin}) => {
       <S.MainHeader>
         <S.HeaderContainer>
           <S.Inner>
-            <S.MainLogo src={icMainLogo} onClick={() => onClick('/')} />
+            <S.MainLogo src={icMainLogo} onClick={() => onClick('/', 1)} />
             <SearchBar placeHolder={string.searchBarPlaceHolder}/>
             <S.LoginCheck>
               {isLogin ?

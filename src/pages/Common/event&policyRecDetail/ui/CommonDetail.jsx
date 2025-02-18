@@ -6,7 +6,7 @@ import {SmallButton, LargeButton, BookMark} from "@pages/Common/event&policyRecD
 import {icShare, icPrint} from "@assets/";
 import {string} from "@constants/";
 
-const CommonDetail = () => {
+const CommonDetail = ({type = 1}) => {
   const navigate = useNavigate();
   const detail = useSelector(state => state.detail);
   const [isLogin, setIsLogin] = useState(false);
@@ -26,7 +26,7 @@ const CommonDetail = () => {
             <S.Content>{detail.content}</S.Content>
             <S.Buttons>
               <LargeButton text={string.toListBtn} type={"border"} onClick={() => navigate(-1)} />
-              <LargeButton text={string.checkArticleBtn} type={"primary"}/>
+              <LargeButton text={type === 1 ? string.checkArticleBtn : string.receiptBtn} type={"primary"}/>
             </S.Buttons>
           </S.Article>
         </S.Container>
