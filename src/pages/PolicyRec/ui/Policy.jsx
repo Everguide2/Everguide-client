@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from "react-redux"; // Redux 상태 가져오기
+import { useSelector } from "react-redux"; 
 import { 
   Container, BoxContainer, Button, QuestionContainer, 
   Title, Description, OptionsContainer, OptionButton, 
@@ -7,23 +7,22 @@ import {
 } from './style';
 import { questionData } from '../components/questionData.js';
 import { imgDangguMag } from '../../../assets';
-import LoginModal from "../feature/LoginModal.jsx"; // 🚀 로그인 모달 추가
+import LoginModal from "../feature/LoginModal.jsx"; 
 
 const Policy = () => {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated); // 🔥 로그인 상태 확인
-  const [currentQuestionId, setCurrentQuestionId] = useState("start");
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated); 
   const [answers, setAnswers] = useState({});
   const [isStarted, setIsStarted] = useState(false);
-  const [showLoginModal, setShowLoginModal] = useState(false); // 🔥 로그인 팝업 상태
+  const [showLoginModal, setShowLoginModal] = useState(false); 
+  const [currentQuestionId, setCurrentQuestionId] = useState("start"); // 추가
 
-  const currentQuestion = questionData.find((q) => q.id === currentQuestionId);
+  const currentQuestion = questionData.find((q) => q.id === currentQuestionId) || null;
 
-  // 🚀 로그인 여부 확인 후 시작
   const handleStart = () => {
-    if (!isAuthenticated) {
+    if (isAuthenticated) {
       setIsStarted(true);
     } else {
-      setShowLoginModal(true); // 로그인 팝업 띄우기
+      setShowLoginModal(true); 
     }
   };
 
@@ -87,21 +86,21 @@ const Policy = () => {
           <Title>{getQuestionNumber(currentQuestionId) + 1}/5</Title>
           <Description>{currentQuestion?.question}</Description>
           <OptionsContainer className={["location", "familyLocation"].includes(currentQuestionId) ? "grid-layout" : ""}>
-            {currentQuestion?.options.map((option) => (
+            {currentQuestion?.options?.map((option) => (
               <OptionButton
                 key={option.text}
                 onClick={() => handleSelect(option)}
                 className={Array.isArray(answers[currentQuestionId]) 
                   ? (answers[currentQuestionId].includes(option.text) ? "selected" : "") 
                   : (answers[currentQuestionId] === option.text ? "selected" : "")
-              }
-            >
-              {option.text}
-            </OptionButton>
+                }
+              >
+                {option.text}
+              </OptionButton>
             ))}
           </OptionsContainer>
           <NextButton onClick={handleNext} disabled={!answers[currentQuestionId]}>
-            {currentQuestion?.options.some(opt => opt.nextId) ? "다음" : "완료"}
+            {currentQuestion?.options?.some(opt => opt.nextId) ? "다음" : "완료"}
           </NextButton>
         </QuestionContainer>
       )}
