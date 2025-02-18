@@ -1,7 +1,10 @@
 import {styled} from "styled-components";
 
 export const Container = styled.aside`
-  width: 268px;
+    width: 268px;
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
 `;
 
 export const FilterContainer = styled.aside`

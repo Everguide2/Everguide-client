@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import BGImg from "../../../assets/images/img_Frame290548.png";
 import theme from "../../../theme/theme";
+import ArrowImo from "../../../assets/images/img-Frame290705.svg";
 const FindPolicy = () => {
   return (
     <>
@@ -14,7 +15,7 @@ const FindPolicy = () => {
         <ExButton>
           <ButtonEx>
             <ButtonTitle>나의 맞춤정책 확인하기</ButtonTitle>
-            <ExImo>➔</ExImo>
+            <ExImo src={ArrowImo} alt="화살표" />
           </ButtonEx>
         </ExButton>
       </Explanation>
@@ -74,6 +75,6 @@ const ButtonEx = styled.div`
 `;
 const ButtonTitle = styled.p``;
 
-const ExImo = styled.p`
+const ExImo = styled.img`
   margin-left: 24px;
 `;

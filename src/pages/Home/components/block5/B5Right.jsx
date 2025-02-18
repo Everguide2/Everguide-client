@@ -5,13 +5,13 @@ import theme from "../../../../theme/theme";
 const B5Right = (dummy) => {
   return (
     <JobDetail>
-      <Category>{dummy.data.data[0].category}</Category>
-      <JobTitle>{dummy.data.data[0].title}</JobTitle>
-      <Method>{dummy.data.data[0].method}</Method>
-      <LocationAndDday>
-        <Location>고용노동부</Location>
-        <Dday>D-9</Dday>
-      </LocationAndDday>
+      <CompanyState>
+        <Company>{dummy.data.data[0].company}</Company>
+        <State>{dummy.data.data[0].state}</State>
+      </CompanyState>
+      <JobTitle>{dummy.data.data[0].work}</JobTitle>
+      <Location>{dummy.data.data[0].location}</Location>
+      <Dday>{dummy.data.data[0].date}</Dday>
     </JobDetail>
   );
 };
@@ -25,51 +25,61 @@ const JobDetail = styled.div`
   height: 331px;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 `;
 
-const Category = styled.div`
-  width: 90px;
-  height: 27px;
-  background-color: ${({ theme }) => theme.colors.gray[100]};
-  ${({ theme }) => theme.fonts.body4}
-  margin-top: 22px;
-  margin-left: 22px;
-  border-radius: 20px;
+const CompanyState = styled.div`
   display: flex;
-  justify-content: center; /* 수평 중앙 정렬 */
-  align-items: center; /* 수직 중앙 정렬 */
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  margin-top: 24px;
+  margin-bottom: 50px;
+  // background-color: black;
+`;
+
+const Company = styled.p`
+  color: ${({ theme }) => theme.colors.state.blue};
+  ${({ theme }) => theme.fonts.header5};
+  margin-left: 18px;
+`;
+
+const State = styled.div`
+  margin-right: 13px;
+  width: 72px;
+  height: 48px;
+  color: white;
+  ${({ theme }) => theme.fonts.subHeader3};
+  background-color: ${({ theme }) => theme.colors.primary[500]};
+  border: none;
+  border-radius: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const JobTitle = styled.p`
-  ${({ theme }) => theme.fonts.header6}
-  margin-top: 10px;
-  margin-left: 22px;
-`;
-
-const Method = styled.p`
-  ${({ theme }) => theme.fonts.subHeader5}
-  color:#8F8D8A;
-  margin-top: 6px;
-  margin-left: 22px;
-`;
-
-const LocationAndDday = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-left: 22px;
-  margin-top: auto; /* 하단으로 밀기 */
-  margin-bottom: 15px;
-  // background-color: black;
-  width: 403px;
+  ${({ theme }) => theme.fonts.header0};
+  font-size: 40px;
+  margin-left: 20px;
+  width: 237px;
+  height: 64px;
+  margin-bottom: 53px;
 `;
 
 const Location = styled.p`
-  ${({ theme }) => theme.fonts.subHeader3}
-  color:#4E4C49;
+  ${({ theme }) => theme.fonts.header6}
+  color: ${({ theme }) => theme.colors.gray[700]};
+  padding-right: 13px;
+  height: 38px;
+  margin-left: auto;
 `;
 
 const Dday = styled.p`
-  ${({ theme }) => theme.fonts.header6}
-  color:#E75058;
-  padding-right: 15px;
+  ${({ theme }) => theme.fonts.header5}
+  color: ${({ theme }) => theme.colors.secondary[500]};
+  padding-right: 13px;
+  height: 45px;
+  margin-left: auto;
 `;

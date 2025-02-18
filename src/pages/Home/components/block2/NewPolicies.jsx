@@ -60,4 +60,5 @@ const ViewAll = styled.button`
   background-color: #ffbf00;
   color: white;
   ${({ theme }) => theme.fonts.subHeader5}
+  cursor: pointer;
 `;

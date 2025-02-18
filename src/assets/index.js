@@ -36,6 +36,8 @@ export {default as icCalendarLeft} from '@assets/icons/ic-calendar-left.svg';
 export {default as icCalendarRight} from '@assets/icons/ic-calendar-right.svg';
 export {default as icSignupLoading} from '@assets/icons/ic-signup-loading.svg';
 export {default as icSignupSuccess} from '@assets/icons/ic-signup-success.svg';
+export {default as icMyPageCamera } from '@assets/icons/ic-mypage-camera.svg';
+export {default as icMyPageModal} from '@assets/icons/ic-mypage-modal.svg';
 
 // images
 export {default as imgDangguMag} from '@assets/images/img-dangguMag.svg';
@@ -47,6 +49,7 @@ export {default as imgGlasses } from '@assets/images/img-glasses.svg';
 export {default as imgFrame3 } from '@assets/images/img-Frame 290615.svg';
 export {default as imgFrame5} from '@assets/images/img-Frame 290617.svg';
 export {default as AdCalendar } from '@assets/images/img-AdCalendar.svg';
+export {default as imgProfile } from '@assets/images/img_profile.svg';
 
 // fonts
 export {default as NanumGothicRegular } from '@assets/fonts/NanumGothic-Regular.ttf';

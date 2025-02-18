@@ -32,7 +32,7 @@ const Input = styled.input`
   &:checked{
     background-repeat: no-repeat;
     background-position: center center;
-    background-image: url("data:image/svg+xml,%3Csvg width='15' height='12' viewBox='0 0 15 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5.21053L5.81482 9L13 1' stroke='white' stroke-width='3'/%3E%3C/svg%3E%0A");
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='12' viewBox='0 0 15 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5.21053L5.81482 9L13 1' stroke='white' stroke-width='3'/%3E%3C/svg%3E%0A");
     background-color: ${({ theme }) => theme.colors.gray[600]};
   }
 `

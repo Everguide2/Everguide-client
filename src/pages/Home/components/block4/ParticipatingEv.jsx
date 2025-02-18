@@ -4,7 +4,7 @@ import theme from "../../../../theme/theme";
 import EventImg from "../../../../assets/images/eventImage.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-
+import { useNavigate } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -12,6 +12,7 @@ const ParticipatingEv = (dummy) => {
   // prevRef/nextRef는 클릭 후 이전 혹은 다음 버튼처럼 작동하는 요소의 CSS 선택기기
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const navigate = useNavigate();
 
   const [isBeginning, setIsBeginning] = useState(false); // 이전 버튼 활성화 여부
   const [isEnd, setIsEnd] = useState(true); // 이후 버튼 활성화 여부
@@ -22,6 +23,9 @@ const ParticipatingEv = (dummy) => {
     setIsEnd(swiper.isEnd); // 마지막 슬라이드인지 여부
   };
 
+  const handlePartPage = (id) => {
+    navigate(`event/${id}`);
+  };
   return (
     <Block4>
       <ParticipateArea>
@@ -40,7 +44,10 @@ const ParticipatingEv = (dummy) => {
         >
           {dummy.data.map((program, idx) => {
             return (
-              <SwiperSlide key={idx}>
+              <SwiperSlide
+                key={idx}
+                onClick={() => handlePartPage(program?.id)}
+              >
                 <ProgramBox>
                   <Poster src={EventImg} />
                   <Explaination>
@@ -97,6 +104,7 @@ const ProgramBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 const Poster = styled.img`

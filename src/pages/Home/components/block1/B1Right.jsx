@@ -42,6 +42,7 @@ const EachBox2 = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  cursor: pointer;
 `;
 
 const DateAndCategory = styled.div`

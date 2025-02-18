@@ -10,8 +10,14 @@ const B5Left = (dummy) => {
         <MoreButton>더보기 &gt;</MoreButton>
       </TitleLine>
       {/*추후 API작업 시에 바꿀 예정 */}
-      {[0, 1, 2, 3, 4, 5].map((number, idx) => {
-        return <JobLine key={idx}>{dummy.data.data[0].content}</JobLine>;
+      {dummy.data.data.map((arr) => {
+        return (
+          <JobLine key={arr.company}>
+            <Company>{arr.company}</Company>
+            <Work>{arr.work} -</Work>
+            <Location>{arr.location}</Location>
+          </JobLine>
+        );
       })}
     </TitleAndList>
   );
@@ -46,14 +52,33 @@ const MoreButton = styled.button`
   ${({ theme }) => theme.fonts.subHeader5}
   color:#FDFDFD;
   word-spacing: 12px;
+  cursor: pointer;
 `;
 
-const JobLine = styled.div`
-  //   width: 576px;
+const JobLine = styled.button`
+  width:100%:
   height: 36px;
   display: flex;
+  border:none;
+  background-color: #ffebb0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.primary[900]};
   align-items: center;
   ${({ theme }) => theme.fonts.body2}
+  font-weight:700;
   margin-bottom:4px;
+  cursor:pointer;
+`;
+
+const Company = styled.p`
+  color: ${({ theme }) => theme.colors.state.blue};
+  margin-right: 7px;
+`;
+
+const Work = styled.p`
+  color: ${({ theme }) => theme.colors.gray[900]};
+  margin-right: 4px;
+`;
+
+const Location = styled.p`
+  color: ${({ theme }) => theme.colors.gray[700]};
 `;

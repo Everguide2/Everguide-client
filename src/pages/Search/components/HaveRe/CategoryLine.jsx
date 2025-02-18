@@ -55,3 +55,4 @@ const Contour = styled.p`
   margin-right: 12px;
   color: ${({ theme }) => theme.colors.gray[500]};
 `;
+
