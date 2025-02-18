@@ -15,23 +15,28 @@ const Header = () => {
   const [subActive, setSubActive] = useState("");
   const {navigateTo} = useCustomNavigation();
 
+  const savedMenu = sessionStorage.getItem("activeMenu");
+  const savedSubMenu = sessionStorage.getItem("activeSubMenu");
+
   useEffect(() => {
-    const savedMenu = sessionStorage.getItem("activeMenu");
-    const savedSubMenu = sessionStorage.getItem("activeSubMenu");
-    if (savedMenu || savedSubMenu) {
+
+    if (savedMenu) {
       setActive(savedMenu);
+    } else if(savedSubMenu){
       setSubActive(savedSubMenu);
     }
     alarmDummy.forEach((item) => {
       dispatch(addAlarm({...item}));
     })
 
-  }, []);
+  }, [savedSubMenu]);
 
   const handleMenuClick = (menu, flag) => {
     if(flag === 1){
       setActive(menu);
+      setSubActive("");
       sessionStorage.setItem("activeMenu", menu);
+      sessionStorage.removeItem("activeSubMenu");
     } else if(flag === 2){
       setActive(pagePath.JOB);
       setSubActive(menu);
@@ -44,7 +49,7 @@ const Header = () => {
   return (
       <S.Container>
         <MainHeader isLogin={true} onClick={handleMenuClick}/>
-        <SubHeader active={active} subactive={subActive} onClick={handleMenuClick}/>
+        <SubHeader active={active} subActive={subActive} onClick={handleMenuClick}/>
       </S.Container>
   );
 };

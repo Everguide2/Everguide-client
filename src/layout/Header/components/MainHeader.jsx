@@ -19,7 +19,7 @@ const MainHeader = ({onClick ,isLogin}) => {
       <S.MainHeader>
         <S.HeaderContainer>
           <S.Inner>
-            <S.MainLogo src={icMainLogo} onClick={() => onClick('/')} />
+            <S.MainLogo src={icMainLogo} onClick={() => onClick('/', 1)} />
             <SearchBar placeHolder={string.searchBarPlaceHolder}/>
             <S.LoginCheck>
               {isLogin ?

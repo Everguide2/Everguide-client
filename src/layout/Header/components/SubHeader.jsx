@@ -5,7 +5,7 @@ import {pagePath} from "@/routes/pagePath.js";
 import {string} from "@constants/index.js";
 
 // eslint-disable-next-line react/prop-types
-const SubHeader = ({active, subactive, onClick}) => {
+const SubHeader = ({active, subActive, onClick}) => {
   const [isHover, setHover] = useState(false);
 
   const handleHover = (state) => {
@@ -23,8 +23,8 @@ const SubHeader = ({active, subactive, onClick}) => {
           </S.SubHeaderMain>
           {isHover && <S.JobSubHeader onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)}>
             <ul>
-              <S.SubMenuItem $active={subactive === pagePath.JOBSENIOR} onClick={() => onClick(pagePath.JOBSENIOR, 2)}>노인 일자리</S.SubMenuItem>
-              <S.SubMenuItem $active={subactive === pagePath.JOBMORE} onClick={() => onClick(pagePath.JOBMORE, 2)}>일자리 더보기</S.SubMenuItem>
+              <S.SubMenuItem $active={subActive === pagePath.JOBSENIOR} onClick={() => onClick(pagePath.JOBSENIOR, 2)}>노인 일자리</S.SubMenuItem>
+              <S.SubMenuItem $active={subActive === pagePath.JOBMORE} onClick={() => onClick(pagePath.JOBMORE, 2)}>일자리 더보기</S.SubMenuItem>
             </ul>
           </S.JobSubHeader>}
         </S.HeaderContainer>
