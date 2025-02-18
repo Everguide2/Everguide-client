@@ -10,42 +10,20 @@ const MyPage = () => {
     name: "이채린",
     gender: "female",
     birthYear: "2002 / 07 / 22",
-    birthMonth: "07",
-    birthDay: "22",
     phone: "010-9872-7194",
     accounts: [
       { type: "Kakao", email: "Chaerin0722@Gmail.Com" },
       { type: "Naver", email: "Chaerin0722@Gmail.Com" },
     ],
+    email: "chaerin0722@gmail.com",
   });
 
   const [activeMenu, setActiveMenu] = useState("info");
-
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserInfo({ ...userInfo, [name]: value });
-  };
-
-  const handleGenderChange = (gender) => {
-    setUserInfo({ ...userInfo, gender });
-  };
-
-  const handleUpdate = () => {
-    alert("수정 완료");
-  };
-
-  const handleLogout = () => {
-    alert("로그아웃되었습니다.");
-    setIsLogoutModalOpen(false);
-  };
-
-  const handleDeleteAccount = () => {
-    alert("탈퇴가 완료되었습니다.");
-    setIsDeleteModalOpen(false);
-  };
+  //  소셜 로그인 여부 확인 (카카오 또는 네이버 계정이 있을 경우)
+  const isSocialLogin = userInfo.accounts && userInfo.accounts.length > 0;
 
   return (
     <Container>
@@ -57,27 +35,26 @@ const MyPage = () => {
         <Content>
           <UserInfoForm
             userInfo={userInfo}
-            onChange={handleChange}
-            onGenderChange={handleGenderChange}
-            onUpdate={handleUpdate}
-            onLogout={() => setIsLogoutModalOpen(true)}
+            onChange={(e) => setUserInfo({ ...userInfo, [e.target.name]: e.target.value })}
           />
 
-          <ButtonContainer>
+          {/*  소셜 로그인 여부에 따라 margin-top 값 변경 */}
+          <ButtonContainer isSocialLogin={isSocialLogin}>
             <DeleteButton onClick={() => setIsDeleteModalOpen(true)}>탈퇴하기</DeleteButton>
             <LogoutButton onClick={() => setIsLogoutModalOpen(true)}>로그아웃</LogoutButton>
           </ButtonContainer>
         </Content>
       </MainContent>
 
-      <DeleteAccountModal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)} onConfirm={handleDeleteAccount} />
-      <LogoutModal isOpen={isLogoutModalOpen} onClose={() => setIsLogoutModalOpen(false)} onConfirm={handleLogout} />
+      <DeleteAccountModal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)} />
+      <LogoutModal isOpen={isLogoutModalOpen} onClose={() => setIsLogoutModalOpen(false)} />
     </Container>
   );
 };
 
 export default MyPage;
 
+/* ✅ Styled Components */
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -109,11 +86,10 @@ const Content = styled.div`
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 20px;
+  margin-left: 600px;
+  gap: 20px;
   height: 41px;
-  margin-right: 250px;
+  margin-top: ${({ isSocialLogin }) => (isSocialLogin ? "200px" : "-60px")}; /* 소셜 로그인 여부에 따라 변경 */
 `;
 
 const DeleteButton = styled.button`
