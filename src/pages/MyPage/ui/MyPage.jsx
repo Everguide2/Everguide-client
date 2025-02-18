@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Sidebar from "@pages/MyPage/ui/sidebar";
+import Sidebar from "@pages/MyPage/ui/Sidebar.jsx";
 import UserInfoForm from "@pages/MyPage/ui/UserInfoForm";
-import DeleteAccountModal from "../components/modal/DeleteAccountModal";
-import LogoutModal from "../components/modal/LogoutModal";
+import DeleteAccountModal from "@pages/MyPage/components/modal/DeleteAccountModal";
+import LogoutModal from "@pages/MyPage/components/modal/LogoutModal";
 
 const MyPage = () => {
   const [userInfo, setUserInfo] = useState({
