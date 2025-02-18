@@ -126,7 +126,6 @@ export const NextButton = styled.button`
     background-color: #f9a825;
   }
 
-  /* 비활성화 상태 */
   &:disabled {
     background-color: ${({ theme }) => theme.colors.gray[200]};
     color: ${({ theme }) => theme.colors.gray[300]};
