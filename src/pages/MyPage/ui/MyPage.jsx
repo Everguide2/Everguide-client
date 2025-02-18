@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import Sidebar from "@pages/MyPage/ui/Sidebar.jsx";
 import UserInfoForm from "@pages/MyPage/ui/UserInfoForm";
