@@ -41,7 +41,7 @@ const SiteBanner = styled.div`
   margin-top: 48px;
 `;
 
-const SiteEx = styled.p`
+const SiteEx = styled.div`
   margin-top: 30px;
   display: flex;
   flex-direction: column;
