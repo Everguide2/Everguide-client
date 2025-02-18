@@ -4,7 +4,7 @@ import {BasicButton} from "@/components"
 import * as S from "./style.js"
 import {sideBarData} from "@layout/Sidebar/feature/sideBarData.js";
 import {sideBarJobData} from "@layout/Sidebar/feature/sideBarJobData.js";
-import {FilterTitle, FilterSection, EverguideManual} from "../components";
+import {FilterTitle, FilterSection, EverguideManual} from "@layout/Sidebar/components";
 
 
 const SideBar = ({type = "normal"}) => {
