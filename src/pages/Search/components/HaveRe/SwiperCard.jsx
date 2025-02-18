@@ -3,10 +3,11 @@ import styled from "styled-components";
 import theme from "../../../../theme/theme";
 import BookMark from "../../../../assets/images/img_sharp-bookmark.png";
 const SwiperCard = ({ arr, query }) => {
+  console.log(arr);
   return (
     <Card>
       <CardHeader>
-        <CardCt>{arr.category}</CardCt>
+        <CardCt>{arr.type}</CardCt>
         <BookCard src={BookMark} />
       </CardHeader>
       <TitleIncludeName>
@@ -27,7 +28,13 @@ const SwiperCard = ({ arr, query }) => {
       <CardMethod>{arr.method}</CardMethod>
       <LocationAndDday>
         <Location>{arr.location}</Location>
-        <Dday>{arr.remainingPeriod}</Dday>
+        {arr.remainingPeriod === "-1" ? (
+          <Dday>마감</Dday>
+        ) : arr.remainingPeriod === "0" ? (
+          <Dday>D-Day</Dday>
+        ) : (
+          <Dday>D-{arr.remainingPeriod}</Dday>
+        )}
       </LocationAndDday>
     </Card>
   );
@@ -45,6 +52,7 @@ const Card = styled.div`
   margin-top: 5px;
   margin-bottom: 5px;
   margin-left: 3px;
+  cursor: pointer;
 `;
 const CardHeader = styled.div`
   display: flex;
@@ -52,6 +60,8 @@ const CardHeader = styled.div`
   margin-bottom: 7px;
 `;
 const CardCt = styled.div`
+  padding-left: 5px;
+  padding-right: 5px;
   height: 21px;
   display: flex;
   justify-content: center;
@@ -92,6 +102,7 @@ const LocationAndDday = styled.div`
 const Location = styled.p`
   ${({ theme }) => theme.fonts.subHeader3}
   color:#4E4C49;
+  margin-top: 4px;
 `;
 const Dday = styled.p`
   ${({ theme }) => theme.fonts.header6}

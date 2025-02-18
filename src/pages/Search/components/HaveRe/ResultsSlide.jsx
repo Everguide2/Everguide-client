@@ -9,9 +9,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 const ResultsSlide = () => {
-  const { dummy, queryName, category, categoryCount } = useSelector(
-    (state) => state.Search
-  );
+  const { policyInfo, eventInfo, jobInfo, queryName, category, categoryCount } =
+    useSelector((state) => state.Search);
+
+  let totalInfo = [...policyInfo, ...eventInfo, ...jobInfo];
+  console.log(totalInfo);
   return (
     <>
       {category.map((name, index) => {
@@ -24,7 +26,7 @@ const ResultsSlide = () => {
               modules={[Navigation]}
               navigation={true}
             >
-              {dummy[queryName].map((arr, idx) => {
+              {totalInfo.map((arr, idx) => {
                 return arr.category === name ? (
                   <SwiperSlide key={idx}>
                     <SwiperCard arr={arr} query={queryName} />
@@ -99,4 +101,5 @@ const ViewAll = styled.button`
   color: ${({ theme }) => theme.colors.primary[700]};
   ${({ theme }) => theme.fonts.subHeader3};
   margin-top: 24px;
+  cursor: pointer;
 `;
