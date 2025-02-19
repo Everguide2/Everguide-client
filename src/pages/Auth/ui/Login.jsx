@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import { loginApi } from "../../../apis/login-endpoint";
 import KakaoButton from "../components/KakaoButton.jsx";
 import NaverButton from "../components/NaverButton.jsx";
 import InputField from "@components/InputField/InputField.jsx";
@@ -10,23 +12,38 @@ import { string } from "../../../constants/index.js";
 import Links from "../components/Links.jsx";
 import Button from "../components/Button.jsx"; 
 import Divider from "../components/Divider.jsx"; 
-import { setEmail, setPassword, incrementLoginAttempts, loginSuccess, resetLoginAttempts } from "../../../stores/auth/authSlice.js";
+import { setEmail, setPassword } from "../../../stores/auth/authSlice.js";
 import LoginErrorModal from "../../../components/Modal/LoginErrorModal";
 import NonMemberModal from "../../../components/Modal/NonMemberModal"; 
-
+import styled from "styled-components";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { email, password, loginAttempts } = useSelector((state) => state.auth);
+  const { email, password } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
   const emailDomains = ["naver.com", "gmail.com", "tukorea.ac.kr"];
   const [emailSuggestions, setEmailSuggestions] = useState([]);
   const [showErrorModal, setShowErrorModal] = useState(false); 
   const [showNonMemberModal, setShowNonMemberModal] = useState(false); 
 
-  const registeredUsers = [
-    { email: "seojin@gmail.com", password: "tjwls5318" },
-    { email: "testuser@gmail.com", password: "password123" }
-  ];
+  const loginMutation = useMutation({
+    mutationFn: loginApi, 
+    onSuccess: (data) => { 
+      console.log("✅ 로그인 성공:", data); 
+      navigate("/");
+      if (data?.accessToken) {
+        localStorage.setItem("token", data.accessToken); 
+        navigate("/"); 
+      } else {
+        console.error("❌ 서버에서 받은 데이터에 토큰이 없습니다!");
+      }
+    },
+    onError: (error) => {
+      console.error("❌ 로그인 실패:", error);
+      setShowErrorModal(true);
+    },
+  });
 
   const handleEmailChange = (e) => {
     const value = e.target.value;
@@ -46,21 +63,15 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
-    const user = registeredUsers.find((user) => user.email === email);
-
-    if (!user) {
-      setShowNonMemberModal(true);
+  
+    console.log("로그인 시도:", email, password);
+  
+    if (!email || !password) {
+      console.error("❌ 이메일과 비밀번호를 입력하세요!");
       return;
     }
-
-    if (user.password !== password) {
-      setShowErrorModal(true);
-      return;
-    }
-    alert("로그인 성공");
-    dispatch(loginSuccess());
-    dispatch(resetLoginAttempts());
+  
+    loginMutation.mutate({ email, password });
   };
 
   return (
@@ -125,14 +136,16 @@ const Login = () => {
         <LoginErrorModal onClose={() => setShowErrorModal(false)} />
       )}
       
-        {showNonMemberModal && (
+      {showNonMemberModal && (
         <NonMemberModal onClose={() => setShowNonMemberModal(false)} />
-        )}
-        </>
+      )}
+    </>
   );
 };
 
 export default Login;
+
+
 
 const Container = styled.div`
   display: flex;
