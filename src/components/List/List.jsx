@@ -1,14 +1,13 @@
 import {styled} from "styled-components";
-import ListBookMark from "@components/List/ListBookMark.jsx";
 import Category from "@pages/Common/event&policyRec/components/Category.jsx";
 import {string} from "@constants/index.js";
 
 // eslint-disable-next-line react/prop-types
-const List = ({city, category, title, assign, duration, dDay, bookmark, isLogin, isMyPage, isJob, onClick, onClickCheckBox}) => {
+const List = ({city, category, title, assign, duration, dDay, bookmark, isLogin, isEvent, isJob, onClick, onClickCheckBox}) => {
   return (
       <Container>
         <tr>
-          <td onClick={onClick}><Category text={category} isJob={isJob}/></td>
+          <td onClick={onClick}><Category text={isEvent ? "교육": category} isJob={isJob}/></td>
           <td onClick={onClick}>{city}</td>
           <td onClick={onClick}>
             <div>
@@ -17,7 +16,7 @@ const List = ({city, category, title, assign, duration, dDay, bookmark, isLogin,
             </div>
           </td>
           <td onClick={onClick}>{duration}</td>
-          <td onClick={onClick}>{dDay === 0 ? string.dDay : string.dTitle + dDay}</td>
+          {dDay >= 0 && <td onClick={onClick}>{dDay === 0 ? string.dDay : string.dTitle + dDay}</td>}
           {isLogin && <Td><CheckInput type="checkbox" onClick={onClickCheckBox} /></Td>}
         </tr>
       </Container>

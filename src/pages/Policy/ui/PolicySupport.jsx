@@ -1,25 +1,25 @@
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import Common from "@pages/Common/event&policyRec/ui/Common.jsx";
-import {dummyData} from "@test/eventDummy.js";
-import {addEvent} from "@stores/common/eventSlice.js";
+import {noImageData} from "@test/eventDummyNoImages.js";
+import {addPolicy} from "@stores/common/policySlice.js";
 import {setPage} from "@stores/paging/pagingSlice.js";
 
-
-const Event = () => {
+const PolicySupport = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dummyData.forEach((item) => {
-      dispatch(addEvent({...item}));
+    noImageData.forEach((item) => {
+      dispatch(addPolicy({...item}));
     });
 
     dispatch(setPage({itemsCount: 22, totalItems: 160, pageRange: 5}))
   }, [dispatch]);
 
+
   return (
-      <Common type={"행사/교육"}/>
+      <Common type={"지원정책"}/>
   );
 };
 
-export default Event;
+export default PolicySupport;

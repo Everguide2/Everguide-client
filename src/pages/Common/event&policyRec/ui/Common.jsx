@@ -7,12 +7,14 @@ import {useSelector} from "react-redux";
 import {pagePath} from "@/routes/pagePath.js";
 import {useCustomNavigation} from "@hooks/useCustomNavigation.js";
 
+// 지원정책, 행사/교육 페이지 공통 사용
 const Common = ({type}) => {
-  const {navigateTo} = useCustomNavigation()
-  const listData = ["등록일 순", "신청 마감순"];
   const [activeTab, setActiveTab] = useState("left");
   const [isLogin, setIsLogin] = useState(true);
+  const listData = ["등록일 순", "신청 마감순"];
   const total = useSelector(state => state.paging.totalItems);
+
+  const {navigateTo} = useCustomNavigation()
 
   const onClickTab = (tab) => {
     setActiveTab(tab);
@@ -22,7 +24,7 @@ const Common = ({type}) => {
     if(type === "행사/교육"){
       navigateTo(`/${pagePath.EVENT}/${id}`);
     } else{
-      navigateTo(`/${pagePath.EVENT}/${id}`);
+      navigateTo(`/${pagePath.SUPPORT}/${id}`);
     }
   }
 
@@ -38,7 +40,7 @@ const Common = ({type}) => {
                 onClickTab={onClickTab}
                 type={"big"}
             />
-            {activeTab === "left" ? <CardView onClickCard={onClickItem} isLogin={isLogin}/> : <ListView type={type} onClickList={onClickItem} isLogin={isLogin}/>}
+            {activeTab === "left" ? <CardView type={type} onClickCard={onClickItem} isLogin={isLogin}/> : <ListView type={type} onClickList={onClickItem} isLogin={isLogin}/>}
             <Paginations />
           </S.RightContent>
         </S.Container>
