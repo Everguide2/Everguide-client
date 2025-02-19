@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import theme from "../../../../theme/theme";
-import BookMark from "../../../../assets/images/img_sharp-bookmark.png";
-const SwiperCard = ({ arr, query }) => {
+import theme from "@/theme/theme";
+import BookMark from "../../../../../assets/images/img_sharp-bookmark.png";
+const PolicyCard = ({ arr, query }) => {
   console.log(arr);
   return (
     <Card>
@@ -40,11 +40,11 @@ const SwiperCard = ({ arr, query }) => {
   );
 };
 
-export default SwiperCard;
+export default PolicyCard;
 
 const Card = styled.div`
   width: 310px;
-  height: 256px;
+  height: 272px;
   display: flex;
   flex-direction: column;
   border-radius: 26px;
@@ -72,7 +72,9 @@ const CardCt = styled.div`
   background-color: ${({ theme }) => theme.colors.gray[100]};
 `;
 const BookCard = styled.img`
-  margin-right: 15px;
+  width: 25px;
+  height: 33px;
+  margin-right: 20px;
 `;
 const CardTitle = styled.div`
   ${({ theme }) => theme.fonts.subHeader3};

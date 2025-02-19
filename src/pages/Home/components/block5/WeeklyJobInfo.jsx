@@ -4,12 +4,16 @@ import theme from "../../../../theme/theme";
 import B5Left from "./B5Left";
 import B5Right from "./B5Right";
 const WeeklyJobInfo = (dummy) => {
-  console.log(dummy);
+  // console.log(dummy);
+  let leftDummy = dummy.data.slice(0, 6);
+  let rightDummy = dummy.data[0];
+  console.log(leftDummy);
+  console.log(rightDummy);
   return (
     <Block5>
       <WeeklyJobBoard>
-        <B5Left data={dummy} />
-        <B5Right data={dummy} />
+        <B5Left data={leftDummy} />
+        <B5Right data={rightDummy} />
       </WeeklyJobBoard>
     </Block5>
   );
