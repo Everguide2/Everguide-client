@@ -1,20 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../../../theme/theme";
-
+import { useNavigate } from "react-router-dom";
 const B5Left = (dummy) => {
+  const navigate = useNavigate();
+  const goToJobDetail = (id) => {
+    navigate(`job-senior/${id}`);
+  };
+
+  const goToSeniorJob = () => {
+    navigate("job-senior");
+  };
+
   return (
     <TitleAndList>
       <TitleLine>
         <Title>이번주의 일자리 정보</Title>
-        <MoreButton>더보기 &gt;</MoreButton>
+        <MoreButton onClick={() => goToSeniorJob()}>더보기 &gt;</MoreButton>
       </TitleLine>
       {/*추후 API작업 시에 바꿀 예정 */}
-      {dummy.data.data.map((arr) => {
+      {dummy.data.map((arr) => {
         return (
-          <JobLine key={arr.company}>
+          <JobLine key={arr.company} onClick={() => goToJobDetail(arr.id)}>
             <Company>{arr.company}</Company>
-            <Work>{arr.work} -</Work>
+            <Work>{arr.title} -</Work>
             <Location>{arr.location}</Location>
           </JobLine>
         );
