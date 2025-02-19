@@ -10,7 +10,7 @@ import { imgDangguMag } from '../../../assets';
 import LoginModal from "../feature/LoginModal.jsx"; 
 import { useNavigate } from "react-router-dom";
 import ScrollToTop from '@/utils/scrollToTop';
-import LoadingScreen from './LoadingScreen';  
+import LoadingScreen from './LoadingScreen';
 
 const Policy = () => {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Policy = () => {
   const currentQuestion = questionData.find((q) => q.id === currentQuestionId) || null;
 
   const handleStart = () => {
-    if (isAuthenticated) {
+    if (!isAuthenticated) {
       setIsStarted(true);
     } else {
       setShowLoginModal(true); 
@@ -58,20 +58,22 @@ const Policy = () => {
 
   const handleNext = () => {
     if (!currentQuestion) return;
-
+  
     const selectedAnswer = answers[currentQuestionId];
+  
     if (!selectedAnswer || (Array.isArray(selectedAnswer) && selectedAnswer.length === 0)) return;
-
-    const nextQuestion = currentQuestion.options.find(opt => opt.text === (Array.isArray(selectedAnswer) ? selectedAnswer[0] : selectedAnswer));
-
+  
+    const nextQuestion = currentQuestion.options.find(opt => 
+      Array.isArray(selectedAnswer) 
+        ? selectedAnswer.includes(opt.text) 
+        : opt.text === selectedAnswer
+    );
+  
     if (!nextQuestion?.nextId || nextQuestion?.nextId === "null") {
-      console.log("로딩 시작! isLoading = true 설정");
-      setIsLoading(true);  
-
+      setIsLoading(true);
       setTimeout(() => {
-        console.log("결과 페이지로 이동!");
         navigate("/result", { state: { answers } });
-      }, 2000);  
+      }, 2000);
     } else {
       setCurrentQuestionId(nextQuestion.nextId);
     }
@@ -81,7 +83,7 @@ const Policy = () => {
   return (
     <>
       <ScrollToTop />
-      {isLoading ? ( 
+      {isLoading ? (  
         <LoadingScreen />
       ) : (
         <Container>
@@ -98,18 +100,21 @@ const Policy = () => {
               <ImageWrapper>
                 <StyledImage src={imgDangguMag} alt="강아지 이미지" />
               </ImageWrapper>
-              <Button onClick={() => setIsStarted(true)}>찾아보기</Button>
+              <Button onClick={handleStart}>찾아보기</Button>
             </BoxContainer>
           ) : (
             <QuestionContainer>
-              <Title>{Object.keys(answers).length + 1}/5</Title>
+              <Title>{getQuestionNumber(currentQuestionId) + 1}/5</Title>
               <Description>{currentQuestion?.question}</Description>
-              <OptionsContainer>
+              <OptionsContainer className={["location", "familyLocation"].includes(currentQuestionId) ? "grid-layout" : ""}>
                 {currentQuestion?.options?.map((option) => (
                   <OptionButton
                     key={option.text}
-                    onClick={() => setAnswers(prev => ({ ...prev, [currentQuestionId]: option.text }))}
-                    className={answers[currentQuestionId] === option.text ? "selected" : ""}
+                    onClick={() => handleSelect(option)}
+                    className={Array.isArray(answers[currentQuestionId]) 
+                      ? (answers[currentQuestionId].includes(option.text) ? "selected" : "") 
+                      : (answers[currentQuestionId] === option.text ? "selected" : "")
+                    }
                   >
                     {option.text}
                   </OptionButton>
@@ -120,6 +125,7 @@ const Policy = () => {
               </NextButton>
             </QuestionContainer>
           )}
+
           {showLoginModal && <LoginModal onClose={() => setShowLoginModal(false)} />}
         </Container>
       )}
