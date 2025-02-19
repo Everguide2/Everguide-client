@@ -19,7 +19,7 @@ const Card = ({title,subTitle,category,bookmark,assign,dDay,isLogin,isEvent, img
         <Bottom $img={img} onClick={onClick}>
           {img && <Title $img={img}>{title}</Title>}
           <Assign>{assign}</Assign>
-          {dDay && <Dday $rest={dDay}>{dDay === 0 ? string.end : string.dTitle + dDay}</Dday>}
+          {dDay >= 0 && <Dday $rest={dDay}>{dDay === 0 ? string.end : string.dTitle + dDay}</Dday>}
           {dDay === 1 && <CardLastDay/>}
         </Bottom>
       </Container>

@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 export const policyDetailSlice = createSlice({
-  name: "detail",
+  name: "policyDetail",
   initialState: {
     category: "",
     title: "",

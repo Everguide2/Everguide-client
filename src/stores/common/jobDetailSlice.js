@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 export const jobDetailSlice = createSlice({
-  name: "detail",
+  name: "jobDetail",
   initialState: {
     category: "",
     title: "",

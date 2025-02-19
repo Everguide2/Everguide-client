@@ -1,12 +1,17 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 export const eventDetailSlice = createSlice({
-  name: "detail",
+  name: "eventDetail",
   initialState: {
     category: "",
     title: "",
-    subtitle: "",
+    subTitle: "",
     content: "",
+    bookMark:"",
+    startDate:"",
+    endDate:"",
+    fee:"",
+    registration:"",
   },
   reducers: {
     addEventArticle: (state, action) => {
@@ -15,6 +20,10 @@ export const eventDetailSlice = createSlice({
       state.subTitle = action.payload.subTitle;
       state.content = action.payload.content;
       state.bookMark = action.payload.bookMark;
+      state.startDate = action.payload.startDate;
+      state.endDate = action.payload.endDate;
+      state.fee = action.payload.fee;
+      state.registration = action.payload.registration;
     }
   }
 });
