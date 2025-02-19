@@ -41,6 +41,9 @@ const CommonDetail = ({type}) => {
                   fee={detail?.fee}
                   registration={detail?.registration}
               />}
+              {type === "지원정책" &&
+                <PolicyContent data={detail}/>
+              }
             </S.Content>
 
             <S.Buttons>

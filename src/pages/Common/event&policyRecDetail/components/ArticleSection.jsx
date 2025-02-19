@@ -42,4 +42,5 @@ const Content = styled.p`
   margin-top: 9px;
   ${({ theme }) => theme.fonts.subHeader6};
   color: ${({ theme }) => theme.colors.gray[900]};
+    white-space: pre-line;
 `
