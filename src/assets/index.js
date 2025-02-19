@@ -41,6 +41,7 @@ export {default as icMyPageModal} from '@assets/icons/ic-mypage-modal.svg';
 export {default as icMyPageKakao} from '@assets/icons/ic-mypage-kakao.svg';
 export {default as icMyPageNaver} from '@assets/icons/ic-mypage-naver.svg';
 export {default as icMyPagePassword} from '@assets/icons/ic-mypage-passwordchange.svg';
+export {default as icMyPageUpdate} from '@assets/icons/ic-mypage-update.svg';
 
 // images
 export {default as imgDangguMag} from '@assets/images/img-dangguMag.svg';
@@ -53,6 +54,7 @@ export {default as imgFrame3 } from '@assets/images/img-Frame 290615.svg';
 export {default as imgFrame5} from '@assets/images/img-Frame 290617.svg';
 export {default as AdCalendar } from '@assets/images/img-AdCalendar.svg';
 export {default as imgProfile } from '@assets/images/img_profile.svg';
+export {default as imgDefault} from '@assets/images/img_default.svg';
 
 // fonts
 export {default as NanumGothicRegular } from '@assets/fonts/NanumGothic-Regular.ttf';

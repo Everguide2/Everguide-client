@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { icMyPageCamera, icModalClose } from "@/assets";
 
-const ProfileImageModal = ({ isOpen, onClose }) => {
+const ProfileImageModal = ({ isOpen, onClose, onImageUpload }) => {
   const [image, setImage] = useState(null); 
 
   useEffect(() => {
@@ -22,6 +22,7 @@ const ProfileImageModal = ({ isOpen, onClose }) => {
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setImage(imageUrl);
+      onImageUpload(imageUrl); // 부모(UserInfoForm)로 업로드된 이미지 전달
     }
   };
 
