@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../../../theme/theme";
-import SwiperCard from "./SwiperCard";
+import PolicyCard from "./Card/PolicyCard";
+import EventCard from "./Card/EventCard";
+import JobCard from "./Card/JobCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useSelector } from "react-redux";
 import { Navigation } from "swiper/modules";
@@ -29,7 +31,13 @@ const ResultsSlide = () => {
               {totalInfo.map((arr, idx) => {
                 return arr.category === name ? (
                   <SwiperSlide key={idx}>
-                    <SwiperCard arr={arr} query={queryName} />
+                    {name === "정책" ? (
+                      <PolicyCard arr={arr} query={queryName} />
+                    ) : name === "행사/교육" ? (
+                      <EventCard arr={arr} query={queryName} />
+                    ) : (
+                      <JobCard arr={arr} query={queryName} />
+                    )}
                   </SwiperSlide>
                 ) : null;
               })}
@@ -46,7 +54,7 @@ export default ResultsSlide;
 
 const Slide = styled.div`
   width: 1150px;
-  height: 419px;
+  height: 439px;
   display: flex;
   flex-direction: column;
   margin-left: 110px;

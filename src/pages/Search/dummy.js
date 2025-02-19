@@ -99,44 +99,56 @@ const dummy = {
     ],
     일자리: [
       {
+        id: 1,
         category: "일자리",
-        title: "치료 서울병원 간호사 모집", // 치료 포함
+        title: "치료 서울병원 간호사",
         method: "· 이메일 지원",
-        location: "서울병원",
+        company: "서울병원",
+        location: "서울시 송파구",
         remainingPeriod: "25",
-        type: "의료", // type 추가
+        duration: "2025-02-19 ~ 2025-03-15", // 25일 후
       },
       {
+        id: 2,
         category: "일자리",
-        title: "치료 부산병원 행정직 채용", // 치료 포함
+        title: "치료 부산병원 행정직",
         method: "· 온라인 지원",
-        location: "부산병원",
-        remainingPeriod: "0", // D-Day
-        type: "의료", // type 추가
+        company: "부산병원",
+        location: "부산 구덕로",
+        remainingPeriod: "0",
+        type: "의료",
+        duration: "2025-02-19 ~ 2025-02-19", // D-Day
       },
       {
+        id: 3,
         category: "일자리",
-        title: "치료 의료기기 엔지니어 채용", // 치료 포함
+        title: "치료기기 엔지니어",
         method: "· 전화 문의",
-        location: "대구센터",
-        remainingPeriod: "-1", // 지난 일정
-        type: "의료", // type 추가
+        company: "대구센터",
+        location: "대구광역시 내당동",
+        remainingPeriod: "-1",
+        duration: "2025-02-19 ~ 2024-11-27", // 지난 일정
       },
       {
+        id: 4,
         category: "일자리",
-        title: "치료 응급구조사 신규 채용", // 치료 포함
+        title: "치료 응급구조사",
         method: "· 방문 접수",
-        location: "인천응급센터",
+        company: "인천응급센터",
+        location: "인천광역시 남동구",
         remainingPeriod: "18",
-        type: "의료", // type 추가
+        duration: "2025-02-19 ~ 2025-03-09", // 18일 후
       },
       {
+        id: 5,
         category: "일자리",
-        title: "치료 전문의 초빙 공고", // 치료 포함
+        title: "치료 전문의",
         method: "· 서류 전형",
-        location: "대전종합병원",
+        company: "대전종합병원",
+        location: "대전광역시 정림동",
         remainingPeriod: "12",
-        type: "의료", // type 추가
+        type: "의료",
+        duration: "2025-02-19 ~ 2025-03-03", // 12일 후
       },
     ],
   },
@@ -223,44 +235,56 @@ const dummy = {
     ],
     일자리: [
       {
+        id: 1,
         category: "일자리",
-        title: "수술 서울병원 외과의 채용", // 수술 포함
+        title: "치료 서울병원 간호사",
         method: "· 이메일 지원",
-        location: "서울병원",
-        remainingPeriod: "30",
-        type: "의료", // type 추가
+        company: "서울병원",
+        location: "서울시 송파구",
+        remainingPeriod: "25",
+        duration: "2025-02-19 ~ 2025-03-15", // 25일 후
       },
       {
+        id: 2,
         category: "일자리",
-        title: "수술 부산병원 마취과 채용", // 수술 포함
+        title: "치료 부산병원 행정직",
         method: "· 온라인 지원",
-        location: "부산병원",
-        remainingPeriod: "0", // D-Day
-        type: "의료", // type 추가
+        company: "부산병원",
+        location: "부산 구덕로",
+        remainingPeriod: "0",
+        type: "의료",
+        duration: "2025-02-19 ~ 2025-02-19", // D-Day
       },
       {
+        id: 3,
         category: "일자리",
-        title: "수술 수술 장비 엔지니어 채용", // 수술 포함
+        title: "치료 의료기기 엔지니어",
         method: "· 전화 문의",
-        location: "광주첨단의료센터",
-        remainingPeriod: "-1", // 지난 일정
-        type: "의료", // type 추가
+        company: "대구센터",
+        location: "대구광역시 내당동",
+        remainingPeriod: "-1",
+        duration: "2025-02-19 ~ 2024-11-27", // 지난 일정
       },
       {
+        id: 4,
         category: "일자리",
-        title: "수술 전문 외과 간호사 모집", // 수술 포함
-        method: "· 서류 제출",
-        location: "서울대병원",
-        remainingPeriod: "28",
-        type: "의료", // type 추가
+        title: "치료 응급구조사",
+        method: "· 방문 접수",
+        company: "인천응급센터",
+        location: "인천광역시 남동구",
+        remainingPeriod: "18",
+        duration: "2025-02-19 ~ 2025-03-09", // 18일 후
       },
       {
+        id: 5,
         category: "일자리",
-        title: "수술 신규 레지던트 모집", // 수술 포함
-        method: "· 온라인 지원",
-        location: "부산종합병원",
-        remainingPeriod: "14",
-        type: "의료", // type 추가
+        title: "치료 전문의",
+        method: "· 서류 전형",
+        company: "대전종합병원",
+        location: "대전광역시 정림동",
+        remainingPeriod: "12",
+        type: "의료",
+        duration: "2025-02-19 ~ 2025-03-03", // 12일 후
       },
     ],
   },
