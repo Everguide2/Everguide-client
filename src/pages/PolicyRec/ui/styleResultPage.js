@@ -25,7 +25,6 @@ export const Section = styled.div`
   margin-bottom: 58px;
 `;
 
-// 카드 그리드 스타일 (정책 및 행사 카드)
 export const CardGrid = styled.div`
   display: grid;
 grid-template-columns: 340px 340px 340px;
@@ -36,7 +35,7 @@ grid-template-rows: repeat(2, 256px);
   justify-content: center;
 `;
 
-// 개별 카드 스타일
+
 export const Card = styled.div`
   background: white;
   border-radius: 26px;
@@ -98,6 +97,9 @@ export const Mascot = styled.div`
   margin-top: 50px;
   width: 100%;
   position: relative;
+  margin-top : 40px;
+
+  padding-right : 50px;
 `;
 
 // 말풍선 스타일
@@ -105,13 +107,15 @@ export const SpeechBubble = styled.div`
   background: white;
   border-radius: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 15px 20px;
+  padding: 15px 25px;
+  display : inline-block
   font-size: 16px;
   font-weight: 500;
-  color: #555;
-  max-width: 250px;
+  color : ${({theme}) => theme.colors.gray[700]};
+  
   position: relative;
   text-align: center;
+  ${({theme}) => theme.fonts.header6}
 
   &::after {
     content: "";
@@ -124,14 +128,15 @@ export const SpeechBubble = styled.div`
   }
 
   span {
-    color: #f9a825;
+    color : ${({theme}) => theme.colors.primary[500]};
+    ${({theme}) => theme.fonts.header3}
     font-weight: 700;
     cursor: pointer;
   }
 `;
 export const MascotImage = styled.img`
-  width: 100px;
-  height: auto;
+  width: 214px;
+  height: 211px;
   margin-left: 10px;
 `;
 
