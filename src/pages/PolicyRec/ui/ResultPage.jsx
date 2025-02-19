@@ -1,7 +1,8 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Container, Title, Section, CardGrid, Card, Button, Mascot, SpeechBubble, MascotImage } from "./styleResultPage";
-import { imgDangguMag } from "../../../assets"; // ✅ Named import
+import { imgDangguMag } from "../../../assets";
+
 
 const ResultPage = () => {
   const location = useLocation();
@@ -9,16 +10,9 @@ const ResultPage = () => {
 
   const answers = location.state?.answers || {};
 
-  const recommendedPolicies = [
-    { id: 1, title: "노인 일자리 사업 지원", category: "고용·일자리", deadline: "D-9" },
-    { id: 2, title: "노인 맞춤형 건강검진", category: "보건복지", deadline: "상시모집" },
-    { id: 3, title: "단독주택 지붕개량 지원", category: "생활안정", deadline: "D-7" },
-  ];
-
-  const recommendedEvents = [
-    { id: 4, title: "어르신 문화누림 사업공모", category: "문화·예술", deadline: "D-12" },
-    { id: 5, title: "법률 상담 및 단체활동", category: "법률지원", deadline: "D-1" },
-  ];
+  // ✅ 더미데이터에서 정책 & 행사 데이터 필터링
+  const recommendedPolicies = eventDummy.filter((item) => item.type === "policy").slice(0, 6); // 정책 데이터 (최대 6개)
+  const recommendedEvents = eventDummy.filter((item) => item.type === "event").slice(0, 6); // 행사 데이터 (최대 6개)
 
   return (
     <Container>
@@ -50,8 +44,8 @@ const ResultPage = () => {
 
       <Mascot>
         <SpeechBubble>
-            찾으시는 정책이 없으신가요? <br />
-            <span onClick={() => navigate("/policy")}>정책추천 다시 받기</span>
+          찾으시는 정책이 없으신가요? <br />
+          <span onClick={() => navigate("/policy")}>정책추천 다시 받기</span>
         </SpeechBubble>
         <MascotImage src={imgDangguMag} alt="강아지 이미지" />
       </Mascot>
