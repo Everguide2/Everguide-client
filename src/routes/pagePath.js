@@ -1,3 +1,5 @@
+import ResultPage from "@/pages/PolicyRec/ui/ResultPage";
+
 export const pagePath = {
   HOME: "home",
   POLICY : 'policy',
@@ -19,4 +21,5 @@ export const pagePath = {
   PASSWORDSENT : 'password-sent',
   SIGNUPLOADING : 'signup-loading',
   SIGNUPSUCCESS : 'signup-success',
+  ResultPage : 'result'
 }

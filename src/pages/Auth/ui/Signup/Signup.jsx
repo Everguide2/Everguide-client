@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import InputField from "@components/InputField/InputField.jsx";
-import Button from "../components/Button";
+import Button from "../../components/Button";
 import Ad from "@/components/Ad/Ad.jsx";
-import Logo from "../components/Logo";
-import { string } from "../../../constants";
-import DateOfBirthInput from "../components/DateOfBirthInput";
-import VerificationInput from "../components/VerificationInput";
-import PasswordInput from "../components/PasswordInput";
-import EmailInput from "../components/EmailInput";
-import SignupLoading from "./SignupLoading"; 
-import FixedFooter from "../components/FixedFooter";
+import Logo from "../../components/Logo";
+import { string } from "../../../../constants";
+import DateOfBirthInput from "../../components/DateOfBirthInput";
+import VerificationInput from "../../components/VerificationInput";
+import PasswordInput from "../../components/PasswordInput";
+import EmailInput from "../../components/EmailInput";
+import SignupLoading from "../SignupLoading"; 
+import FixedFooter from "../../components/FixedFooter";
+import { Container, Content, ScrollArea, Form, InputWrapper, Label } from "./SignupStyles";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -173,68 +173,3 @@ const Signup = () => {
 };
 
 export default Signup;
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  gap: 150px;
-`;
-
-const Content = styled.div`
-  margin-top: 100px;
-  padding: 10px;
-  border-radius: 20px;
-  width: 494px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: visible;
-`;
-
-const ScrollArea = styled.div`
-  height: 722px;
-  overflow-y: auto;
-  width: 100%;
-  margin-top: 20px;
-  padding: 0 45px;
-
-  /* ✅ 스크롤바 스타일 적용 */
-  &::-webkit-scrollbar {
-    width: 8px; /* ✅ 스크롤바 너비 */
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #F3F3F3; /* ✅ 스크롤바 색상 */
-    border-radius: 100px;
-    height: 200px; /* ✅ 스크롤바 길이 */
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: white; /* ✅ 스크롤바 배경 색상 */
-  }
-`;
-
-
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 100%;
-`;
-
-const InputWrapper = styled.div`
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  width: 100%;
-`;
-
-const Label = styled.div`
-  ${({ theme }) => theme.fonts.body3};
-  color: #787878;
-  text-align: left;
-  margin-top: 10px;
-`;
