@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { imgProfile } from "@/assets";
+import { imgProfile, imgDefault, icMyPageUpdate } from "@/assets";
 import { icMyPageKakao, icMyPageNaver } from "@/assets";
 import ProfileImageModal from "../components/modal/ProfileImageModal";
 import ChangePasswordModal from "../components/modal/ChangePasswordModal";
@@ -11,16 +11,37 @@ const UserInfoForm = ({ userInfo, onChange, onUpdate }) => {
   const [isUpdated, setIsUpdated] = useState(false);
   const [originalUserInfo, setOriginalUserInfo] = useState(userInfo);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
+  const [profileImage, setProfileImage] = useState(imgDefault);
+  const [savedUserInfo, setSavedUserInfo] = useState(userInfo);
+  const [isSaved, setIsSaved] = useState(false);
 
-  // 변경 사항 감지
+
   useEffect(() => {
-    const hasChanged = JSON.stringify(userInfo) !== JSON.stringify(originalUserInfo);
+    const hasChanged = JSON.stringify(userInfo) !== JSON.stringify(savedUserInfo);
     setIsUpdated(hasChanged);
-  }, [userInfo, originalUserInfo]);
+  }, [userInfo, savedUserInfo]);  
 
   // 간편 로그인 여부 확인 (카카오 or 네이버 계정 존재 여부)
   const isSocialLogin = userInfo.accounts && userInfo.accounts.length > 0;
 
+  const handleImageUpload = (imageUrl) => {
+    setProfileImage(imageUrl); // 업로드한 프로필 이미지 반영
+  };
+
+  const handleUpdate = () => {
+    if (!isUpdated || isSaved) return; // 이미 저장 중이거나 변경 사항이 없으면 실행 안 함.
+  
+    onUpdate(); // 부모 컴포넌트에 업데이트 요청
+    
+    setIsSaved(true); //  저장 중 상태로 변경
+    setIsUpdated(false); //  변경 감지 초기화
+    setSavedUserInfo({ ...userInfo }); //  최종 저장된 상태 업데이트
+    
+    setTimeout(() => {
+      setIsSaved(false); // 2초 후 다시 기본 상태로 변경
+    }, 2000);
+  };
+  
   return (
     <OuterContainer>
       <InnerContainer>
@@ -34,9 +55,15 @@ const UserInfoForm = ({ userInfo, onChange, onUpdate }) => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onClick={() => setIsModalOpen(true)}
-          >
-            {isHovered ? <ProfileImg src={imgProfile} alt="프로필 이미지" /> : <DefaultProfile />}
+          > 
+
+            {/* 프로필 이미지가 있으면 보여줌 (호버 전) */}
+            {profileImage && !isHovered && <ProfileImg src={profileImage} alt="프로필 이미지" />}
+
+            {/* 호버하면 imgProfile 표시 */}
+            {isHovered && <ProfileImg src={imgProfile} alt="프로필 변경 미리보기" />}
           </ProfileImageWrapper>
+
 
           {/* 사용자 정보 입력 */}
           <FormGroup>
@@ -55,7 +82,7 @@ const UserInfoForm = ({ userInfo, onChange, onUpdate }) => {
           </FormGroup>
 
           {isSocialLogin ? (
-            //  소셜셜 로그인 사용자 (카카오/네이버)
+            //  소셜 로그인 사용자 (카카오/네이버)
             <>
               <FormGroup>
                 <Label>계정</Label>
@@ -70,12 +97,19 @@ const UserInfoForm = ({ userInfo, onChange, onUpdate }) => {
               </FormGroup>
 
               {/* 소셜 로그인 사용자만 수정하기 버튼 보이기 */}
-              <UpdateButton onClick={onUpdate} disabled={!isUpdated} isUpdated={isUpdated}>
+              <UpdateButton 
+                onClick={handleUpdate} 
+                disabled={isSaved || !isUpdated} //  저장 중이거나 변경이 없을 때 비활성화
+                isUpdated={isUpdated} 
+                isSaved={isSaved}
+              >
                 수정하기
+                {isSaved && <SaveIcon src={icMyPageUpdate} alt="저장 완료" />}
               </UpdateButton>
+
             </>
           ) : (
-            // 일반반 로그인 사용자
+            // 일반 로그인 사용자
             <>
               <FormGroup>
                 <Label>이메일</Label>
@@ -93,7 +127,14 @@ const UserInfoForm = ({ userInfo, onChange, onUpdate }) => {
         </Form>
       </InnerContainer>
 
-      {isModalOpen && <ProfileImageModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && (
+        <ProfileImageModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onImageUpload={handleImageUpload} 
+        />
+      )}
+
     </OuterContainer>
   );
 };
@@ -146,6 +187,7 @@ const Form = styled.div`
 const ProfileImageWrapper = styled.div`
   width: 150px;
   height: 150px;
+  position: relative;
   background-color: ${({ theme }) => theme.colors.gray[200]};
   border-radius: 50%;
   margin: 0 auto 30px;
@@ -176,8 +218,9 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
+  padding: 5px 0;
   width: 412px;
-  padding: 5px;
+  padding-left: 10px;
   border: 1px solid ${({ theme }) => theme.colors.gray[300]};
   border-radius: 4px;
   ${({ theme }) => theme.fonts.subHeader5};
@@ -215,25 +258,29 @@ const AccountContainer = styled.div`
 `;
 
 const UpdateButton = styled.button`
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   width: 354px;
-  margin: 200px auto;
-  margin-bottom: 0px;
+  margin: 200px auto 0;
   padding: 15px;
   border-radius: 28px;
   border: none;
-  background-color: ${({ isUpdated, theme }) => (isUpdated ? theme.colors.primary[500] : theme.colors.gray[200])};
-  color: ${({ isUpdated, theme }) => (isUpdated ? "white" : theme.colors.gray[300])};
-  cursor: ${({ isUpdated }) => (isUpdated ? "pointer" : "default")};
-  box-shadow: ${({ isUpdated }) => (isUpdated ? "0px 4px 15px rgba(251, 227, 0, 0.5)" : "none")};
-  ${({ theme }) => theme.fonts.header5};
-`;
+  
+  background-color: ${({ isUpdated, isSaved, theme }) => 
+    isSaved || !isUpdated ? theme.colors.gray[200] : theme.colors.primary[500]};
 
-const DefaultProfile = styled.div`
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: #D9D9D9;
+  color: ${({ isUpdated, isSaved, theme }) => 
+    isSaved || !isUpdated ? theme.colors.gray[300] : "white"};
+
+  cursor: ${({ isUpdated, isSaved }) => 
+    isSaved || !isUpdated ? "default" : "pointer"};
+
+  box-shadow: ${({ isUpdated, isSaved }) => 
+    isSaved || !isUpdated ? "none" : "0px 4px 15px rgba(251, 227, 0, 0.5)"};
+
+  ${({ theme }) => theme.fonts.header5};
 `;
 
 
