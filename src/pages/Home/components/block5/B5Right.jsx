@@ -1,17 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../../../theme/theme";
-
+import { useNavigate } from "react-router-dom";
 const B5Right = (dummy) => {
+  const navigate = useNavigate();
+  const goToJobDetail = (id) => {
+    navigate(`job-senior/${id}`);
+  };
+
   return (
-    <JobDetail>
+    <JobDetail onClick={() => goToJobDetail(dummy.data.id)}>
       <CompanyState>
-        <Company>{dummy.data.data[0].company}</Company>
-        <State>{dummy.data.data[0].state}</State>
+        <Company>{dummy.data.company}</Company>
+        <State>{dummy.data.state}</State>
       </CompanyState>
-      <JobTitle>{dummy.data.data[0].work}</JobTitle>
-      <Location>{dummy.data.data[0].location}</Location>
-      <Dday>{dummy.data.data[0].date}</Dday>
+      <JobTitle>{dummy.data.title}</JobTitle>
+      <Location>{dummy.data.location}</Location>
+      <Dday>{dummy.data.duration}</Dday>
     </JobDetail>
   );
 };
