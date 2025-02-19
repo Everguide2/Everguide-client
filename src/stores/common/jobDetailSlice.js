@@ -19,5 +19,5 @@ export const jobDetailSlice = createSlice({
   }
 });
 
-export const {addPolicyArticle} = jobDetailSlice.actions;
+export const {addJobArticle} = jobDetailSlice.actions;
 export default jobDetailSlice.reducer;

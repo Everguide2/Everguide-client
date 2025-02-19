@@ -44,6 +44,9 @@ const CommonDetail = ({type}) => {
               {type === "지원정책" &&
                 <PolicyContent data={detail}/>
               }
+              {type == "일자리" &&
+                <JobContent data={detail}/>
+              }
             </S.Content>
 
             <S.Buttons>

@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 import {useParams} from "react-router-dom";
 import CommonDetail from "@pages/Common/event&policyRecDetail/ui/CommonDetail.jsx";
 import ScrollToTop from "@/utils/scrollToTop.js";
-import {addArticle} from "@stores/common/detailSlice.js";
+import {addJobArticle} from "@stores/common/jobDetailSlice.js";
 import {jobDetailDummy} from "@test/jobDetailDummy.js";
 
 const JobDetail = () => {
@@ -13,7 +13,7 @@ const JobDetail = () => {
   const article = jobDetailDummy.find(data => data.id == ids);
 
   useEffect(() => {
-    dispatch(addArticle({
+    dispatch(addJobArticle({
       category: article.state,
       title:article.title,
       subtitle: article.company,
@@ -25,7 +25,7 @@ const JobDetail = () => {
   return (
     <div>
       <ScrollToTop/>
-      <CommonDetail type={2}/>
+      <CommonDetail type={"일자리"}/>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-const JobContent = () => {
+const JobContent = ({data}) => {
   return (
     <div>
 
