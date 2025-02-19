@@ -24,7 +24,8 @@ const routes = [
         path: pagePath.SUPPORTDETAIL,
         element: <PolicySupportDetail />,
       },
-        path : pagePath.ResultPage,
+      {
+        path: pagePath.ResultPage,
         element : <ResultPage />,
       },
       {
