@@ -7,13 +7,8 @@ const ResultPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // ✅ 이미지 경로 확인
-  console.log("imgDangguMag:", imgDangguMag);
-
-  // 질문 페이지에서 넘어온 데이터 (state로 전달된 경우)
   const answers = location.state?.answers || {};
 
-  // 정책 및 행사 추천 목록 (예제 데이터)
   const recommendedPolicies = [
     { id: 1, title: "노인 일자리 사업 지원", category: "고용·일자리", deadline: "D-9" },
     { id: 2, title: "노인 맞춤형 건강검진", category: "보건복지", deadline: "상시모집" },
