@@ -1,3 +1,4 @@
+import ResultPage from "@/pages/PolicyRec/ui/ResultPage.jsx";
 import RootLayout from "../layout/RootLayout.jsx";
 import {Home, Policy, Event, EventDetail, Job, JobDetail, JobMore, JobSenior, Login, Signup,Search, MyPage, FindEmail, FindPassword, EmailResult, PasswordSent, SignupLoading, SignupSuccess, Error404} from "../pages";
 import {pagePath} from "./pagePath.js";
@@ -14,6 +15,10 @@ const routes = [
       {
         path: pagePath.POLICY,
         element: <Policy />,
+      },
+      {
+        path : pagePath.ResultPage,
+        element : <ResultPage />,
       },
       {
         path: pagePath.EVENT,
