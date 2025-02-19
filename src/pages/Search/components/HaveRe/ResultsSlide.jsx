@@ -4,6 +4,7 @@ import theme from "../../../../theme/theme";
 import PolicyCard from "./Card/PolicyCard";
 import EventCard from "./Card/EventCard";
 import JobCard from "./Card/JobCard";
+import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useSelector } from "react-redux";
 import { Navigation } from "swiper/modules";
@@ -14,8 +15,18 @@ const ResultsSlide = () => {
   const { policyInfo, eventInfo, jobInfo, queryName, category, categoryCount } =
     useSelector((state) => state.Search);
 
+  const navigate = useNavigate();
+
   let totalInfo = [...policyInfo, ...eventInfo, ...jobInfo];
-  console.log(totalInfo);
+
+  // 정책 UI 완성 시 수정 예정
+  const goToViewAll = (name) => {
+    name === "정책"
+      ? null
+      : name === "행사/교육"
+      ? navigate("/event")
+      : navigate("/job-senior");
+  };
   return (
     <>
       {category.map((name, index) => {
@@ -42,7 +53,7 @@ const ResultsSlide = () => {
                 ) : null;
               })}
             </Swiper>
-            <ViewAll>전체보기 &gt;</ViewAll>
+            <ViewAll onClick={() => goToViewAll(name)}>전체보기 &gt;</ViewAll>
           </Slide>
         ) : null;
       })}
