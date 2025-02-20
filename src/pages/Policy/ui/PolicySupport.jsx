@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import Common from "@pages/Common/event&policyRec/ui/Common.jsx";
-import {noImageData} from "@test/eventDummyNoImages.js";
+import {noImageData} from "@test/policyDummy.js";
 import {addPolicy} from "@stores/common/policySlice.js";
 import {setPage} from "@stores/paging/pagingSlice.js";
 
