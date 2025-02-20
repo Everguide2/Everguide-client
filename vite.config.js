@@ -50,6 +50,9 @@ export default defineConfig({
       },
     ]
   },
+  build: {
+    chunkSizeWarningLimit: 1000, // 기본 500kB에서 1000kB로 증가
+  },
   server: {
     // proxy: {
     //   '/api': {

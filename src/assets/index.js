@@ -57,7 +57,3 @@ export {default as AdCalendar } from '@assets/images/img-AdCalendar.svg';
 export {default as imgProfile } from '@assets/images/img_profile.svg';
 export {default as imgDefault} from '@assets/images/img_default.svg';
 
-// fonts
-export {default as NanumGothicRegular } from '@assets/fonts/NanumGothic-Regular.ttf';
-export {default as NanumGothicBold } from '@assets/fonts/NanumGothic-Bold.ttf';
-export {default as NanumGothicExtraBold } from '@assets/fonts/NanumGothic-ExtraBold.ttf';
