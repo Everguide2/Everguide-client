@@ -101,10 +101,7 @@ export const policydummy = [
     total: 5000,
     age: "전 연령",
     registration: "- 신청접수처 : 서울병원 본관 305호",
-    homepage: {
-      list1: "https://www.bokjiro.go.kr/medical-support",
-      list2: "https://www.bokjiro.go.kr/rehabilitation",
-    },
+    homepage: "https://example.com/sspolicy2",
   },
   {
     id: 22,
@@ -122,10 +119,7 @@ export const policydummy = [
     total: 3000,
     age: "전 연령",
     registration: "- 신청접수처 : 부산병원",
-    homepage: {
-      list1: "https://www.bokjiro.go.kr/treatment-support",
-      list2: "https://www.bokjiro.go.kr/hospital-aid",
-    },
+    homepage: "https://example.com/sspolicy2",
   },
   {
     id: 23,
@@ -143,10 +137,7 @@ export const policydummy = [
     total: 4500,
     age: "전 연령",
     registration: "- 신청접수처 : 대전병원",
-    homepage: {
-      list1: "https://www.bokjiro.go.kr/rare-disease",
-      list2: "https://www.bokjiro.go.kr/medicine-support",
-    },
+    homepage: "https://example.com/sspolicy2",
   },
   {
     id: 24,
@@ -164,10 +155,7 @@ export const policydummy = [
     total: 3500,
     age: "전 연령",
     registration: "- 신청접수처 : 광주센터",
-    homepage: {
-      list1: "https://www.bokjiro.go.kr/rehabilitation-aid",
-      list2: "https://www.bokjiro.go.kr/equipment-support",
-    },
+    homepage: "https://example.com/sspolicy2",
   },
   {
     id: 25,
@@ -185,10 +173,7 @@ export const policydummy = [
     total: 4000,
     age: "전 연령",
     registration: "- 신청접수처 : 인천중앙병원",
-    homepage: {
-      list1: "https://www.bokjiro.go.kr/free-checkup",
-      list2: "https://www.bokjiro.go.kr/early-treatment",
-    },
+    homepage: "https://example.com/sspolicy2",
   },
   {
     id: 26,
@@ -206,10 +191,7 @@ export const policydummy = [
     total: 3200,
     age: "전 연령",
     registration: "- 신청접수처 : 전국 보건소 및 지정 의료기관",
-    homepage: {
-      list1: "https://www.bokjiro.go.kr/vaccine-support",
-      list2: "https://www.bokjiro.go.kr/immunization",
-    },
+    homepage: "https://example.com/sspolicy2",
   },
   // 지원정책 ("수술") 관련 키워드 5개
   {
@@ -228,10 +210,7 @@ export const policydummy = [
     total: 3200,
     age: "전 연령",
     registration: "- 신청접수처 : 서울대병원 첨단수술센터",
-    homepage: {
-      list1: "https://www.bokjiro.go.kr/vaccine-support",
-      list2: "https://www.bokjiro.go.kr/immunization",
-    },
+    homepage: "https://example.com/sspolicy2",
   },
   {
     id: 28,
@@ -249,10 +228,7 @@ export const policydummy = [
     total: 5000,
     age: "해당 없음",
     registration: "- 신청접수처 : 보건복지부 의료정책과",
-    homepage: {
-      list1: "https://www.bokjiro.go.kr/medical-equipment",
-      list2: "https://www.bokjiro.go.kr/hospital-support",
-    },
+    homepage: "https://example.com/sspolicy2",
   },
   {
     id: 29,
@@ -270,10 +246,7 @@ export const policydummy = [
     total: 2800,
     age: "전 연령",
     registration: "- 신청접수처 : 전국 보건소 및 협약 병원",
-    homepage: {
-      list1: "https://www.bokjiro.go.kr/recovery-support",
-      list2: "https://www.bokjiro.go.kr/post-surgery",
-    },
+    homepage: "https://example.com/sspolicy2",
   },
   {
     id: 30,
@@ -291,10 +264,7 @@ export const policydummy = [
     total: 6000,
     age: "전 연령",
     registration: "- 신청접수처 : 국민건강보험공단 및 보건소",
-    homepage: {
-      list1: "https://www.bokjiro.go.kr/surgery-cost",
-      list2: "https://www.bokjiro.go.kr/low-income-aid",
-    },
+    homepage: "https://example.com/sspolicy2",
   },
   {
     id: 31,
@@ -312,9 +282,6 @@ export const policydummy = [
     total: 3500,
     age: "전 연령",
     registration: "- 신청접수처 : 보건소 및 지정 간병센터",
-    homepage: {
-      list1: "https://www.bokjiro.go.kr/care-service",
-      list2: "https://www.bokjiro.go.kr/hospital-care",
-    },
+    homepage: "https://example.com/sspolicy2",
   },
 ];
