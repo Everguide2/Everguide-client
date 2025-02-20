@@ -9,7 +9,7 @@ import Links from "../components/Links";
 import VerificationInput from "../components/VerificationInput";
 import { string } from "../../../constants";
 import NonExistingMemberModal from "@/components/Modal/NonExistingMemberModal";
-import AuthDummy from "@test/AuthDummy"; // ✅ 더미 데이터 가져오기
+import AuthDummy from "@test/AuthDummy";
 
 const FindEmail = () => {
   const [formData, setFormData] = useState({
@@ -47,7 +47,6 @@ const FindEmail = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // ✅ 입력한 정보가 더미 데이터와 일치하는지 확인
     if (formData.name !== AuthDummy.name || formData.phoneNumber !== AuthDummy.phoneNumber) {
       setShowNonExistingMemberModal(true);
       return;

@@ -12,7 +12,7 @@ import EmailInput from "../../components/EmailInput";
 import SignupLoading from "../SignupLoading"; 
 import FixedFooter from "../../components/FixedFooter";
 import { Container, Content, ScrollArea, Form, InputWrapper, Label } from "./SignupStyles";
-import AuthDummy from "@test/AuthDummy"; // ✅ 더미 데이터 가져오기
+import AuthDummy from "@test/AuthDummy";
 
 const Signup = () => {
   const navigate = useNavigate();

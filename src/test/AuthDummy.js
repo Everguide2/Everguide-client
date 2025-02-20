@@ -5,6 +5,7 @@ const AuthDummy = {
     email: "aaa@test.com",
     password: "qwerty1234!",
     rewritePassword: "qwerty1234!",
+    
   };
   
   export default AuthDummy;
