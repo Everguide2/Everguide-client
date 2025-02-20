@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { imgProfile, imgDefault, icMyPageUpdate, icProfileBasic } from "@/assets";
+import { imgProfile, icMyPageUpdate, icProfileBasic } from "@/assets";
 import { icMyPageKakao, icMyPageNaver } from "@/assets";
 import ProfileImageModal from "../components/modal/ProfileImageModal";
 import ChangePasswordModal from "../components/modal/ChangePasswordModal";
 
-const UserInfoForm = ({ userInfo, onChange, onUpdate }) => {
+const UserInfoForm = ({ userInfo={}, onChange, onUpdate }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
@@ -15,31 +15,31 @@ const UserInfoForm = ({ userInfo, onChange, onUpdate }) => {
   const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
-    const hasChanged = JSON.stringify(userInfo) !== JSON.stringify(savedUserInfo);
-    setIsUpdated(hasChanged);
-    if (hasChanged) {
-      setIsSaved(false); 
+    if (JSON.stringify(userInfo) !== JSON.stringify(savedUserInfo)) {
+      setIsUpdated(true);
+      setIsSaved(false);
     }
   }, [userInfo, savedUserInfo]);
-  
-  const isSocialLogin = userInfo.accounts && userInfo.accounts.length > 0;
 
-  const handleImageUpload = (imageUrl) => {
+  const isSocialLogin = userInfo?.accounts && userInfo.accounts.length > 0;
+
+  const handleImageUpload = (file) => {
+    const imageUrl = URL.createObjectURL(file);
     setProfileImage(imageUrl);
   };
+
 
   const handleUpdate = async () => {
     if (!isUpdated) return;
 
     try {
       await onUpdate();
-      setSavedUserInfo({ ...userInfo }); 
-      setIsUpdated(false); 
+      setSavedUserInfo({ ...userInfo });
+      setIsUpdated(false);
     } catch (error) {
       console.error("업데이트 실패:", error);
     }
   };
-  
 
   const handleBirthChange = (e) => {
     let value = e.target.value.replace(/\D/g, ""); // 숫자만 입력 가능
@@ -137,6 +137,7 @@ const UserInfoForm = ({ userInfo, onChange, onUpdate }) => {
 };
 
 export default UserInfoForm;
+
 
 
 const OuterContainer = styled.div`
