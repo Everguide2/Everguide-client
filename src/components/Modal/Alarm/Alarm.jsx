@@ -15,7 +15,7 @@ const Alarm = ({onMouseEnter, onMouseLeave}) => {
           <Header>
             <Title>{string.noRead}</Title>
             <TotalContainer>
-              <Total>2</Total>
+              <Total>10</Total>
             </TotalContainer>
           </Header>
           <Content>

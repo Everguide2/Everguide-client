@@ -42,6 +42,7 @@ export {default as icMyPageKakao} from '@assets/icons/ic-mypage-kakao.svg';
 export {default as icMyPageNaver} from '@assets/icons/ic-mypage-naver.svg';
 export {default as icMyPagePassword} from '@assets/icons/ic-mypage-passwordchange.svg';
 export {default as icMyPageUpdate} from '@assets/icons/ic-mypage-update.svg';
+export {default as icProfileBasic} from "@assets/icons/ic-profile-basic.svg";
 
 // images
 export {default as imgDangguMag} from '@assets/images/img-dangguMag.svg';
