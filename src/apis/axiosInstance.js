@@ -26,6 +26,24 @@ axiosInstance.interceptors.response.use(
       return response;
     },
     (error) => {
+      const prevRequest = error?.config;
+      if(error.response?.status === 401 && !prevRequest?.sent) {
+        prevRequest.sent = true;
+        try{
+          const response = axios.post("/reissue", {}, {withCredentials: true});
+          if(response.status === 200) {
+            const newAccessToken = response.headers["authorization"].replace("Bearer ", "");
+            localStorage.setItem("token", newAccessToken);
+            axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
+            prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+            return axiosInstance(prevRequest);
+          } else{
+            throw new Error('Failed to refresh access token');
+          }
+        } catch(error){
+          return Promise.reject(error);
+        }
+      }
       return Promise.reject(error);
     }
 );
