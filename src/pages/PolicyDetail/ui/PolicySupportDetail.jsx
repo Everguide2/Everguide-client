@@ -1,5 +1,5 @@
 import CommonDetail from "@pages/Common/event&policyRecDetail/ui/CommonDetail.jsx";
-import ScrollToTop from "@/utils/ScrollToTop";
+import ScrollToTop from "@utils/scrollToTop.js";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {useParams} from "react-router-dom";
