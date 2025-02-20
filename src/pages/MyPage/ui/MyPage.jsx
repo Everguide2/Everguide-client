@@ -4,20 +4,10 @@ import Sidebar from "@pages/MyPage/ui/Sidebar.jsx";
 import UserInfoForm from "@pages/MyPage/ui/UserInfoForm";
 import DeleteAccountModal from "@pages/MyPage/components/modal/DeleteAccountModal";
 import LogoutModal from "@pages/MyPage/components/modal/LogoutModal";
+import AuthDummy from "@/test/AuthDummy";
 
 const MyPage = () => {
-  const [userInfo, setUserInfo] = useState({
-    name: "이채린",
-    gender: "female",
-    birthYear: "2002 / 07 / 22",
-    phone: "010-9872-7194",
-    accounts: [
-      { type: "Kakao", email: "Chaerin0722@Gmail.Com" },
-      { type: "Naver", email: "Chaerin0722@Gmail.Com" },
-    ],
-    email: "chaerin0722@gmail.com",
-  });
-
+  const [userInfo, setUserInfo] = useState(AuthDummy);
   const [activeMenu, setActiveMenu] = useState("info");
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
