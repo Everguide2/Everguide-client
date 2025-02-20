@@ -8,21 +8,16 @@ import Logo from "../components/Logo";
 import Links from "../components/Links";
 import VerificationInput from "../components/VerificationInput";
 import { string } from "../../../constants";
-import NonExistingMemberModal from "../../../components/Modal/NonExistingMemberModal"; 
+import NonExistingMemberModal from "../../../components/Modal/NonExistingMemberModal";
+import AuthDummy from "@test/AuthDummy";
 
 const FindPassword = () => {
   const navigate = useNavigate();
 
-  const fakeMember = {
-    email: "seojin@gmail.com",
-    name: "김서진",
-    phone: "01050585318",
-  };
-
   const [formData, setFormData] = useState({
     email: "",
     name: "",
-    phone: "",
+    phoneNumber: "",
     verificationCode: "",
   });
 
@@ -37,7 +32,7 @@ const FindPassword = () => {
   };
 
   const handleSendCode = () => {
-    if (formData.phone) {
+    if (formData.phoneNumber) {
       setVerificationSent(true);
     }
   };
@@ -54,9 +49,9 @@ const FindPassword = () => {
     e.preventDefault();
 
     if (
-      formData.email !== fakeMember.email ||
-      formData.name !== fakeMember.name ||
-      formData.phone !== fakeMember.phone
+      formData.email !== AuthDummy.email ||
+      formData.name !== AuthDummy.name ||
+      formData.phoneNumber !== AuthDummy.phoneNumber
     ) {
       setShowNonExistingMemberModal(true);
       return;
@@ -64,7 +59,6 @@ const FindPassword = () => {
 
     if (verificationCompleted) {
       navigate("/password-sent", { state: { email: formData.email } });
-    } else {
     }
   };
 
@@ -100,15 +94,15 @@ const FindPassword = () => {
             <PhoneInputWrapper>
               <StyledInput
                 type="tel"
-                name="phone"
+                name="phoneNumber"
                 placeholder="휴대폰 번호 입력 (- 제외)"
-                value={formData.phone}
+                value={formData.phoneNumber}
                 onChange={handleInputChange}
                 required
               />
               <Button
                 onClick={handleSendCode}
-                disabled={!formData.phone || verificationSent}
+                disabled={!formData.phoneNumber || verificationSent}
                 width="160px"
                 height="56px"
               >
@@ -129,7 +123,7 @@ const FindPassword = () => {
 
             <Button
               type="submit"
-              disabled={!verificationSent || verificationCompleted !== true}
+              disabled={!verificationSent || !verificationCompleted}
               width="494px"
               height="56px"
             >

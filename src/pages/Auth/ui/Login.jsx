@@ -1,32 +1,49 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, {useState} from "react";
+import {useMutation} from "@tanstack/react-query";
+import {useNavigate} from "react-router-dom";
+import {loginApi} from "../../../apis/login-endpoint";
 import KakaoButton from "../components/KakaoButton.jsx";
 import NaverButton from "../components/NaverButton.jsx";
 import InputField from "@components/InputField/InputField.jsx";
 import Ad from "@/components/Ad/Ad.jsx";
 import Logo from "../components/Logo.jsx";
-import { useDispatch, useSelector } from "react-redux";
-import { string } from "../../../constants/index.js";
+import {useDispatch, useSelector} from "react-redux";
+import {string} from "../../../constants/index.js";
 import Links from "../components/Links.jsx";
-import Button from "../components/Button.jsx"; 
-import Divider from "../components/Divider.jsx"; 
-import { setEmail, setPassword, incrementLoginAttempts, loginSuccess, resetLoginAttempts } from "../../../stores/auth/authSlice.js";
+import Button from "../components/Button.jsx";
+import Divider from "../components/Divider.jsx";
+import {setEmail, setPassword} from "../../../stores/auth/authSlice.js";
 import LoginErrorModal from "../../../components/Modal/LoginErrorModal";
-import NonMemberModal from "../../../components/Modal/NonMemberModal"; 
-
+import NonMemberModal from "../../../components/Modal/NonMemberModal";
+import styled from "styled-components";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { email, password, loginAttempts } = useSelector((state) => state.auth);
+  const {email, password} = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
   const emailDomains = ["naver.com", "gmail.com", "tukorea.ac.kr"];
   const [emailSuggestions, setEmailSuggestions] = useState([]);
-  const [showErrorModal, setShowErrorModal] = useState(false); 
-  const [showNonMemberModal, setShowNonMemberModal] = useState(false); 
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  const [showNonMemberModal, setShowNonMemberModal] = useState(false);
 
-  const registeredUsers = [
-    { email: "seojin@gmail.com", password: "tjwls5318" },
-    { email: "testuser@gmail.com", password: "password123" }
-  ];
+  const loginMutation = useMutation({
+    mutationFn: loginApi,
+    onSuccess: (response) => {
+      console.log("✅ 로그인 성공:", response);
+      if (response.status === 200) {
+        const accessToken = response.headers["authorization"].replace("Bearer ", "");
+        localStorage.setItem("token", accessToken);
+        navigate("/");
+      } else {
+        console.error("❌ 서버에서 받은 데이터에 토큰이 없습니다!");
+      }
+    },
+    onError: (error) => {
+      console.error("❌ 로그인 실패:", error);
+      setShowErrorModal(true);
+    },
+  });
 
   const handleEmailChange = (e) => {
     const value = e.target.value;
@@ -47,92 +64,87 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    const user = registeredUsers.find((user) => user.email === email);
+    console.log("로그인 시도:", email, password);
 
-    if (!user) {
-      setShowNonMemberModal(true);
+    if (!email || !password) {
+      console.error("❌ 이메일과 비밀번호를 입력하세요!");
       return;
     }
 
-    if (user.password !== password) {
-      setShowErrorModal(true);
-      return;
-    }
-    alert("로그인 성공");
-    dispatch(loginSuccess());
-    dispatch(resetLoginAttempts());
+    loginMutation.mutate({email, password});
   };
 
   return (
-    <>
-      <Container>
-        <Content>
-          <Logo
-            title={string.login.title} 
-            description={string.login.description} 
-          />
-          <ButtonContainer>
-            <NaverButton />
-            <KakaoButton />
-          </ButtonContainer>
-          <Divider>OR</Divider>
-          <Form onSubmit={handleLogin}>
-            <InputWrapper>
-              <InputField
-                label="이메일 주소"
-                type="email"
-                name="email"
-                placeholder="abcd@email.com"
-                value={email}
-                onChange={handleEmailChange}
-                required
-              />
-              {emailSuggestions.length > 0 && (
-                <SuggestionList>
-                  {emailSuggestions.map((suggestion, index) => (
-                    <SuggestionItem
-                      key={index}
-                      onClick={() => handleEmailSuggestionClick(suggestion)}
-                    >
-                      {suggestion}
-                    </SuggestionItem>
-                  ))}
-                </SuggestionList>
-              )}
-            </InputWrapper>
-            <InputWrapper>
-              <InputField
-                label="비밀번호"
-                type="password"
-                name="password"
-                placeholder="비밀번호"
-                value={password}
-                onChange={(e) => dispatch(setPassword(e.target.value))}
-                required
-                context="login"
-              />
-            </InputWrapper>
-            <Button type="submit" width="494px" disabled={password.length < 5 || !email}>
-              로그인
-            </Button>
-          </Form>
-          <Links links={string.login.links} />
-        </Content>
-        <Ad />
-      </Container>
+      <>
+        <Container>
+          <Content>
+            <Logo
+                title={string.login.title}
+                description={string.login.description}
+            />
+            <ButtonContainer>
+              <NaverButton/>
+              <KakaoButton/>
+            </ButtonContainer>
+            <Divider>OR</Divider>
+            <Form onSubmit={handleLogin}>
+              <InputWrapper>
+                <InputField
+                    label="이메일 주소"
+                    type="email"
+                    name="email"
+                    placeholder="abcd@email.com"
+                    value={email}
+                    onChange={handleEmailChange}
+                    required
+                />
+                {emailSuggestions.length > 0 && (
+                    <SuggestionList>
+                      {emailSuggestions.map((suggestion, index) => (
+                          <SuggestionItem
+                              key={index}
+                              onClick={() => handleEmailSuggestionClick(suggestion)}
+                          >
+                            {suggestion}
+                          </SuggestionItem>
+                      ))}
+                    </SuggestionList>
+                )}
+              </InputWrapper>
+              <InputWrapper>
+                <InputField
+                    label="비밀번호"
+                    type="password"
+                    name="password"
+                    placeholder="비밀번호"
+                    value={password}
+                    onChange={(e) => dispatch(setPassword(e.target.value))}
+                    required
+                    context="login"
+                />
+              </InputWrapper>
+              <Button type="submit" width="494px" disabled={password.length < 5 || !email}>
+                로그인
+              </Button>
+            </Form>
+            <Links links={string.login.links}/>
+          </Content>
+          <Ad/>
+        </Container>
 
-      {showErrorModal && (
-        <LoginErrorModal onClose={() => setShowErrorModal(false)} />
-      )}
-      
-        {showNonMemberModal && (
-        <NonMemberModal onClose={() => setShowNonMemberModal(false)} />
+        {showErrorModal && (
+            <LoginErrorModal onClose={() => setShowErrorModal(false)}/>
         )}
-        </>
+
+        {showNonMemberModal && (
+            <NonMemberModal onClose={() => setShowNonMemberModal(false)}/>
+        )}
+      </>
   );
 };
 
 export default Login;
+
 
 const Container = styled.div`
   display: flex;
@@ -173,8 +185,8 @@ const SuggestionList = styled.ul`
   top: 100%;
   left: 0;
   right: 0;
-  background: ${({ theme }) => theme.colors.realWhite};
-  border: 1px solid ${({ theme }) => theme.colors.gray[300]};
+  background: ${({theme}) => theme.colors.realWhite};
+  border: 1px solid ${({theme}) => theme.colors.gray[300]};
   border-radius: 5px;
   margin-top: 5px;
   list-style: none;
@@ -186,10 +198,10 @@ const SuggestionList = styled.ul`
 const SuggestionItem = styled.li`
   padding: 8px 12px;
   font-size: 14px;
-  color: ${({ theme }) => theme.colors.gray[800]};
+  color: ${({theme}) => theme.colors.gray[800]};
   cursor: pointer;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.gray[100]};
+    background-color: ${({theme}) => theme.colors.gray[100]};
   }
 `;

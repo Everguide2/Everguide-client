@@ -6,6 +6,7 @@ const string = {
   LoginRegister: "로그인/회원가입",
   policy: "정책",
   work: "일자리",
+  education: "교육",
 
   searchBarPlaceHolder: "찾고 싶은 정책을 입력해보세요!",
 

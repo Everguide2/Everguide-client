@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   email: "",
@@ -9,16 +9,6 @@ const initialState = {
   loading: false,
   error: null,
 };
-
-export const login = createAsyncThunk(
-  "auth/login",
-  async ({ email, password }, { rejectWithValue }) => {
-    if (password !== "correctPassword") {
-      return rejectWithValue("비밀번호가 잘못되었습니다.");
-    }
-    return { email, token: "fakeToken" };
-  }
-);
 
 const authSlice = createSlice({
   name: "auth",
@@ -44,22 +34,6 @@ const authSlice = createSlice({
       state.user = null;
       state.isAuthenticated = false;
     },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(login.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(login.fulfilled, (state, action) => {
-        state.loading = false;
-        state.user = action.payload;
-        state.isAuthenticated = true;
-      })
-      .addCase(login.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      });
   },
 });
 

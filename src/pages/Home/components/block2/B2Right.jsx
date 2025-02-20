@@ -1,30 +1,33 @@
 import React from "react";
 import styled from "styled-components";
-import theme from "../../../../theme/theme";
+import theme from "@/theme/theme";
+import { useNavigate } from "react-router-dom";
 const B2Right = (dummy) => {
+  const navigate = useNavigate();
+  const newPolicy = dummy.data.data.새로나온정책?.slice(4, 8) || []; // 데이터가 없을 경우 빈 배열 사용
+
+  const goToDetailPolicy = (id) => {
+    navigate(`support/${id}`);
+  };
   return (
     <EachBoard>
-      {[4, 5, 6, 7].map((number, index) => {
-        return (
-          <NewPolicyBox key={index}>
-            <DateAndCategoryNew>
-              <NewPoLocation>
-                {dummy.data.data.새로나온정책[number]?.location ||
-                  "데이터가 없습니다."}
-              </NewPoLocation>
-              <Dot>·</Dot>
-              <NewPoCategory>
-                {dummy.data.data.새로나온정책[number]?.category ||
-                  "데이터가 없습니다."}
-              </NewPoCategory>
-            </DateAndCategoryNew>
-            <NewPoTitle>
-              {dummy.data.data.새로나온정책[number]?.content ||
-                "데이터가 없습니다."}
-            </NewPoTitle>
-          </NewPolicyBox>
-        );
-      })}
+      {newPolicy.map((policy) => (
+        <NewPolicyBox
+          key={policy.id}
+          onClick={() => goToDetailPolicy(policy.id)}
+        >
+          <DateAndCategoryNew>
+            <NewPoLocation>
+              {policy.location || "데이터가 없습니다."}
+            </NewPoLocation>
+            <Dot>·</Dot>
+            <NewPoCategory>
+              {policy.category || "데이터가 없습니다."}
+            </NewPoCategory>
+          </DateAndCategoryNew>
+          <NewPoTitle>{policy.title || "데이터가 없습니다."}</NewPoTitle>
+        </NewPolicyBox>
+      ))}
     </EachBoard>
   );
 };
@@ -40,7 +43,6 @@ const EachBoard = styled.div`
   margin-right: 42px;
 `;
 const NewPolicyBox = styled.button`
-  // background-color: black;
   display: flex;
   flex-direction: column;
   border: none;
@@ -53,26 +55,21 @@ const NewPolicyBox = styled.button`
 
 const DateAndCategoryNew = styled.div`
   display: flex;
-  margin-left: 14px;
   ${({ theme }) => theme.fonts.body4}
 `;
 
 const NewPoLocation = styled.p`
   color: #d32f2f;
   margin-right: 13px;
-  // height: 32px;
 `;
 const Dot = styled.p`
   color: #8f8d8a;
   width: 11px;
-  // height32px;
   ${({ theme }) => theme.fonts.subHeader6}
 `;
 const NewPoCategory = styled.p`
   color: #8f8d8a;
-  // height: 32px;
 `;
 const NewPoTitle = styled.p`
   ${({ theme }) => theme.fonts.subHeader3}
-  margin-left:14px;
 `;

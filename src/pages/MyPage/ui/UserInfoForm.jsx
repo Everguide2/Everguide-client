@@ -1,25 +1,61 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { imgProfile } from "@/assets";
+import { imgProfile, icMyPageUpdate, icProfileBasic } from "@/assets";
 import { icMyPageKakao, icMyPageNaver } from "@/assets";
 import ProfileImageModal from "../components/modal/ProfileImageModal";
 import ChangePasswordModal from "../components/modal/ChangePasswordModal";
 
-const UserInfoForm = ({ userInfo, onChange, onUpdate }) => {
+const UserInfoForm = ({ userInfo={}, onChange, onUpdate }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
-  const [originalUserInfo, setOriginalUserInfo] = useState(userInfo);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
+  const [profileImage, setProfileImage] = useState(icProfileBasic);
+  const [savedUserInfo, setSavedUserInfo] = useState(userInfo);
+  const [isSaved, setIsSaved] = useState(false);
 
-  // 변경 사항 감지
   useEffect(() => {
-    const hasChanged = JSON.stringify(userInfo) !== JSON.stringify(originalUserInfo);
-    setIsUpdated(hasChanged);
-  }, [userInfo, originalUserInfo]);
+    if (JSON.stringify(userInfo) !== JSON.stringify(savedUserInfo)) {
+      setIsUpdated(true);
+      setIsSaved(false);
+    }
+  }, [userInfo, savedUserInfo]);
 
-  // 간편 로그인 여부 확인 (카카오 or 네이버 계정 존재 여부)
-  const isSocialLogin = userInfo.accounts && userInfo.accounts.length > 0;
+  const isSocialLogin = userInfo?.accounts && userInfo.accounts.length > 0;
+
+  const handleImageUpload = (file) => {
+    const imageUrl = URL.createObjectURL(file);
+    setProfileImage(imageUrl);
+  };
+
+
+  const handleUpdate = async () => {
+    if (!isUpdated) return;
+
+    try {
+      await onUpdate();
+      setSavedUserInfo({ ...userInfo });
+      setIsUpdated(false);
+    } catch (error) {
+      console.error("업데이트 실패:", error);
+    }
+  };
+
+  const handleBirthChange = (e) => {
+    let value = e.target.value.replace(/\D/g, ""); // 숫자만 입력 가능
+    let formattedValue = "";
+
+    if (value.length > 4) {
+      formattedValue = `${value.slice(0, 4)} / ${value.slice(4, 6)}`;
+    } else {
+      formattedValue = value;
+    }
+    if (value.length > 6) {
+      formattedValue = `${value.slice(0, 4)} / ${value.slice(4, 6)} / ${value.slice(6, 8)}`;
+    }
+
+    onChange({ target: { name: "birth", value: formattedValue } });
+  };
 
   return (
     <OuterContainer>
@@ -29,13 +65,13 @@ const UserInfoForm = ({ userInfo, onChange, onUpdate }) => {
           <Subtitle>여기서 계정 정보를 관리하세요</Subtitle>
         </Header>
         <Form>
-          {/* 프로필 이미지 */}
           <ProfileImageWrapper
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onClick={() => setIsModalOpen(true)}
           >
-            {isHovered ? <ProfileImg src={imgProfile} alt="프로필 이미지" /> : <DefaultProfile />}
+            {profileImage && !isHovered && <ProfileImg src={profileImage} alt="프로필 이미지" />}
+            {isHovered && <ProfileImg src={imgProfile} alt="프로필 변경 미리보기" />}
           </ProfileImageWrapper>
 
           {/* 사용자 정보 입력 */}
@@ -45,17 +81,20 @@ const UserInfoForm = ({ userInfo, onChange, onUpdate }) => {
           </FormGroup>
           <FormGroup>
             <Label>생년월일</Label>
-            <DateInput>
-              <Input type="text" name="birthYear" value={userInfo.birthYear} onChange={onChange} />
-            </DateInput>
+            <BirthInput
+              type="text"
+              name="birth"
+              value={userInfo.birth}
+              onChange={handleBirthChange}
+              maxLength="14"
+            />
           </FormGroup>
           <FormGroup>
             <Label>전화번호</Label>
-            <Input type="text" name="phone" value={userInfo.phone} onChange={onChange} />
+            <Input type="text" name="phoneNumber" value={userInfo.phoneNumber} onChange={onChange} />
           </FormGroup>
 
           {isSocialLogin ? (
-            //  소셜셜 로그인 사용자 (카카오/네이버)
             <>
               <FormGroup>
                 <Label>계정</Label>
@@ -69,36 +108,36 @@ const UserInfoForm = ({ userInfo, onChange, onUpdate }) => {
                 </AccountContainer>
               </FormGroup>
 
-              {/* 소셜 로그인 사용자만 수정하기 버튼 보이기 */}
-              <UpdateButton onClick={onUpdate} disabled={!isUpdated} isUpdated={isUpdated}>
+              <UpdateButton onClick={handleUpdate} disabled={!isUpdated || isSaved} isUpdated={isUpdated} isSaved={isSaved}>
                 수정하기
+                {isSaved && <SaveIcon src={icMyPageUpdate} alt="저장 완료" />}
               </UpdateButton>
             </>
           ) : (
-            // 일반반 로그인 사용자
             <>
               <FormGroup>
                 <Label>이메일</Label>
-                <Input type="text" name="email" value={userInfo.email} onChange={onChange}/>
+                <Input type="text" name="email" value={userInfo.email} onChange={onChange} />
               </FormGroup>
               <FormGroup>
                 <Label>비밀번호</Label>
                 <ChangePasswordButton onClick={() => setIsPasswordModalOpen(true)}>변경하기</ChangePasswordButton>
               </FormGroup>
-
               <ChangePasswordModal isOpen={isPasswordModalOpen} onClose={() => setIsPasswordModalOpen(false)} />
             </>
           )}
-
         </Form>
       </InnerContainer>
 
-      {isModalOpen && <ProfileImageModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && (
+        <ProfileImageModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onImageUpload={handleImageUpload} />
+      )}
     </OuterContainer>
   );
 };
 
 export default UserInfoForm;
+
 
 
 const OuterContainer = styled.div`
@@ -146,6 +185,7 @@ const Form = styled.div`
 const ProfileImageWrapper = styled.div`
   width: 150px;
   height: 150px;
+  position: relative;
   background-color: ${({ theme }) => theme.colors.gray[200]};
   border-radius: 50%;
   margin: 0 auto 30px;
@@ -176,8 +216,9 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
+  padding: 5px 0;
   width: 412px;
-  padding: 5px;
+  padding-left: 10px;
   border: 1px solid ${({ theme }) => theme.colors.gray[300]};
   border-radius: 4px;
   ${({ theme }) => theme.fonts.subHeader5};
@@ -215,33 +256,30 @@ const AccountContainer = styled.div`
 `;
 
 const UpdateButton = styled.button`
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   width: 354px;
-  margin: 200px auto;
-  margin-bottom: 0px;
+  margin: 200px auto 0;
   padding: 15px;
   border-radius: 28px;
   border: none;
-  background-color: ${({ isUpdated, theme }) => (isUpdated ? theme.colors.primary[500] : theme.colors.gray[200])};
-  color: ${({ isUpdated, theme }) => (isUpdated ? "white" : theme.colors.gray[300])};
-  cursor: ${({ isUpdated }) => (isUpdated ? "pointer" : "default")};
-  box-shadow: ${({ isUpdated }) => (isUpdated ? "0px 4px 15px rgba(251, 227, 0, 0.5)" : "none")};
+  
+  background-color: ${({ disabled, theme }) => (disabled ? theme.colors.gray[200] : theme.colors.primary[500])};
+
+  color: ${({ disabled, theme }) => 
+    disabled ? theme.colors.gray[300] : "white"};
+
+  cursor: ${({ disabled }) => 
+    disabled ? "default" : "pointer"};
+
+  box-shadow: ${({ disabled }) => 
+    disabled ? "none" : "0px 4px 15px rgba(251, 227, 0, 0.5)"};
+
   ${({ theme }) => theme.fonts.header5};
 `;
 
-const DefaultProfile = styled.div`
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: #D9D9D9;
-`;
-
-
-const DateInput = styled.div`
-  flex: 1;
-  display: flex;
-  gap: 5px;
-;`
 
 const ChangePasswordButton = styled.button`
   background-color: white;
@@ -254,3 +292,12 @@ const ChangePasswordButton = styled.button`
   cursor: pointer;
   margin-left: 315px;
 `;
+
+const BirthInput = styled(Input)`
+  text-align: center;
+  ${({ theme }) => theme.fonts.subHeader5};
+  max-width: 412px;
+  letter-spacing: 10px;
+
+`;
+

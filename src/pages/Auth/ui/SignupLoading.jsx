@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { icSignupLoading } from "@/assets"; // ✅ 아이콘 불러오기
+import { icSignupLoading } from "@/assets"; 
 
 const SignupLoading = () => {
   return (
@@ -15,7 +15,6 @@ const SignupLoading = () => {
 
 export default SignupLoading;
 
-// ✅ 스타일 정의
 const Container = styled.div`
   display: flex;
   justify-content: center;

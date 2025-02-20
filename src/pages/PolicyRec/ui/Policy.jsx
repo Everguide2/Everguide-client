@@ -5,12 +5,12 @@ import {
   Title, Description, OptionsContainer, OptionButton, 
   NextButton, TimeInfo, ImageWrapper, StyledImage 
 } from './style';
-import { questionData } from '../components/questionData.js';
+import  {questionData} from "@test/questionData.js";
 import { imgDangguMag } from '../../../assets';
 import LoginModal from "../feature/LoginModal.jsx"; 
 import { useNavigate } from "react-router-dom";
-import ScrollToTop from '@/utils/scrollToTop';
-import LoadingScreen from './LoadingScreen';  
+import ScrollToTop from "@utils/scrollToTop.js";
+import LoadingScreen from './LoadingScreen';
 
 const Policy = () => {
   const navigate = useNavigate();

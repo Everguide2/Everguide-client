@@ -5,7 +5,7 @@ import {string} from "@constants/index.js";
 import Category from "@pages/Common/event&policyRec/components/Category.jsx";
 
 // eslint-disable-next-line react/prop-types
-const Card = ({title,subTitle,category,bookmark,assign,dDay,isLogin,img, onClick, onClickBookMark}) => {
+const Card = ({title,subTitle,category,bookmark,assign,dDay,isLogin,isEvent, img, onClick, onClickBookMark}) => {
 
   return (
       <Container $rest={dDay} >
@@ -13,13 +13,13 @@ const Card = ({title,subTitle,category,bookmark,assign,dDay,isLogin,img, onClick
           {img && <Image src={img} onClick={onClick}/>}
           <Title $img={''} onClick={onClick}>{title}</Title>
           <SubTitle onClick={onClick}>{subTitle}</SubTitle>
-          <Category text={category} type={"card"} />
+          <Category text={isEvent ? "교육": category} type={"card"} />
           {isLogin && <CardBookMark isBookmarked={bookmark} onClickBookMark={onClickBookMark}/>}
         </Top>
         <Bottom $img={img} onClick={onClick}>
           {img && <Title $img={img}>{title}</Title>}
           <Assign>{assign}</Assign>
-          <Dday $rest={dDay}>{dDay === 0 ? string.end : string.dTitle + dDay}</Dday>
+          {dDay >= 0 && <Dday $rest={dDay}>{dDay === 0 ? string.end : string.dTitle + dDay}</Dday>}
           {dDay === 1 && <CardLastDay/>}
         </Bottom>
       </Container>
@@ -40,7 +40,8 @@ const Top = styled.div`
   height: ${({$img}) => $img ? `178px` : `156px`};
   overflow: hidden;
   border-radius: 26px 26px 0 0 ;
-  position: relative; 
+  position: relative;
+  background-color: ${({theme}) => theme.colors.white};
 `
 const Image = styled.img`
   width: 100%;

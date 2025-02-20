@@ -2,10 +2,12 @@ import {styled} from "styled-components";
 import {ListHeader} from "@components/index.js";
 import {jobDummy} from "@test/jobDummy.js";
 import {List} from "@components/index.js";
+import {useValidateLogin} from "@hooks/useValidateLogin.js";
 import {useCustomNavigation} from "@hooks/useCustomNavigation.js";
 
-const CardJobList = ({isLogin}) => {
+const CardJobList = () => {
   const {navigateTo} = useCustomNavigation();
+  const {isLogin} = useValidateLogin();
 
   return (
       <Container>
@@ -23,7 +25,7 @@ const CardJobList = ({isLogin}) => {
                 city={data.location}
                 title={data.title}
                 assign={data.company}
-                dDay={"Day"}
+                dDay={0}
                 duration={data.duration}
                 isJob={true}
                 isLogin={isLogin}

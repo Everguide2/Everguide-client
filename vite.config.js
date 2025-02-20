@@ -44,9 +44,21 @@ export default defineConfig({
         find: '@test',
         replacement: path.resolve(__dirname, 'src/test'),
       },
+      {
+        find: '@utils',
+        replacement: path.resolve(__dirname, 'src/utils'),
+      },
     ]
   },
   server: {
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://43.202.16.119:8080', // HTTP 백엔드 주소
+    //     changeOrigin: true,
+    //     secure: false, // HTTPS 검증 비활성화
+    //     rewrite: (path) => path.replace(/^\/api/, ''), // '/api'를 제거
+    //   },
+    // },
     historyApiFallback: true,
-  }
+  },
 })

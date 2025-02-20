@@ -54,8 +54,6 @@ export const Extra = styled.div`
 `
 export const Content = styled.div`
   margin-top: 24px;
-  height: 400px;
-  background-color: antiquewhite;
 `
 
 export const Buttons = styled.div`

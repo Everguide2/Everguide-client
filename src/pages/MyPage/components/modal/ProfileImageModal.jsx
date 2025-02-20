@@ -2,30 +2,30 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { icMyPageCamera, icModalClose } from "@/assets";
 
-const ProfileImageModal = ({ isOpen, onClose }) => {
-  const [image, setImage] = useState(null); 
+const ProfileImageModal = ({ isOpen, onClose, onImageUpload }) => {
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "auto"; 
+      document.body.style.overflow = "auto";
     } else {
       document.body.style.overflow = "auto";
     }
     return () => {
-      document.body.style.overflow = "auto"; 
+      document.body.style.overflow = "auto";
     };
   }, [isOpen]);
 
-  // 파일 업로드 핸들러
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
-      setImage(imageUrl);
+      setImage(imageUrl); 
+      onImageUpload(file); 
     }
-  };
+  }; 
 
-  if (!isOpen) return null; 
+  if (!isOpen) return null;
 
   return (
     <Overlay>
@@ -54,6 +54,7 @@ const ProfileImageModal = ({ isOpen, onClose }) => {
 
 export default ProfileImageModal;
 
+
 const Overlay = styled.div`
   position: fixed;
   top: 0;
@@ -64,7 +65,7 @@ const Overlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 9999;
   padding-top: 100px;
 `;
 
