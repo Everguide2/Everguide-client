@@ -4,7 +4,7 @@ import {useDispatch} from "react-redux";
 import CommonDetail from "@pages/Common/event&policyRecDetail/ui/CommonDetail.jsx";
 import {addEventArticle} from "@stores/common/eventDetailSlice.js";
 import {dummyData} from "@test/eventDetailDummy.js";
-import ScrollToTop from "@/utils/scrollToTop.js";
+import ScrollToTop from "@utils/scrollToTop.js";
 
 const EventDetail = () => {
   const ids = useParams().eventId;
