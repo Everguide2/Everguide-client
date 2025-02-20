@@ -1,61 +1,56 @@
-import {useState} from "react";
+import { useState } from "react";
 import styled from "styled-components";
+import { useGetMypage } from "../feature/useGetMypage"; 
 import SavedList from "@pages/MyPage/components/SavedList.jsx";
 import Sidebar from "@pages/MyPage/ui/Sidebar.jsx";
 import UserInfoForm from "@pages/MyPage/ui/UserInfoForm";
 import DeleteAccountModal from "@pages/MyPage/components/modal/DeleteAccountModal";
 import LogoutModal from "@pages/MyPage/components/modal/LogoutModal";
-import AuthDummy from "@/test/AuthDummy";
 
 const MyPage = () => {
-  const [userInfo, setUserInfo] = useState(AuthDummy);
+  const { data: userInfo, isLoading, error } = useGetMypage();
   const [activeMenu, setActiveMenu] = useState("info");
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
-  //  소셜 로그인 여부 확인 (카카오 또는 네이버 계정이 있을 경우)
-  const isSocialLogin = userInfo.accounts && userInfo.accounts.length > 0;
+  if (isLoading) console.log("로딩 중..");
+  if (error) console.log(error.message);
+
+  const isSocialLogin = userInfo?.accounts && userInfo.accounts.length > 0;
 
   return (
-      <Container>
-        <Inner>
-          <SidebarWrapper>
-            <Sidebar activeMenu={activeMenu} onMenuClick={setActiveMenu}/>
-          </SidebarWrapper>
+    <Container>
+      <Inner>
+        <SidebarWrapper>
+          <Sidebar activeMenu={activeMenu} onMenuClick={setActiveMenu} />
+        </SidebarWrapper>
 
-          <MainContent>
-            {activeMenu === "info" &&
-                <Content>
-                  <UserInfoForm
-                      userInfo={userInfo}
-                      onChange={(e) => setUserInfo({...userInfo, [e.target.name]: e.target.value})}
-                  />
+        <MainContent>
+          {activeMenu === "info" && (
+            <Content>
+              <UserInfoForm userInfo={userInfo} />
+              <ButtonContainer isSocialLogin={isSocialLogin}>
+                <DeleteButton onClick={() => setIsDeleteModalOpen(true)}>탈퇴하기</DeleteButton>
+                <LogoutButton onClick={() => setIsLogoutModalOpen(true)}>로그아웃</LogoutButton>
+              </ButtonContainer>
+            </Content>
+          )}
+          {activeMenu === "saved" && (
+            <Content>
+              <SavedList />
+            </Content>
+          )}
+        </MainContent>
 
-                  {/*  소셜 로그인 여부에 따라 margin-top 값 변경 */}
-                  <ButtonContainer isSocialLogin={isSocialLogin}>
-                    <DeleteButton onClick={() => setIsDeleteModalOpen(true)}>탈퇴하기</DeleteButton>
-                    <LogoutButton onClick={() => setIsLogoutModalOpen(true)}>로그아웃</LogoutButton>
-                  </ButtonContainer>
-                </Content>}
-            {activeMenu === "saved" &&
-                <Content>
-                  <SavedList/>
-                </Content>
-
-            }
-          </MainContent>
-
-          <DeleteAccountModal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)}/>
-          <LogoutModal isOpen={isLogoutModalOpen} onClose={() => setIsLogoutModalOpen(false)}/>
-        </Inner>
-
-      </Container>
+        <DeleteAccountModal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)} />
+        <LogoutModal isOpen={isLogoutModalOpen} onClose={() => setIsLogoutModalOpen(false)} />
+      </Inner>
+    </Container>
   );
 };
 
 export default MyPage;
 
-/* ✅ Styled Components */
 const Container = styled.div`
   width: 100%;
   background-color: ${({theme}) => theme.colors.gray[50]};
@@ -92,7 +87,7 @@ const ButtonContainer = styled.div`
   margin-left: 600px;
   gap: 20px;
   height: 41px;
-  margin-top: ${({isSocialLogin}) => (isSocialLogin ? "200px" : "-60px")}; /* 소셜 로그인 여부에 따라 변경 */
+  margin-top: ${({isSocialLogin}) => (isSocialLogin ? "200px" : "-60px")}; 
 `;
 
 const DeleteButton = styled.button`

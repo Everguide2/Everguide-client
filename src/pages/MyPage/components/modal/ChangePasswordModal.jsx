@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { icMyPagePassword, icModalClose } from "@/assets";
+import { updatePassword } from "@/apis/mypage-controller";
 
 const ChangePasswordModal = ({ isOpen, onClose }) => {
   const [currentPassword, setCurrentPassword] = useState("");
@@ -26,10 +27,24 @@ const ChangePasswordModal = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleChangePassword = () => {
+  const handleChangePassword = async () => {
     if (!isValid) return;
-    alert("비밀번호가 변경되었습니다.");
-    onClose();
+
+    try {
+      const response = await updatePassword({
+        originalPwd: currentPassword, // 기존 비밀번호
+        newPwd: newPassword, // 새 비밀번호
+        rewriteNewPwd: confirmPassword, // 새 비밀번호 재입력
+      });
+      if(response.isSuccess){
+        alert("비밀번호가 변경되었습니다.");
+        onClose();
+      } else {
+        alert(`비밀번호 변경 실패: ${response.message}`);
+      }
+    } catch (error) {
+      setErrorMessage(error.response?.data?.message || "비밀번호 변경에 실패했습니다.");
+    }
   };
 
   if (!isOpen) return null;
