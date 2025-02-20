@@ -1,5 +1,3 @@
-import imgTest from "@assets/images/img-test.png";
-
 export const noImageData = [
   {
     id: 1,
