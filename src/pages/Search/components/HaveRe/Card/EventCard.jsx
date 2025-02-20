@@ -1,12 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import theme from "@/theme/theme";
 import ExImg from "../../../../../assets/images/img-test.png";
 import BookMark from "../../../../../assets/images/img_sharp-bookmark.png";
-const PolicyCard = ({ arr, query }) => {
-  console.log(arr);
+const EventCard = ({ arr, query }) => {
+  const navigate = useNavigate();
+
+  const goToDetailEvent = (id) => {
+    navigate(`/event/${id}`);
+  };
   return (
-    <Card>
+    <Card onClick={() => goToDetailEvent(arr.id)}>
       <CardHeader>
         <CardCt>{arr.type}</CardCt>
         <BookCard src={BookMark} />
@@ -40,7 +45,7 @@ const PolicyCard = ({ arr, query }) => {
   );
 };
 
-export default PolicyCard;
+export default EventCard;
 
 const Card = styled.div`
   width: 310px;

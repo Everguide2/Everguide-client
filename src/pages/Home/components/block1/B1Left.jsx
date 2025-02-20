@@ -1,44 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import theme from "../../../../theme/theme";
+import ExImg from "../../../../assets/images/img-image240.svg";
 
 const B1Left = (dummy) => {
-  console.log(dummy);
-  const [buttonList, setButtonList] = useState([
-    "오늘마감",
-    "카테고리",
-    "주관 기관",
-  ]);
-  const [buttonIndex, setButtonIndex] = useState(0);
+  const navigate = useNavigate();
+  const policy = dummy.data.data.이번주마감되는정책?.[0];
 
-  const handleButtonIndex = (index) => {
-    setButtonIndex(index);
+  const goToDetailPolicy = (id) => {
+    navigate(`support/${id}`);
   };
 
   return (
     <PBox1>
-      {/*추후에 이미지가 들어감. 현재는 IMG1(div)로 대체*/}
-      <IMG1 />
-      <B1button>
-        {buttonList.map((element, index) => {
-          return (
-            <EachButton
-              key={index}
-              onClick={() => handleButtonIndex(index)}
-              $isActive={buttonIndex === index}
-            >
-              {element}
-            </EachButton>
-          );
-        })}
-      </B1button>
-      <PolicyTitle>
-        {dummy.data.data.이번주마감되는정책?.[0]?.content ||
-          "데이터가 없습니다."}
-      </PolicyTitle>
-      <BriefEx>
-        {dummy.data.data.이번주마감되는정책?.[0]?.ex || "데이터가 없습니다."}
-      </BriefEx>
+      {policy && (
+        <>
+          <IMG1 src={ExImg} />
+          <InfoLine>
+            <Location>{policy.location}</Location>
+            <Category>{policy.category}</Category>
+            <Company>{policy.company}</Company>
+          </InfoLine>
+          <PolicyTitle onClick={() => goToDetailPolicy(policy.id)}>
+            {policy.title}
+          </PolicyTitle>
+          <BriefEx>{policy.subTitle}</BriefEx>
+        </>
+      )}
     </PBox1>
   );
 };
@@ -56,29 +44,34 @@ const PBox1 = styled.div`
   border: 1px solid #8f8d8a;
 `;
 
-const IMG1 = styled.div`
-  background-color: black;
+const IMG1 = styled.img`
   width: 518px;
   height: 247px;
+  object-fit: cover;
 `;
 
-const B1button = styled.div`
+const InfoLine = styled.div`
   display: flex;
   width: 518px;
   height: 32px;
   margin-top: 22px;
 `;
 
-const EachButton = styled.button`
-  height: 32px;
-  color: ${({ $isActive }) => ($isActive ? "#D32F2F" : "#6A6967")};
-  ${({ $isActive, theme }) =>
-    $isActive ? theme.fonts.body1 : theme.fonts.subHeader4}
+const Location = styled.p`
+  ${({ theme }) => theme.fonts.subHeader3}
   margin-right:22px;
-  border: none;
-  //요소를 투명하게
-  background: transparent;
-  cursor: pointer;
+  color: #d32f2f;
+`;
+
+const Category = styled.p`
+  ${({ theme }) => theme.fonts.subHeader3}
+  margin-right:22px;
+  color: ${({ theme }) => theme.colors.gray[600]};
+`;
+
+const Company = styled.p`
+  ${({ theme }) => theme.fonts.subHeader3}
+  color: ${({ theme }) => theme.colors.state.blue};
 `;
 
 const PolicyTitle = styled.button`
@@ -90,6 +83,7 @@ const PolicyTitle = styled.button`
   display: flex;
   ${({ theme }) => theme.fonts.subHeader1}
   cursor: pointer;
+  margin-bottom: 4px;
 `;
 
 const BriefEx = styled.p`
@@ -97,4 +91,5 @@ const BriefEx = styled.p`
   height: 52px;
   margin-top: 4px;
   ${({ theme }) => theme.fonts.body4}
+  margin-left:10px;
 `;
