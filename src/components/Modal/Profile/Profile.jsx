@@ -1,15 +1,9 @@
 import {styled} from "styled-components";
 import {string} from "@constants/index.js";
-import {useCustomNavigation} from "@hooks/useCustomNavigation.js";
 import {pagePath} from "@/routes/pagePath.js";
 
 // eslint-disable-next-line react/prop-types
-const Profile = ({onMouseEnter, onMouseLeave}) => {
-  const {navigateTo} = useCustomNavigation();
-  const onClickMenu = (path) => {
-    navigateTo(path);
-  }
-
+const Profile = ({onMouseEnter, onMouseLeave, onClickMenu}) => {
   return (
       <Container onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
         <ProfileContainer>
