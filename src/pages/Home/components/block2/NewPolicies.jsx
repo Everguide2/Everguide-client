@@ -3,13 +3,18 @@ import styled from "styled-components";
 import theme from "../../../../theme/theme";
 import B2Left from "./B2Left";
 import B2Right from "./B2Right";
+import { useNavigate } from "react-router-dom";
 const NewPolicies = (dummy) => {
+  const navigate = useNavigate();
+  const viewAllPolicy = () => {
+    navigate("/support");
+  };
   return (
     <Block2>
       <NewPoliciesArea>
         <TitleLine>
           <Block2Title>새로 나온 정책이에요</Block2Title>
-          <ViewAll>전체보기 &gt;</ViewAll>
+          <ViewAll onClick={() => viewAllPolicy()}>전체보기 &gt;</ViewAll>
         </TitleLine>
         <PolicyBoard>
           <B2Left data={dummy} />

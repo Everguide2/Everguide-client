@@ -1,11 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import theme from "@/theme/theme";
 import BookMark from "../../../../../assets/images/img_sharp-bookmark.png";
 const PolicyCard = ({ arr, query }) => {
-  console.log(arr);
+  const navigate = useNavigate();
+  const goToDetailPolicy = (id) => {
+    navigate(`/support/${id}`);
+  };
   return (
-    <Card>
+    <Card onClick={() => goToDetailPolicy(arr.id)}>
       <CardHeader>
         <CardCt>{arr.type}</CardCt>
         <BookCard src={BookMark} />
