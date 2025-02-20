@@ -18,12 +18,10 @@ const UserInfoForm = ({ userInfo, onChange, onUpdate }) => {
     const hasChanged = JSON.stringify(userInfo) !== JSON.stringify(savedUserInfo);
     setIsUpdated(hasChanged);
     if (hasChanged) {
-      setIsSaved(false); // 🔥 새로운 변경이 발생하면 다시 활성화
+      setIsSaved(false); 
     }
   }, [userInfo, savedUserInfo]);
   
-
-  // 간편 로그인 여부 확인 (카카오 or 네이버 계정 존재 여부)
   const isSocialLogin = userInfo.accounts && userInfo.accounts.length > 0;
 
   const handleImageUpload = (imageUrl) => {
@@ -31,12 +29,12 @@ const UserInfoForm = ({ userInfo, onChange, onUpdate }) => {
   };
 
   const handleUpdate = async () => {
-    if (!isUpdated) return; // 이미 비활성화 상태라면 실행 안 함
+    if (!isUpdated) return;
 
     try {
-      await onUpdate(); // 부모 컴포넌트에 업데이트 요청
-      setSavedUserInfo({ ...userInfo }); // 최신 상태 저장
-      setIsUpdated(false); // 🔥 저장 후 버튼 비활성화
+      await onUpdate();
+      setSavedUserInfo({ ...userInfo }); 
+      setIsUpdated(false); 
     } catch (error) {
       console.error("업데이트 실패:", error);
     }
@@ -56,7 +54,7 @@ const UserInfoForm = ({ userInfo, onChange, onUpdate }) => {
       formattedValue = `${value.slice(0, 4)} / ${value.slice(4, 6)} / ${value.slice(6, 8)}`;
     }
 
-    onChange({ target: { name: "birthYear", value: formattedValue } });
+    onChange({ target: { name: "birth", value: formattedValue } });
   };
 
   return (
@@ -85,15 +83,15 @@ const UserInfoForm = ({ userInfo, onChange, onUpdate }) => {
             <Label>생년월일</Label>
             <BirthInput
               type="text"
-              name="birthYear"
-              value={userInfo.birthYear}
+              name="birth"
+              value={userInfo.birth}
               onChange={handleBirthChange}
               maxLength="14"
             />
           </FormGroup>
           <FormGroup>
             <Label>전화번호</Label>
-            <Input type="text" name="phone" value={userInfo.phone} onChange={onChange} />
+            <Input type="text" name="phoneNumber" value={userInfo.phoneNumber} onChange={onChange} />
           </FormGroup>
 
           {isSocialLogin ? (
