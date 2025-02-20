@@ -1,11 +1,12 @@
 import {useState} from "react";
 import * as S from "./style.js";
 import {useCustomNavigation} from "@hooks/useCustomNavigation.js";
-import {icMainLogo, icNotify} from "@assets/index.js";
+import {icMainLogo, icNotify, icProfileBasic} from "@assets/index.js";
 import {Button, SearchBar, Alarm, Profile} from "@components/index.js";
 import {string} from "@constants/index.js";
 import {pagePath} from "@/routes/pagePath.js";
 import {useValidateLogin} from "@hooks/useValidateLogin.js";
+
 
 // eslint-disable-next-line react/prop-types
 const MainHeader = ({onClick}) => {
@@ -49,9 +50,10 @@ const MainHeader = ({onClick}) => {
                             onMouseEnter={() => setIsNotifyHovered(true)}
                             onMouseLeave={() => setIsNotifyHovered(false)}/>}
                     <S.PNContainer
+
                         onMouseEnter={() => handleHover(2, true)}
                         onMouseLeave={() => handleHover(2, false)}>
-                      <S.Profile/>
+                      <S.Profile src={icProfileBasic}/>
                     </S.PNContainer>
                     {isProfileHovered &&
                         <Profile

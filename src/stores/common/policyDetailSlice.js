@@ -32,7 +32,7 @@ export const policyDetailSlice = createSlice({
       state.total = action.payload.total;
       state.age = action.payload.age;
       state.registration = action.payload.registration;
-      state.homepage = action.payload.hompage;
+      state.homepage = action.payload.homepage;
     }
   }
 });

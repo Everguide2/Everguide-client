@@ -6,15 +6,16 @@ import {CardView, ListView, CommonHeader} from "@pages/Common/event&policyRec/co
 import {useSelector} from "react-redux";
 import {pagePath} from "@/routes/pagePath.js";
 import {useCustomNavigation} from "@hooks/useCustomNavigation.js";
+import {useValidateLogin} from "@hooks/useValidateLogin.js";
 
 // 지원정책, 행사/교육 페이지 공통 사용
 const Common = ({type}) => {
   const [activeTab, setActiveTab] = useState("left");
-  const [isLogin, setIsLogin] = useState(true);
   const listData = ["등록일 순", "신청 마감순"];
   const total = useSelector(state => state.paging.totalItems);
 
   const {navigateTo} = useCustomNavigation()
+  const {isLogin} = useValidateLogin();
 
   const onClickTab = (tab) => {
     setActiveTab(tab);

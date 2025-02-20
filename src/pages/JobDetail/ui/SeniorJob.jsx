@@ -7,13 +7,14 @@ import {CommonHeader} from "@pages/Common/event&policyRec/components/index.js";
 import CardJobView from "@pages/JobDetail/components/CardJobView.jsx";
 import CardJobList from "@pages/JobDetail/components/CardJobList.jsx";
 import {setPage} from "@stores/paging/pagingSlice.js";
+import {useValidateLogin} from "@hooks/useValidateLogin.js";
 
 const SeniorJob = () => {
   const dispatch = useDispatch();
-  const [isLogin, setIsLogin] = useState(true);
   const listData = ["시작일 순" , "마감일 순"];
   const [activeTab, setActiveTab] = useState("left");
   const total = useSelector(state => state.paging.totalItems)
+  const {isLogin} = useValidateLogin();
 
   const onClickTab = (tab) => {
     setActiveTab(tab);

@@ -1,21 +1,25 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import theme from "../../../../theme/theme";
 
 const B1Right = (dummy) => {
+  const navigate = useNavigate();
+
+  const goToDetailPolicy = (id) => {
+    navigate(`support/${id}`);
+  };
   return (
     <PBox2>
       {/*현재 더미데이터에 5개를 맞춰서 넣어놨는데, 추후에는 데이터 수에 따라 어떤식으로 자를지 상의 */}
-      {dummy.data.data.마감리스트?.map((data, index) => {
+      {dummy.data.data.이번주마감되는정책?.map((data, index) => {
         return (
-          <EachBox2 key={index}>
+          <EachBox2 key={data.id} onClick={() => goToDetailPolicy(data.id)}>
             <DateAndCategory>
-              <Box2Date $isEndToday={data.state === "오늘마감"}>
-                {data.state}
-              </Box2Date>
+              <Box2Date>{data.location}</Box2Date>
               <Box2Category>{data.category}</Box2Category>
             </DateAndCategory>
-            <Box2Title>{data.content}</Box2Title>
+            <Box2Title>{data.title}</Box2Title>
           </EachBox2>
         );
       })}
@@ -52,7 +56,7 @@ const DateAndCategory = styled.div`
 `;
 
 const Box2Date = styled.p`
-  color: ${({ isEndToday }) => (isEndToday ? "#D32F2F" : "#F9A825")};
+  color: #d32f2f;
   margin-right: 26px;
 `;
 const Box2Category = styled.p`

@@ -9,11 +9,12 @@ import Links from "../components/Links";
 import VerificationInput from "../components/VerificationInput";
 import { string } from "../../../constants";
 import NonExistingMemberModal from "@/components/Modal/NonExistingMemberModal";
+import AuthDummy from "@test/AuthDummy";
 
 const FindEmail = () => {
   const [formData, setFormData] = useState({
     name: "",
-    phone: "",
+    phoneNumber: "",
     verificationCode: "",
   });
 
@@ -21,12 +22,6 @@ const FindEmail = () => {
   const [verificationCompleted, setVerificationCompleted] = useState(false);
   const [correctVerificationCode] = useState("1234"); 
   const [showNonExistingMemberModal, setShowNonExistingMemberModal] = useState(false);
-
-  const fakeMember = {
-    name: "김서진",
-    phone: "01050585318",
-    email: "seojin@gmail.com",
-  };
 
   const navigate = useNavigate(); 
 
@@ -36,7 +31,7 @@ const FindEmail = () => {
   };
 
   const handleSendCode = () => {
-    if (formData.phone) {
+    if (formData.phoneNumber) {
       setVerificationSent(true);
     }
   };
@@ -52,19 +47,19 @@ const FindEmail = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (formData.name !== fakeMember.name || formData.phone !== fakeMember.phone) {
+    if (formData.name !== AuthDummy.name || formData.phoneNumber !== AuthDummy.phoneNumber) {
       setShowNonExistingMemberModal(true);
       return;
     }
 
     if (verificationCompleted) {
-      navigate("/email-result", { state: { name: formData.name, email: fakeMember.email } });
+      navigate("/email-result", { state: { name: formData.name, email: AuthDummy.email } });
     } 
   };
 
   const isFormValid =
     formData.name.trim() !== "" &&
-    formData.phone.trim() !== "" &&
+    formData.phoneNumber.trim() !== "" &&
     verificationSent &&
     verificationCompleted;
 
@@ -88,16 +83,16 @@ const FindEmail = () => {
             <PhoneInputWrapper>
               <StyledInput
                 type="tel"
-                name="phone"
+                name="phoneNumber"
                 placeholder="휴대폰 번호 입력 (- 제외)"
-                value={formData.phone}
+                value={formData.phoneNumber}
                 onChange={handleInputChange}
                 required
                 disabled={verificationCompleted}
               />
               <Button
                 onClick={handleSendCode}
-                disabled={!formData.phone || verificationSent}
+                disabled={!formData.phoneNumber || verificationSent}
                 width="160px"
                 height="56px"
               >
@@ -137,6 +132,7 @@ const FindEmail = () => {
 };
 
 export default FindEmail;
+
 
 const Container = styled.div`
   display: flex;

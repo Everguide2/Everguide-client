@@ -12,6 +12,7 @@ import EmailInput from "../../components/EmailInput";
 import SignupLoading from "../SignupLoading"; 
 import FixedFooter from "../../components/FixedFooter";
 import { Container, Content, ScrollArea, Form, InputWrapper, Label } from "./SignupStyles";
+import AuthDummy from "@test/AuthDummy";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -21,8 +22,7 @@ const Signup = () => {
     birthYear: "",
     birthMonth: "",
     birthDay: "",
-    gender: "",
-    phone: "",
+    phoneNumber: "",
     verificationCode: "",
     email: "",
     password: "",
@@ -34,38 +34,37 @@ const Signup = () => {
   const [correctVerificationCode] = useState("1234");
   const [isLoading, setIsLoading] = useState(false); 
   const [isFormValid, setIsFormValid] = useState(false);
+  const [isEmailTaken, setIsEmailTaken] = useState(false); 
 
   useEffect(() => {
-    const { name, birthYear, birthMonth, birthDay, phone, email, password, confirmPassword } = formData;
+    const { name, birthYear, birthMonth, birthDay, phoneNumber, email, password, confirmPassword } = formData;
 
     const isValid =
       name.trim() &&
       birthYear.trim() &&
       birthMonth.trim() &&
       birthDay.trim() &&
-      phone.trim() &&
+      phoneNumber.trim() &&
       email.trim() &&
       password.trim() &&
       confirmPassword.trim() &&
-      password === confirmPassword; 
+      password === confirmPassword &&
+      !isEmailTaken; 
 
     setIsFormValid(isValid);
-  }, [formData, verificationCompleted]);
+  }, [formData, verificationCompleted, isEmailTaken]);
 
-  // 입력값 변경 핸들러
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // 인증번호 요청
   const handleVerification = () => {
-    if (formData.phone) {
+    if (formData.phoneNumber) {
       setVerificationSent(true);
     }
   };
 
-  // 인증번호 확인
   const handleVerifyCode = () => {
     if (formData.verificationCode === correctVerificationCode) {
       setVerificationCompleted(true);
@@ -74,12 +73,16 @@ const Signup = () => {
     }
   };
 
-  // 이메일 중복 확인
   const handleEmailCheck = () => {
-    alert("이메일 중복 확인 완료!");
+    if (formData.email === AuthDummy.email) {
+      setIsEmailTaken(true);
+      alert("이미 가입된 이메일입니다!");
+    } else {
+      setIsEmailTaken(false);
+      alert("사용 가능한 이메일입니다!");
+    }
   };
 
-  // 회원가입 제출
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!verificationCompleted) {
@@ -130,15 +133,15 @@ const Signup = () => {
             <InputWrapper>
               <InputField
                 type="tel"
-                name="phone"
+                name="phoneNumber"
                 placeholder="휴대폰 번호 입력 (- 제외)"
-                value={formData.phone}
+                value={formData.phoneNumber}
                 onChange={handleInputChange}
                 required
               />
               <Button
                 onClick={handleVerification}
-                disabled={!formData.phone || verificationSent}
+                disabled={!formData.phoneNumber || verificationSent}
                 width="160px"
                 height="56px"
               >

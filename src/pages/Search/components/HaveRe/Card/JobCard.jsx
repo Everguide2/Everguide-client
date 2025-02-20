@@ -1,11 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "@/theme/theme";
+import { useNavigate } from "react-router-dom";
 import BookMark from "../../../../../assets/images/img_sharp-bookmark.png";
-const PolicyCard = ({ arr, query }) => {
-  console.log(arr);
+const JobCard = ({ arr, query }) => {
+  const navigate = useNavigate();
+
+  const goToDetailJob = (id) => {
+    navigate(`/job-senior/${id}`);
+  };
+
   return (
-    <Card>
+    <Card onClick={() => goToDetailJob(arr.id)}>
       <CardHeader>
         <CardCompany>{arr.company}</CardCompany>
         <BookCard src={BookMark} />
@@ -40,7 +46,7 @@ const PolicyCard = ({ arr, query }) => {
   );
 };
 
-export default PolicyCard;
+export default JobCard;
 
 const Card = styled.div`
   width: 310px;

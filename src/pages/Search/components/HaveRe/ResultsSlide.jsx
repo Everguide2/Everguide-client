@@ -22,7 +22,7 @@ const ResultsSlide = () => {
   // 정책 UI 완성 시 수정 예정
   const goToViewAll = (name) => {
     name === "정책"
-      ? null
+      ? navigate("/job-senior")
       : name === "행사/교육"
       ? navigate("/event")
       : navigate("/job-senior");

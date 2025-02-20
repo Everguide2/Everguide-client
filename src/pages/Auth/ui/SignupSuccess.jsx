@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import Button from "../components/Button"; // 버튼 컴포넌트
-import icSignupSuccess from "@assets/icons/ic-signup-success.svg"; // 아이콘 가져오기
+import Button from "../components/Button"; 
+import icSignupSuccess from "@assets/icons/ic-signup-success.svg"; 
 
 const SignupSuccess = () => {
   const navigate = useNavigate();
@@ -19,7 +19,6 @@ const SignupSuccess = () => {
 
 export default SignupSuccess;
 
-// 스타일 정의
 const Container = styled.div`
   display: flex;
   flex-direction: column;
