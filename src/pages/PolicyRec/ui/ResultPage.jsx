@@ -5,14 +5,13 @@ import {
   Mascot, SpeechBubble, MascotImage 
 } from "./styleResultPage";
 import { imgDangguMag } from "../../../assets";
-import policyDummyData from "@/test/policyDummy"; // 정책 더미 데이터 가져오기
-import { dummyData } from "@/test/eventDummy"; // 행사 더미 데이터
+import policyDummyData from "@/test/policyDummy"; 
+import { dummyData } from "@/test/eventDummy"; 
 
 const ResultPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // 정책 & 행사 데이터 가져오기
   const recommendedPolicies = policyDummyData?.slice(0, 6) || [];
   const recommendedEvents = dummyData?.slice(0, 6) || [];
 
@@ -23,13 +22,13 @@ const ResultPage = () => {
         <CardGrid>
           {recommendedPolicies.map((policy, index) => (
             <PolicyCard key={index}>
-              <div className="category-tag">{policy.category}</div> {/* 카테고리 태그 */}
-              <h3>{policy.title}</h3> {/* 정책 제목 */}
-              <p className="support">{policy.support}</p> {/* 지원 항목 */}
-              <div className="assign">{policy.agency}</div> {/* 주관 기관 */}
+              <div className="category-tag">{policy.category}</div> 
+              <h3>{policy.title}</h3> 
+              <p className="support">{policy.support}</p> 
+              <div className="assign">{policy.agency}</div> 
               <div className="d-day">
                 {policy.dDay ? `D-${policy.dDay}` : "상시모집"}
-              </div> {/* D-Day */}
+              </div>
             </PolicyCard>
           ))}
         </CardGrid>
@@ -43,12 +42,12 @@ const ResultPage = () => {
               {event.image && (
                 <img src={event.image} alt={event.title} className="event-image" />
               )}
-              <div className="category-tag">{event.category}</div> {/* 카테고리 태그 */}
+              <div className="category-tag">{event.category}</div> 
               <h3>{event.title}</h3>
               <p className="assign">{event.assign}</p>
               <div className="d-day">
                 {event.dDay ? `D-${event.dDay}` : "마감일 미정"}
-              </div> {/* D-Day */}
+              </div> 
             </EventCard>
           ))}
         </CardGrid>
