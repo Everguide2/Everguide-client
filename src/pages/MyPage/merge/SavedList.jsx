@@ -6,7 +6,7 @@ import {ListHeader, List, Paginations, MyPageButton} from "@components/";
 import {useSelector, useDispatch} from "react-redux";
 import {setPage} from "@stores/paging/pagingSlice.js";
 import {addSavedList, deleteSavedList} from "@stores/mypage/savedListSlice.js";
-import {noImageData} from "@test/eventDummyNoImages.js";
+import {noImageData} from "@test/policyDummy.js";
 
 const SavedList = () => {
   const listData = ["등록일 순", "신청 마감순"];
