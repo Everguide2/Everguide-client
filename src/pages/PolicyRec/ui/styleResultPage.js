@@ -39,33 +39,59 @@ export const PolicyCard = styled.div`
   background: white;
   border-radius: 26px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  padding: 20px;
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
   height: 256px;
+  position: relative;
 
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
   }
 
-  h3 {
-    font-size: 18px;
-    ${({ theme }) => theme.fonts.body1}
-    color: ${({ theme }) => theme.colors.gray[900]};
-    margin-bottom: 10px;
+  .category-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: ${({ theme }) => theme.colors.primary[500]};
+    color: white;
+    padding: 4px 10px;
+    border-radius: 24px;
+    font-size: 12px;
+    font-weight: bold;
   }
 
-  p {
+  h3 {
+    font-size: 18px;
+    font-weight:bold;
+    ${({ theme }) => theme.fonts.subheader3}
+    color: ${({ theme }) => theme.colors.gray[900]};
+    margin: 30px 0 10px;
+  }
+
+  .support {
     font-size: 14px;
     ${({ theme }) => theme.fonts.caption1}
     color: ${({ theme }) => theme.colors.gray[500]};
-    margin-bottom: 8px;
   }
 
-  span {
+  .assign {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
     font-size: 12px;
-    ${({ theme }) => theme.fonts.body1}
+    ${({ theme }) => theme.fonts.body3}
+    color: ${({ theme }) => theme.colors.gray[700]};
+  }
+
+  .d-day {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 14px;
+    font-weight: bold;
+     ${({ theme }) => theme.fonts.body1}
     color: ${({ theme }) => theme.colors.secondary[500]};
   }
 `;
