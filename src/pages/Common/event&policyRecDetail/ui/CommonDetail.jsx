@@ -45,14 +45,14 @@ const CommonDetail = ({type}) => {
               {type === "지원정책" &&
                 <PolicyContent data={detail}/>
               }
-              {type == "일자리" &&
+              {type === "일자리" &&
                 <JobContent data={detail}/>
               }
             </S.Content>
 
             <S.Buttons>
               <LargeButton text={string.toListBtn} type={"border"} onClick={() => navigate(-1)} />
-              <LargeButton text={type === 1 ? string.checkArticleBtn : string.receiptBtn} type={"primary"}/>
+              <LargeButton text={type !== "일자리" ? string.checkArticleBtn : string.receiptBtn} type={"primary"}/>
             </S.Buttons>
 
           </S.Article>

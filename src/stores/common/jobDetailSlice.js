@@ -5,8 +5,17 @@ export const jobDetailSlice = createSlice({
   initialState: {
     category: "",
     title: "",
-    subtitle: "",
+    subTitle: "",
+    startDate: "",
+    endDate: "",
+    bookmark: "",
+    location: "",
     content: "",
+    etcs: "",
+    age: "",
+    registration: "",
+    assigner: "",
+    assignNumber: "",
   },
   reducers: {
     addJobArticle: (state, action) => {
@@ -14,7 +23,16 @@ export const jobDetailSlice = createSlice({
       state.title = action.payload.title;
       state.subTitle = action.payload.subTitle;
       state.content = action.payload.content;
-      state.bookMark = action.payload.bookMark;
+      state.startDate = action.payload.startDate;
+      state.endDate = action.payload.endDate;
+      state.bookmark = action.payload.bookmark;
+      state.location = action.payload.location;
+      state.content = action.payload.content;
+      state.etcs = action.payload.etcs;
+      state.age = action.payload.age;
+      state.registration = action.payload.registration;
+      state.assigner = action.payload.assigner;
+      state.assignNumber = action.payload.assignNumber;
     }
   }
 });

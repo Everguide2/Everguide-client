@@ -16,9 +16,17 @@ const JobDetail = () => {
     dispatch(addJobArticle({
       category: article.state,
       title:article.title,
-      subtitle: article.company,
+      subTitle: article.company,
+      bookmark:article.bookmark,
+      startDate: article.startDate,
+      endDate: article.endDate,
+      location: article.location,
       content: article.content,
-      bookMark:article.bookMark,
+      etcs: article.etcs,
+      age: article.age,
+      registration: article.registration,
+      assigner: article.assigner,
+      assignNumber: article.assignNumber,
     }))
   }, []);
 
