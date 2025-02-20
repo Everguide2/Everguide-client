@@ -1,4 +1,5 @@
 export const questionData = [
+
   {
     id: "start",
     question: "누구를 위해 정책을 찾고 계신가요?",
