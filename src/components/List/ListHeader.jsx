@@ -16,10 +16,10 @@ const ListHeader =
           <Container>
             <tr>
               <Thead $width={"8%"}>{th1}</Thead>
-              <Thead $width={isJob ? "15%" : "10%"}>{th3}</Thead>
+              <Thead $width={isJob? "15%" : "10%"}>{th3}</Thead>
               <Thead $width={isJob? "31%" : "36%"}>{type ? type+" 이름" : "채용제목"} </Thead>
               <Thead $width={isJob? "25%" : "23%"}>{th4}</Thead>
-              <Thead $width={"11%"}>{th5}</Thead>
+              {type !== "지원정책" && <Thead $width={"11%"}>{th5}</Thead>}
               {isLogin && <Thead $width={"10%"}>저장</Thead>}
               {isMyPage && <Thead $width={"10%"}>선택</Thead>}
             </tr>

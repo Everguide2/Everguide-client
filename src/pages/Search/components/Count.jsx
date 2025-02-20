@@ -3,12 +3,16 @@ import styled from "styled-components";
 import theme from "../../../theme/theme";
 import { useSelector } from "react-redux";
 const Count = () => {
-  const { dummy, queryName } = useSelector((state) => state.Search);
+  const { categoryCount, queryName } = useSelector((state) => state.Search);
+  let totalCount = categoryCount.reduce(
+    (total, current) => (total += current),
+    0
+  );
+
   return (
     <SearchCount>
       <CountResult>
-        <QueryText>{queryName}</QueryText>에
-        <CountText>{dummy[queryName] ? dummy[queryName].length : 0}</CountText>
+        <QueryText>{queryName}</QueryText>에<CountText>{totalCount}</CountText>
         개의 검색결과가 있습니다.
       </CountResult>
     </SearchCount>

@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import theme from "../../../../theme/theme";
-import BookMark from "../../../../assets/images/img_sharp-bookmark.png";
-const SwiperCard = ({ arr, query }) => {
+import theme from "@/theme/theme";
+import BookMark from "../../../../../assets/images/img_sharp-bookmark.png";
+const PolicyCard = ({ arr, query }) => {
+  console.log(arr);
   return (
     <Card>
       <CardHeader>
-        <CardCt>{arr.category}</CardCt>
+        <CardCt>{arr.type}</CardCt>
         <BookCard src={BookMark} />
       </CardHeader>
       <TitleIncludeName>
@@ -27,24 +28,31 @@ const SwiperCard = ({ arr, query }) => {
       <CardMethod>{arr.method}</CardMethod>
       <LocationAndDday>
         <Location>{arr.location}</Location>
-        <Dday>{arr.remainingPeriod}</Dday>
+        {arr.remainingPeriod === "-1" ? (
+          <Dday>마감</Dday>
+        ) : arr.remainingPeriod === "0" ? (
+          <Dday>D-Day</Dday>
+        ) : (
+          <Dday>D-{arr.remainingPeriod}</Dday>
+        )}
       </LocationAndDday>
     </Card>
   );
 };
 
-export default SwiperCard;
+export default PolicyCard;
 
 const Card = styled.div`
   width: 310px;
-  height: 256px;
+  height: 272px;
   display: flex;
   flex-direction: column;
   border-radius: 26px;
-  box-shadow: 0 0 7px rgba(0, 0, 0, 0.5); /* 반투명 검은색 그림자 */
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.11);
   margin-top: 5px;
   margin-bottom: 5px;
   margin-left: 3px;
+  cursor: pointer;
 `;
 const CardHeader = styled.div`
   display: flex;
@@ -52,6 +60,8 @@ const CardHeader = styled.div`
   margin-bottom: 7px;
 `;
 const CardCt = styled.div`
+  padding-left: 5px;
+  padding-right: 5px;
   height: 21px;
   display: flex;
   justify-content: center;
@@ -62,7 +72,9 @@ const CardCt = styled.div`
   background-color: ${({ theme }) => theme.colors.gray[100]};
 `;
 const BookCard = styled.img`
-  margin-right: 15px;
+  width: 25px;
+  height: 33px;
+  margin-right: 20px;
 `;
 const CardTitle = styled.div`
   ${({ theme }) => theme.fonts.subHeader3};
@@ -92,6 +104,7 @@ const LocationAndDday = styled.div`
 const Location = styled.p`
   ${({ theme }) => theme.fonts.subHeader3}
   color:#4E4C49;
+  margin-top: 4px;
 `;
 const Dday = styled.p`
   ${({ theme }) => theme.fonts.header6}

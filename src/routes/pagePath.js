@@ -1,6 +1,10 @@
+import ResultPage from "@/pages/PolicyRec/ui/ResultPage";
+
 export const pagePath = {
   HOME: "home",
   POLICY : 'policy',
+  SUPPORT : 'support',
+  SUPPORTDETAIL : 'support/:supportId',
   EVENT : 'event',
   EVENTDETAIL : 'event/:eventId',
   SEARCH: 'search',
@@ -8,7 +12,6 @@ export const pagePath = {
   JOBDETAIL: 'job-senior/:jobId',
   JOBSENIOR: 'job-senior',
   JOBMORE: 'job-more',
-  SUPPORT : 'support',
   LOGIN : 'login',
   SIGNUP : 'signup',
   MYPAGE : 'mypage',
@@ -18,4 +21,5 @@ export const pagePath = {
   PASSWORDSENT : 'password-sent',
   SIGNUPLOADING : 'signup-loading',
   SIGNUPSUCCESS : 'signup-success',
+  ResultPage : 'result'
 }

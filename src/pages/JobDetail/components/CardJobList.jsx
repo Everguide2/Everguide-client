@@ -23,7 +23,7 @@ const CardJobList = ({isLogin}) => {
                 city={data.location}
                 title={data.title}
                 assign={data.company}
-                dDay={"Day"}
+                dDay={0}
                 duration={data.duration}
                 isJob={true}
                 isLogin={isLogin}

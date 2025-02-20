@@ -1,9 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import BGImg from "../../../assets/images/img_Frame290548.png";
 import theme from "../../../theme/theme";
 import ArrowImo from "../../../assets/images/img-Frame290705.svg";
 const FindPolicy = () => {
+  const navigate = useNavigate();
+
+  const goToPolicy = () => {
+    navigate("/policy");
+  };
   return (
     <>
       <PolicyForMe>
@@ -14,7 +20,9 @@ const FindPolicy = () => {
         <ExSubTitle>40초 설문으로 나에게 맞는 정책을 확인해보세요!</ExSubTitle>
         <ExButton>
           <ButtonEx>
-            <ButtonTitle>나의 맞춤정책 확인하기</ButtonTitle>
+            <ButtonTitle onClick={() => goToPolicy()}>
+              나의 맞춤정책 확인하기
+            </ButtonTitle>
             <ExImo src={ArrowImo} alt="화살표" />
           </ButtonEx>
         </ExButton>
@@ -66,6 +74,7 @@ const ExButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `;
 
 const ButtonEx = styled.div`

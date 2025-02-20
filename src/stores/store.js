@@ -1,5 +1,9 @@
 import {configureStore} from "@reduxjs/toolkit";
-import informationReducer from "@stores/common/informationSlice";
+import eventReducer from "@stores/common/eventSlice.js";
+import eventDetailReducer from "@stores/common/eventDetailSlice.js";
+import policyReducer from "@stores/common/policySlice.js";
+import policyDetailReducer from "@stores/common/policyDetailSlice.js";
+import jobDetailReducer from "@stores/common/jobDetailSlice.js";
 import savedListReducer from "@stores/mypage/savedListSlice";
 import pagingReducer from "@stores/paging/pagingSlice";
 import detailReducer from "@stores/common/detailSlice";
@@ -9,7 +13,11 @@ import SearchReducer from "@stores/search/SearchSlice";
 
 export default configureStore({
   reducer:{
-    information : informationReducer,
+    event: eventReducer,
+    eventDetail: eventDetailReducer,
+    policy: policyReducer,
+    policyDetail: policyDetailReducer,
+    jobDetail: jobDetailReducer,
     savedList : savedListReducer,
     paging: pagingReducer,
     detail: detailReducer,

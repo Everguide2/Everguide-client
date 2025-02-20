@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import * as S from "./style.js";
 import {useCustomNavigation} from "@hooks/useCustomNavigation.js";
 import {MainHeader, SubHeader} from "@layout/Header/components"
@@ -9,8 +9,6 @@ import {pagePath} from "@/routes/pagePath.js";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const auth = useSelector(state => state.auth);
-
   const [active, setActive] = useState("");
   const [subActive, setSubActive] = useState("");
   const {navigateTo} = useCustomNavigation();
@@ -48,7 +46,7 @@ const Header = () => {
 
   return (
       <S.Container>
-        <MainHeader isLogin={true} onClick={handleMenuClick}/>
+        <MainHeader onClick={handleMenuClick}/>
         <SubHeader active={active} subActive={subActive} onClick={handleMenuClick}/>
       </S.Container>
   );
