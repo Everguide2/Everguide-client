@@ -55,7 +55,7 @@ const Policy = () => {
       }
     });
   };
-
+  
   const handleNext = () => {
     if (!currentQuestion) return;
   
@@ -79,11 +79,12 @@ const Policy = () => {
     }
   };
   
+  
 
   return (
     <>
       <ScrollToTop />
-      {isLoading ? (  
+      {isLoading ? (
         <LoadingScreen />
       ) : (
         <Container>
