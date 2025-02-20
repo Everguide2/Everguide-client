@@ -5,14 +5,14 @@ import {
   Mascot, SpeechBubble, MascotImage 
 } from "./styleResultPage";
 import { imgDangguMag } from "../../../assets";
-import policyDummyData from "@/test/policyDummy"; 
-import { dummyData } from "@/test/eventDummy"; 
+import {noImageData} from "@test/policyDummy";
+import { dummyData } from "@test/eventDummy";
 
 const ResultPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const recommendedPolicies = policyDummyData?.slice(0, 6) || [];
+  const recommendedPolicies = noImageData?.slice(0, 6) || [];
   const recommendedEvents = dummyData?.slice(0, 6) || [];
 
   return (
