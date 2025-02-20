@@ -1,30 +1,31 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Container, Title, Section, CardGrid, Card, Button, Mascot, SpeechBubble, MascotImage } from "./styleResultPage";
+import { 
+  Container, Title, Section, CardGrid, PolicyCard, EventCard, 
+  Button, Mascot, SpeechBubble, MascotImage 
+} from "./styleResultPage";
 import { imgDangguMag } from "../../../assets";
-
+import data from "@/test/dummy";
+import { dummyData } from "@/test/eventDummy";
 
 const ResultPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const answers = location.state?.answers || {};
-
-  // ✅ 더미데이터에서 정책 & 행사 데이터 필터링
-  const recommendedPolicies = eventDummy.filter((item) => item.type === "policy").slice(0, 6); // 정책 데이터 (최대 6개)
-  const recommendedEvents = eventDummy.filter((item) => item.type === "event").slice(0, 6); // 행사 데이터 (최대 6개)
+  const recommendedPolicies = data.새로나온정책.slice(0, 6);
+  const recommendedEvents = dummyData.slice(0, 6);
 
   return (
     <Container>
       <Title>맞춤 분석 추천 정책</Title>
       <Section>
         <CardGrid>
-          {recommendedPolicies.map((policy) => (
-            <Card key={policy.id}>
-              <h3>{policy.title}</h3>
+          {recommendedPolicies.map((policy, index) => (
+            <PolicyCard key={index}>
+              <h3>{policy.content}</h3>
               <p>{policy.category}</p>
-              <span>{policy.deadline}</span>
-            </Card>
+              <span>{policy.location}</span>
+            </PolicyCard>
           ))}
         </CardGrid>
       </Section>
@@ -32,12 +33,22 @@ const ResultPage = () => {
       <Title>추천하는 행사/교육</Title>
       <Section>
         <CardGrid>
-          {recommendedEvents.map((event) => (
-            <Card key={event.id}>
+          {recommendedEvents.map((event, index) => (
+            <EventCard key={index}>
+              {event.image && (
+                <img src={event.image} alt={event.title} className="event-image" />
+              )}
+
+              <span className="category-tag">{event.category}</span>
+
               <h3>{event.title}</h3>
-              <p>{event.category}</p>
-              <span>{event.deadline}</span>
-            </Card>
+
+              {/* 기관 */}
+              <p className="assign">{event.assign}</p>
+
+              {/* D-Day */}
+              <span className="d-day">{event.dDay ? `D-${event.dDay}` : "마감일 미정"}</span>
+            </EventCard>
           ))}
         </CardGrid>
       </Section>
