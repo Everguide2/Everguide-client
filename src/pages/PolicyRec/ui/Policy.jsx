@@ -9,7 +9,7 @@ import  {questionData} from "@test/questionData.js";
 import { imgDangguMag } from '../../../assets';
 import LoginModal from "../feature/LoginModal.jsx"; 
 import { useNavigate } from "react-router-dom";
-import ScrollToTop from '@/utils/scrollToTop';
+import ScrollToTop from "@utils/scrollToTop.js";
 import LoadingScreen from './LoadingScreen';
 
 const Policy = () => {
