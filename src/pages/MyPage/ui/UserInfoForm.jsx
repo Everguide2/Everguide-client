@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { imgProfile, imgDefault, icMyPageUpdate } from "@/assets";
+import { imgProfile, imgDefault, icMyPageUpdate, icProfileBasic } from "@/assets";
 import { icMyPageKakao, icMyPageNaver } from "@/assets";
 import ProfileImageModal from "../components/modal/ProfileImageModal";
 import ChangePasswordModal from "../components/modal/ChangePasswordModal";
@@ -10,7 +10,7 @@ const UserInfoForm = ({ userInfo, onChange, onUpdate }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
-  const [profileImage, setProfileImage] = useState(imgDefault);
+  const [profileImage, setProfileImage] = useState(icProfileBasic);
   const [savedUserInfo, setSavedUserInfo] = useState(userInfo);
   const [isSaved, setIsSaved] = useState(false);
 

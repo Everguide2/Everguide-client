@@ -1,5 +1,6 @@
-import { useState } from "react";
+import {useState} from "react";
 import styled from "styled-components";
+import SavedList from "@pages/MyPage/components/SavedList.jsx";
 import Sidebar from "@pages/MyPage/ui/Sidebar.jsx";
 import UserInfoForm from "@pages/MyPage/ui/UserInfoForm";
 import DeleteAccountModal from "@pages/MyPage/components/modal/DeleteAccountModal";
@@ -16,29 +17,39 @@ const MyPage = () => {
   const isSocialLogin = userInfo.accounts && userInfo.accounts.length > 0;
 
   return (
-    <Container>
-      <SidebarWrapper>
-        <Sidebar activeMenu={activeMenu} onMenuClick={setActiveMenu} />
-      </SidebarWrapper>
+      <Container>
+        <Inner>
+          <SidebarWrapper>
+            <Sidebar activeMenu={activeMenu} onMenuClick={setActiveMenu}/>
+          </SidebarWrapper>
 
-      <MainContent>
-        <Content>
-          <UserInfoForm
-            userInfo={userInfo}
-            onChange={(e) => setUserInfo({ ...userInfo, [e.target.name]: e.target.value })}
-          />
+          <MainContent>
+            {activeMenu === "info" &&
+                <Content>
+                  <UserInfoForm
+                      userInfo={userInfo}
+                      onChange={(e) => setUserInfo({...userInfo, [e.target.name]: e.target.value})}
+                  />
 
-          {/*  소셜 로그인 여부에 따라 margin-top 값 변경 */}
-          <ButtonContainer isSocialLogin={isSocialLogin}>
-            <DeleteButton onClick={() => setIsDeleteModalOpen(true)}>탈퇴하기</DeleteButton>
-            <LogoutButton onClick={() => setIsLogoutModalOpen(true)}>로그아웃</LogoutButton>
-          </ButtonContainer>
-        </Content>
-      </MainContent>
+                  {/*  소셜 로그인 여부에 따라 margin-top 값 변경 */}
+                  <ButtonContainer isSocialLogin={isSocialLogin}>
+                    <DeleteButton onClick={() => setIsDeleteModalOpen(true)}>탈퇴하기</DeleteButton>
+                    <LogoutButton onClick={() => setIsLogoutModalOpen(true)}>로그아웃</LogoutButton>
+                  </ButtonContainer>
+                </Content>}
+            {activeMenu === "saved" &&
+                <Content>
+                  <SavedList/>
+                </Content>
 
-      <DeleteAccountModal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)} />
-      <LogoutModal isOpen={isLogoutModalOpen} onClose={() => setIsLogoutModalOpen(false)} />
-    </Container>
+            }
+          </MainContent>
+
+          <DeleteAccountModal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)}/>
+          <LogoutModal isOpen={isLogoutModalOpen} onClose={() => setIsLogoutModalOpen(false)}/>
+        </Inner>
+
+      </Container>
   );
 };
 
@@ -46,15 +57,17 @@ export default MyPage;
 
 /* ✅ Styled Components */
 const Container = styled.div`
+  width: 100%;
+  background-color: ${({theme}) => theme.colors.gray[50]};
+`;
+
+const Inner = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  width: 100%;
+  max-width: ${({theme}) => theme.size.safeArea};
   margin: 0 auto;
-  height: 1293px;
-  background-color: ${({ theme }) => theme.colors.gray[50]};
-`;
-
+`
 const SidebarWrapper = styled.div`
   width: 300px;
   padding: 20px;
@@ -79,14 +92,14 @@ const ButtonContainer = styled.div`
   margin-left: 600px;
   gap: 20px;
   height: 41px;
-  margin-top: ${({ isSocialLogin }) => (isSocialLogin ? "200px" : "-60px")}; /* 소셜 로그인 여부에 따라 변경 */
+  margin-top: ${({isSocialLogin}) => (isSocialLogin ? "200px" : "-60px")}; /* 소셜 로그인 여부에 따라 변경 */
 `;
 
 const DeleteButton = styled.button`
-  background-color: ${({ theme }) => theme.colors.gray[100]};
-  color: ${({ theme }) => theme.colors.gray[500]};
+  background-color: ${({theme}) => theme.colors.gray[100]};
+  color: ${({theme}) => theme.colors.gray[500]};
   padding: 8px 10px;
-  border: 1px solid ${({ theme }) => theme.colors.gray[200]};
+  border: 1px solid ${({theme}) => theme.colors.gray[200]};
   border-radius: 8px;
   cursor: pointer;
   width: 110px;
@@ -94,10 +107,10 @@ const DeleteButton = styled.button`
 
 const LogoutButton = styled.button`
   background-color: white;
-  color: ${({ theme }) => theme.colors.secondary[600]};
+  color: ${({theme}) => theme.colors.secondary[600]};
   padding: 8px 10px;
   border-radius: 8px;
-  border: 1px solid ${({ theme }) => theme.colors.secondary[600]};
+  border: 1px solid ${({theme}) => theme.colors.secondary[600]};
   cursor: pointer;
   width: 110px;
 `;
