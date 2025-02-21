@@ -73,5 +73,6 @@ const NewPoCategory = styled.p`
   color: #8f8d8a;
 `;
 const NewPoTitle = styled.p`
-  ${({ theme }) => theme.fonts.subHeader3}
+  ${({ theme }) => theme.fonts.subHeader3};
+  text-align: left;
 `;

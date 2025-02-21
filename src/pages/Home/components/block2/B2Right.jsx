@@ -72,4 +72,5 @@ const NewPoCategory = styled.p`
 `;
 const NewPoTitle = styled.p`
   ${({ theme }) => theme.fonts.subHeader3}
+  text-align: left;
 `;
